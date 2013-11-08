@@ -1,0 +1,44 @@
+// @APPLE_LICENSE_HEADER_START@
+// 
+// Copyright (c) 2008-2009 Apple Computer, Inc.  All Rights Reserved.
+// 
+// This file contains Original Code and/or Modifications of Original Code
+// as defined in and that are subject to the Apple Public Source License
+// Version 2.0 (the 'License'). You may not use this file except in
+// compliance with the License. Please obtain a copy of the License at
+// http://www.opensource.apple.com/apsl/ and read it before using this
+// file.
+// 
+// The Original Code and all software distributed under the License are
+// distributed on an 'AS IS' basis, WITHOUT WARRANTY OF ANY KIND, EITHER
+// EXPRESS OR IMPLIED, AND APPLE HEREBY DISCLAIMS ALL SUCH WARRANTIES,
+// INCLUDING WITHOUT LIMITATION, ANY WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE, QUIET ENJOYMENT OR NON-INFRINGEMENT.
+// Please see the License for the specific language governing rights and
+// limitations under the License.
+// 
+// @APPLE_LICENSE_HEADER_END@
+
+#include "IOHIDFamily-Version.xcconfig"
+
+ARCHS = i386 x86_64
+VALID_ARCHS = i386 x86_64
+RUN_CLANG_STATIC_ANALYZER = YES
+GCC_ENABLE_FIX_AND_CONTINUE = NO
+ZERO_LINK = NO
+GCC_WARN_SHADOW = YES
+//GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = YES
+GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES
+GCC_WARN_ABOUT_MISSING_NEWLINE = YES
+GCC_WARN_ABOUT_RETURN_TYPE = YES
+OTHER_CFLAGS = -Wall -Wextra
+GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES
+//GCC_WARN_64_TO_32_BIT_CONVERSION = YES
+//GCC_WARN_PROTOTYPE_CONVERSION = YES
+GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES
+GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES
+GCC_WARN_UNUSED_FUNCTION = YES
+GCC_WARN_UNUSED_LABEL = YES
+GCC_WARN_UNUSED_PARAMETER = YES
+GCC_WARN_UNUSED_VALUE = YES
+GCC_WARN_UNUSED_VARIABLE = YES
