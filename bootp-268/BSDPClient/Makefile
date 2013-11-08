@@ -1,0 +1,2 @@
+bsdpc-badsysid: BSDPClient.c BSDPClient.h
+	cc -DTEST_BAD_SYSID -g -o bsdpc-badsysid BSDPClient.c ../bootplib/interfaces.c ../bootplib/dhcp_options.c ../bootplib/ptrlist.c ../bootplib/dynarray.c ../bootplib/bootp_transmit.c ../bootplib/dhcplib.c ../bootplib/DNSNameList.c ../bootplib/cfutil.c ../bootplib/bpflib.c ../bootplib/ioregpath.c ../bootplib/in_cksum.c ../bootplib/util.c -I/System/Library/Frameworks/System.framework/PrivateHeaders -I../bootplib -framework CoreFoundation -framework SystemConfiguration -framework IOKit
