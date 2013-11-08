@@ -1,0 +1,44 @@
+<plist version="1.0">
+<array>
+	<dict>
+		<key>OpenSourceProject</key>
+		<string>ksh</string>
+		<key>OpenSourceVersion</key>
+		<string>2007-11-05</string>
+		<key>OpenSourceWebsiteURL</key>
+		<string>http://public.research.att.com/~gsf/download/</string>
+		<key>OpenSourceURL</key>
+		<string>http://public.research.att.com/~gsf/download/tgz/ast-ksh.2011-02-08.tgz</string>
+		<key>OpenSourceSHA1</key>
+		<string>a84d4d119b5b0e05b63965a70d545e19df94d0bf</string>
+		<key>OpenSourceImportDate</key>
+		<string>2011-07-12</string>
+		<key>OpenSourceLicense</key>
+		<string>Other</string>
+		<key>OpenSourceLicenseFile</key>
+		<string>ksh.txt</string>
+		<key>OpenSourceModifications</key>
+		<array>
+			<string>Change va_arg order for x86_64</string>
+		</array>
+	</dict>
+	<dict>
+		<key>OpenSourceProject</key>
+		<string>ksh</string>
+		<key>OpenSourceVersion</key>
+		<string>2007-11-05</string>
+		<key>OpenSourceWebsiteURL</key>
+		<string>http://public.research.att.com/~gsf/download/</string>
+		<key>OpenSourceURL</key>
+		<string>http://public.research.att.com/~gsf/download/tgz/INIT.2011-02-08.tgz</string>
+		<key>OpenSourceSHA1</key>
+		<string>69f909e437376c1ebcf0b1298794ccfc93504faf</string>
+		<key>OpenSourceImportDate</key>
+		<string>2011-07-12</string>
+		<key>OpenSourceLicense</key>
+		<string>Other</string>
+		<key>OpenSourceLicenseFile</key>
+		<string>ksh.txt</string>
+	</dict>
+</array>
+</plist>
