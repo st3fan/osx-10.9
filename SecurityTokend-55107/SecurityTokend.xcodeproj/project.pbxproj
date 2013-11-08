@@ -1,0 +1,537 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		18B9659B147300AF005A4D2E /* tdclient.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CAC26FF069DD074002EB81D /* tdclient.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		18B965A41473124F005A4D2E /* libsecurity_utilities.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B965A31473124F005A4D2E /* libsecurity_utilities.a */; };
+		18B965A614731276005A4D2E /* libsecurityd_client.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B965A514731276005A4D2E /* libsecurityd_client.a */; };
+		18B965AA147312A3005A4D2E /* libsecurity_cdsa_utilities.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B965A9147312A3005A4D2E /* libsecurity_cdsa_utilities.a */; };
+		4C720FD806CC44540016CA88 /* tdtransit.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C720FD706CC44540016CA88 /* tdtransit.h */; };
+		4CAC271F069DD236002EB81D /* tdclient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4CAC26FE069DD074002EB81D /* tdclient.cpp */; };
+		4CAC2737069DD309002EB81D /* tokendClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4CAC2734069DD309002EB81D /* tokendClient.cpp */; };
+		4CC46A1806A4AC0200027192 /* SecTokend.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4CC46A1506A4AC0200027192 /* SecTokend.cpp */; };
+		4CC46A1A06A4AC0200027192 /* transition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4CC46A1706A4AC0200027192 /* transition.cpp */; };
+		4CC46A1B06A4AC2C00027192 /* tokend_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CAC2702069DD074002EB81D /* tokend_types.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		4CC46A3506A4AD9E00027192 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CC46A3406A4AD9E00027192 /* CoreFoundation.framework */; };
+		4CC46A4306A4AE2000027192 /* tdtransit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4CAC2700069DD074002EB81D /* tdtransit.cpp */; };
+		C20D962406D5A400000AEB0D /* tokend.h in Headers */ = {isa = PBXBuildFile; fileRef = C20D962306D5A400000AEB0D /* tokend.h */; };
+		C282709E06B73F8D00BE171E /* server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C282709C06B73F8D00BE171E /* server.cpp */; };
+		C282709F06B73F8D00BE171E /* server.h in Headers */ = {isa = PBXBuildFile; fileRef = C282709D06B73F8D00BE171E /* server.h */; settings = {ATTRIBUTES = (); }; };
+		C2871EF606CC20A3009ACFA5 /* tdclient.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CAC26FF069DD074002EB81D /* tdclient.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		C2871FEF06CC2FC4009ACFA5 /* SecTokend.h in Headers */ = {isa = PBXBuildFile; fileRef = C2871FEE06CC2FC4009ACFA5 /* SecTokend.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C28C0F2006D30837004CF059 /* transit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C28C0F1E06D30837004CF059 /* transit.cpp */; };
+		C28C0F2106D30837004CF059 /* transit.h in Headers */ = {isa = PBXBuildFile; fileRef = C28C0F1F06D30837004CF059 /* transit.h */; };
+		C28C736906B1DD8600E4B6B4 /* tokendServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4CAC2735069DD309002EB81D /* tokendServer.cpp */; };
+		C2F8ED9407A6E871008FA709 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C2F8ED9207A6E871008FA709 /* InfoPlist.strings */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		18B9659C147300D4005A4D2E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4CA1FEAB052A3C3800F22E42 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4C09A2920557240300FED7A3;
+			remoteInfo = "generate mig";
+		};
+		18B9659E147300DD005A4D2E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4CA1FEAB052A3C3800F22E42 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4CAC2710069DD183002EB81D;
+			remoteInfo = libsecurity_tokend_client;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1865FF881474F5B600FD79DF /* debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = debug.xcconfig; sourceTree = "<group>"; };
+		1865FF891474F5B600FD79DF /* project.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = project.xcconfig; sourceTree = "<group>"; };
+		1865FF8A1474F5B600FD79DF /* release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = release.xcconfig; sourceTree = "<group>"; };
+		18B965A31473124F005A4D2E /* libsecurity_utilities.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libsecurity_utilities.a; path = /usr/local/lib/libsecurity_utilities.a; sourceTree = "<absolute>"; };
+		18B965A514731276005A4D2E /* libsecurityd_client.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libsecurityd_client.a; path = /usr/local/lib/libsecurityd_client.a; sourceTree = "<absolute>"; };
+		18B965A9147312A3005A4D2E /* libsecurity_cdsa_utilities.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libsecurity_cdsa_utilities.a; path = /usr/local/lib/libsecurity_cdsa_utilities.a; sourceTree = "<absolute>"; };
+		4C24BEF7055724C300C95CD3 /* mig.mk */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = mig.mk; sourceTree = "<group>"; };
+		4C58E3900540C0DD00B89535 /* SecurityTokend.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SecurityTokend.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C720FD706CC44540016CA88 /* tdtransit.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = tdtransit.h; path = lib/tdtransit.h; sourceTree = "<group>"; };
+		4CAC26FE069DD074002EB81D /* tdclient.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = tdclient.cpp; path = lib/tdclient.cpp; sourceTree = "<group>"; };
+		4CAC26FF069DD074002EB81D /* tdclient.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = tdclient.h; path = lib/tdclient.h; sourceTree = "<group>"; };
+		4CAC2700069DD074002EB81D /* tdtransit.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = tdtransit.cpp; path = lib/tdtransit.cpp; sourceTree = "<group>"; };
+		4CAC2702069DD074002EB81D /* tokend_types.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = tokend_types.h; path = lib/tokend_types.h; sourceTree = SOURCE_ROOT; };
+		4CAC2708069DD094002EB81D /* tokend.defs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.mig; path = tokend.defs; sourceTree = "<group>"; };
+		4CAC2718069DD183002EB81D /* libsecurity_tokend_client.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libsecurity_tokend_client.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		4CAC2734069DD309002EB81D /* tokendClient.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = tokendClient.cpp; sourceTree = "<group>"; };
+		4CAC2735069DD309002EB81D /* tokendServer.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = tokendServer.cpp; sourceTree = "<group>"; };
+		4CC46A1506A4AC0200027192 /* SecTokend.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = SecTokend.cpp; path = lib/SecTokend.cpp; sourceTree = "<group>"; };
+		4CC46A1706A4AC0200027192 /* transition.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = transition.cpp; path = lib/transition.cpp; sourceTree = "<group>"; };
+		4CC46A3406A4AD9E00027192 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = /System/Library/Frameworks/CoreFoundation.framework; sourceTree = "<absolute>"; };
+		C20D962306D5A400000AEB0D /* tokend.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = tokend.h; sourceTree = "<group>"; };
+		C282709C06B73F8D00BE171E /* server.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = server.cpp; path = lib/server.cpp; sourceTree = "<group>"; };
+		C282709D06B73F8D00BE171E /* server.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = server.h; path = lib/server.h; sourceTree = "<group>"; };
+		C2871FEE06CC2FC4009ACFA5 /* SecTokend.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = SecTokend.h; path = lib/SecTokend.h; sourceTree = "<group>"; };
+		C28C0F1E06D30837004CF059 /* transit.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = transit.cpp; path = lib/transit.cpp; sourceTree = "<group>"; };
+		C28C0F1F06D30837004CF059 /* transit.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = transit.h; path = lib/transit.h; sourceTree = "<group>"; };
+		C2B6F2370B83E5A000187FD9 /* SecurityTokend.exp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.exports; name = SecurityTokend.exp; path = lib/SecurityTokend.exp; sourceTree = "<group>"; };
+		C2F8ED9307A6E871008FA709 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4C608E2306A4A83400F1CEDD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18B965AA147312A3005A4D2E /* libsecurity_cdsa_utilities.a in Frameworks */,
+				18B965A614731276005A4D2E /* libsecurityd_client.a in Frameworks */,
+				18B965A41473124F005A4D2E /* libsecurity_utilities.a in Frameworks */,
+				4CC46A3506A4AD9E00027192 /* CoreFoundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4CAC2715069DD183002EB81D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1865FF871474F5B600FD79DF /* config */ = {
+			isa = PBXGroup;
+			children = (
+				1865FF881474F5B600FD79DF /* debug.xcconfig */,
+				1865FF891474F5B600FD79DF /* project.xcconfig */,
+				1865FF8A1474F5B600FD79DF /* release.xcconfig */,
+			);
+			path = config;
+			sourceTree = "<group>";
+		};
+		4CA1FEA7052A3C3800F22E42 = {
+			isa = PBXGroup;
+			children = (
+				1865FF871474F5B600FD79DF /* config */,
+				C2A593CE052E3A8400AF1EE3 /* lib */,
+				C2F8ED8F07A6E842008FA709 /* intl */,
+				C2A5941F052E3F2100AF1EE3 /* mig */,
+				4CAF734405363FE000D9DA7C /* derived_src */,
+				4CA1FEBF052A3C8100F22E42 /* Products */,
+				4CC46A3306A4AD6F00027192 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		4CA1FEBF052A3C8100F22E42 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4C58E3900540C0DD00B89535 /* SecurityTokend.framework */,
+				4CAC2718069DD183002EB81D /* libsecurity_tokend_client.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4CAF734405363FE000D9DA7C /* derived_src */ = {
+			isa = PBXGroup;
+			children = (
+				C20D962306D5A400000AEB0D /* tokend.h */,
+				4CAC2734069DD309002EB81D /* tokendClient.cpp */,
+				4CAC2735069DD309002EB81D /* tokendServer.cpp */,
+			);
+			path = derived_src;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4CC46A3306A4AD6F00027192 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				18B965A9147312A3005A4D2E /* libsecurity_cdsa_utilities.a */,
+				18B965A514731276005A4D2E /* libsecurityd_client.a */,
+				18B965A31473124F005A4D2E /* libsecurity_utilities.a */,
+				4CC46A3406A4AD9E00027192 /* CoreFoundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C28C0F1006D30781004CF059 /* Client */ = {
+			isa = PBXGroup;
+			children = (
+				4CAC26FF069DD074002EB81D /* tdclient.h */,
+				4CAC26FE069DD074002EB81D /* tdclient.cpp */,
+				4C720FD706CC44540016CA88 /* tdtransit.h */,
+				4CAC2700069DD074002EB81D /* tdtransit.cpp */,
+			);
+			name = Client;
+			sourceTree = "<group>";
+		};
+		C28C0F1306D3079B004CF059 /* Server */ = {
+			isa = PBXGroup;
+			children = (
+				4CC46A1706A4AC0200027192 /* transition.cpp */,
+				C28C0F1F06D30837004CF059 /* transit.h */,
+				C28C0F1E06D30837004CF059 /* transit.cpp */,
+			);
+			name = Server;
+			sourceTree = "<group>";
+		};
+		C28C0F1606D307AC004CF059 /* Plugin Driver */ = {
+			isa = PBXGroup;
+			children = (
+				C2871FEE06CC2FC4009ACFA5 /* SecTokend.h */,
+				4CC46A1506A4AC0200027192 /* SecTokend.cpp */,
+				C282709D06B73F8D00BE171E /* server.h */,
+				C282709C06B73F8D00BE171E /* server.cpp */,
+				C2B6F2370B83E5A000187FD9 /* SecurityTokend.exp */,
+			);
+			name = "Plugin Driver";
+			sourceTree = "<group>";
+		};
+		C2A593CE052E3A8400AF1EE3 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				C28C0F1606D307AC004CF059 /* Plugin Driver */,
+				C28C0F1006D30781004CF059 /* Client */,
+				C28C0F1306D3079B004CF059 /* Server */,
+			);
+			name = lib;
+			sourceTree = "<group>";
+		};
+		C2A5941F052E3F2100AF1EE3 /* mig */ = {
+			isa = PBXGroup;
+			children = (
+				4CAC2708069DD094002EB81D /* tokend.defs */,
+				4CAC2702069DD074002EB81D /* tokend_types.h */,
+				4C24BEF7055724C300C95CD3 /* mig.mk */,
+			);
+			path = mig;
+			sourceTree = "<group>";
+		};
+		C2F8ED8F07A6E842008FA709 /* intl */ = {
+			isa = PBXGroup;
+			children = (
+				C2F8ED9207A6E871008FA709 /* InfoPlist.strings */,
+			);
+			name = intl;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		4C58E38A0540C0DD00B89535 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C2871FEF06CC2FC4009ACFA5 /* SecTokend.h in Headers */,
+				C282709F06B73F8D00BE171E /* server.h in Headers */,
+				C2871EF606CC20A3009ACFA5 /* tdclient.h in Headers */,
+				4C720FD806CC44540016CA88 /* tdtransit.h in Headers */,
+				4CC46A1B06A4AC2C00027192 /* tokend_types.h in Headers */,
+				C28C0F2106D30837004CF059 /* transit.h in Headers */,
+				C20D962406D5A400000AEB0D /* tokend.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4CAC2713069DD183002EB81D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18B9659B147300AF005A4D2E /* tdclient.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXLegacyTarget section */
+		4C09A2920557240300FED7A3 /* generate mig */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "-f mig/mig.mk $(ACTION)";
+			buildConfigurationList = C27AD1950987FCDB001272E0 /* Build configuration list for PBXLegacyTarget "generate mig" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/bin/gnumake;
+			buildWorkingDirectory = "";
+			dependencies = (
+			);
+			name = "generate mig";
+			passBuildSettingsInEnvironment = 1;
+			productName = "generate mig";
+		};
+/* End PBXLegacyTarget section */
+
+/* Begin PBXNativeTarget section */
+		4C58E38F0540C0DD00B89535 /* SecurityTokend */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C27AD1A40987FCDB001272E0 /* Build configuration list for PBXNativeTarget "SecurityTokend" */;
+			buildPhases = (
+				4C58E38A0540C0DD00B89535 /* Headers */,
+				C2F8ED8507A6E7F5008FA709 /* Resources */,
+				4C608E2206A4A82A00F1CEDD /* Sources */,
+				4C608E2306A4A83400F1CEDD /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				18B9659F147300DD005A4D2E /* PBXTargetDependency */,
+			);
+			name = SecurityTokend;
+			productInstallPath = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+			productName = securityd_server;
+			productReference = 4C58E3900540C0DD00B89535 /* SecurityTokend.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		4CAC2710069DD183002EB81D /* libsecurity_tokend_client */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C27AD19F0987FCDB001272E0 /* Build configuration list for PBXNativeTarget "libsecurity_tokend_client" */;
+			buildPhases = (
+				4CAC2713069DD183002EB81D /* Headers */,
+				4CAC2714069DD183002EB81D /* Sources */,
+				4CAC2715069DD183002EB81D /* Frameworks */,
+				1865FFC214750EEE00FD79DF /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				18B9659D147300D4005A4D2E /* PBXTargetDependency */,
+			);
+			name = libsecurity_tokend_client;
+			productInstallPath = /usr/local/lib;
+			productName = libsecurityd;
+			productReference = 4CAC2718069DD183002EB81D /* libsecurity_tokend_client.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4CA1FEAB052A3C3800F22E42 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C27AD1AE0987FCDB001272E0 /* Build configuration list for PBXProject "SecurityTokend" */;
+			compatibilityVersion = "Xcode 2.4";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 4CA1FEA7052A3C3800F22E42;
+			productRefGroup = 4CA1FEBF052A3C8100F22E42 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4C58E38F0540C0DD00B89535 /* SecurityTokend */,
+				4CAC2710069DD183002EB81D /* libsecurity_tokend_client */,
+				4C09A2920557240300FED7A3 /* generate mig */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C2F8ED8507A6E7F5008FA709 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C2F8ED9407A6E871008FA709 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1865FFC214750EEE00FD79DF /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "nmedit -p \"${BUILT_PRODUCTS_DIR}/${FULL_PRODUCT_NAME}\"\nranlib \"${BUILT_PRODUCTS_DIR}/${FULL_PRODUCT_NAME}\"";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4C608E2206A4A82A00F1CEDD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CC46A1806A4AC0200027192 /* SecTokend.cpp in Sources */,
+				C282709E06B73F8D00BE171E /* server.cpp in Sources */,
+				C28C736906B1DD8600E4B6B4 /* tokendServer.cpp in Sources */,
+				4CC46A1A06A4AC0200027192 /* transition.cpp in Sources */,
+				C28C0F2006D30837004CF059 /* transit.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4CAC2714069DD183002EB81D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CAC271F069DD236002EB81D /* tdclient.cpp in Sources */,
+				4CC46A4306A4AE2000027192 /* tdtransit.cpp in Sources */,
+				4CAC2737069DD309002EB81D /* tokendClient.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		18B9659D147300D4005A4D2E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4C09A2920557240300FED7A3 /* generate mig */;
+			targetProxy = 18B9659C147300D4005A4D2E /* PBXContainerItemProxy */;
+		};
+		18B9659F147300DD005A4D2E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4CAC2710069DD183002EB81D /* libsecurity_tokend_client */;
+			targetProxy = 18B9659E147300DD005A4D2E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C2F8ED9207A6E871008FA709 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C2F8ED9307A6E871008FA709 /* English */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C27AD1960987FCDB001272E0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		C27AD1990987FCDB001272E0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		C27AD1A00987FCDB001272E0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1865FF881474F5B600FD79DF /* debug.xcconfig */;
+			buildSettings = {
+				EXECUTABLE_PREFIX = "";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(BUILT_PRODUCTS_DIR)/derived_src",
+					"$(SRCROOT)",
+				);
+				PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include/security_tokend_client;
+			};
+			name = Debug;
+		};
+		C27AD1A30987FCDB001272E0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1865FF8A1474F5B600FD79DF /* release.xcconfig */;
+			buildSettings = {
+				EXECUTABLE_PREFIX = "";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(BUILT_PRODUCTS_DIR)/derived_src",
+					"$(SRCROOT)",
+				);
+				PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include/security_tokend_client;
+			};
+			name = Release;
+		};
+		C27AD1A50987FCDB001272E0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1865FF881474F5B600FD79DF /* debug.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 55107;
+				EXPORTED_SYMBOLS_FILE = "$(SRCROOT)/lib/SecurityTokend.exp";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(BUILT_PRODUCTS_DIR)/derived_src",
+				);
+				INFOPLIST_FILE = "Info-SecurityTokend.plist";
+				INSTALL_PATH = "$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks";
+				VALID_ARCHS = x86_64;
+			};
+			name = Debug;
+		};
+		C27AD1A80987FCDB001272E0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1865FF8A1474F5B600FD79DF /* release.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 55107;
+				EXPORTED_SYMBOLS_FILE = "$(SRCROOT)/lib/SecurityTokend.exp";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(BUILT_PRODUCTS_DIR)/derived_src",
+				);
+				INFOPLIST_FILE = "Info-SecurityTokend.plist";
+				INSTALL_PATH = "$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks";
+				VALID_ARCHS = x86_64;
+			};
+			name = Release;
+		};
+		C27AD1AF0987FCDB001272E0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1865FF891474F5B600FD79DF /* project.xcconfig */;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		C27AD1B20987FCDB001272E0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1865FF891474F5B600FD79DF /* project.xcconfig */;
+			buildSettings = {
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C27AD1950987FCDB001272E0 /* Build configuration list for PBXLegacyTarget "generate mig" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C27AD1960987FCDB001272E0 /* Debug */,
+				C27AD1990987FCDB001272E0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C27AD19F0987FCDB001272E0 /* Build configuration list for PBXNativeTarget "libsecurity_tokend_client" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C27AD1A00987FCDB001272E0 /* Debug */,
+				C27AD1A30987FCDB001272E0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C27AD1A40987FCDB001272E0 /* Build configuration list for PBXNativeTarget "SecurityTokend" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C27AD1A50987FCDB001272E0 /* Debug */,
+				C27AD1A80987FCDB001272E0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C27AD1AE0987FCDB001272E0 /* Build configuration list for PBXProject "SecurityTokend" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C27AD1AF0987FCDB001272E0 /* Debug */,
+				C27AD1B20987FCDB001272E0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4CA1FEAB052A3C3800F22E42 /* Project object */;
+}
