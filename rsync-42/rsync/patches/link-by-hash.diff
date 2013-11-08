@@ -1,0 +1,600 @@
+Jason M. Felice wrote:
+
+This patch adds the --link-by-hash=DIR option, which hard links received
+files in a link farm arranged by MD4 file hash.  The result is that the system
+will only store one copy of the unique contents of each file, regardless of
+the file's name.
+
+To use this patch, run these commands for a successful build:
+
+    patch -p1 <patches/link-by-hash.diff
+    ./prepare-source
+    ./configure
+    make
+
+--- old/Makefile.in
++++ new/Makefile.in
+@@ -35,7 +35,7 @@ OBJS1=rsync.o generator.o receiver.o cle
+ 	main.o checksum.o match.o syscall.o log.o backup.o
+ OBJS2=options.o flist.o io.o compat.o hlink.o token.o uidlist.o socket.o \
+ 	fileio.o batch.o clientname.o chmod.o
+-OBJS3=progress.o pipe.o
++OBJS3=progress.o pipe.o hashlink.o
+ DAEMON_OBJ = params.o loadparm.o clientserver.o access.o connection.o authenticate.o
+ popt_OBJS=popt/findme.o  popt/popt.o  popt/poptconfig.o \
+ 	popt/popthelp.o popt/poptparse.o
+--- old/hashlink.c
++++ new/hashlink.c
+@@ -0,0 +1,339 @@
++/*
++   Copyright (C) Cronosys, LLC 2004
++
++   This program is free software; you can redistribute it and/or modify
++   it under the terms of the GNU General Public License as published by
++   the Free Software Foundation; either version 2 of the License, or
++   (at your option) any later version.
++
++   This program is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++   GNU General Public License for more details.
++
++   You should have received a copy of the GNU General Public License
++   along with this program; if not, write to the Free Software
++   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
++*/
++
++/* This file contains code used by the --link-by-hash option. */
++
++#include "rsync.h"
++
++extern char *link_by_hash_dir;
++
++#if HAVE_LINK
++
++char* make_hash_name(struct file_struct *file)
++{
++	char hash[33], *dst;
++	unsigned char *src;
++	unsigned char c;
++	int i;
++
++	src = (unsigned char*)file->u.sum;
++	for (dst = hash, i = 0; i < 4; i++, src++) {
++		c = *src >> 4;
++		*(dst++) = (c >= 10) ? (c - 10 + 'a') : (c + '0');
++		c = *src & 0x0f;
++		*(dst++) = (c >= 10) ? (c - 10 + 'a') : (c + '0');
++	}
++	*dst++ = '/';
++	for (i = 0; i < 12; i++, src++) {
++		c = *src >> 4;
++		*(dst++) = (c >= 10) ? (c - 10 + 'a') : (c + '0');
++		c = *src & 0x0f;
++		*(dst++) = (c >= 10) ? (c - 10 + 'a') : (c + '0');
++	}
++	*dst = 0;
++
++	asprintf(&dst,"%s/%s",link_by_hash_dir,hash);
++	return dst;
++}
++
++
++void kill_hashfile(struct hashfile_struct *hashfile)
++{
++	if (!hashfile)
++		return;
++	free(hashfile->name);
++	close(hashfile->fd);
++	free(hashfile);
++}
++
++
++void kill_hashfiles(struct hashfile_struct *hashfiles)
++{
++	struct hashfile_struct *iter, *next;
++	if ((iter = hashfiles) != NULL) {
++		do {
++			next = iter->next;
++			kill_hashfile(iter);
++			iter = next;
++		} while (iter != hashfiles);
++	}
++}
++
++
++struct hashfile_struct *find_hashfiles(char *hashname, int64 size, long *fnbr)
++{
++	DIR *d;
++	struct dirent *di;
++	struct hashfile_struct *hashfiles = NULL, *hashfile;
++	STRUCT_STAT st;
++	long this_fnbr;
++
++	*fnbr = 0;
++
++	/* Build a list of potential candidates and open
++	 * them. */
++	if ((d = opendir(hashname)) == NULL) {
++		rsyserr(FERROR, errno, "opendir failed: \"%s\"", hashname);
++		free(hashname);
++		return NULL;
++	}
++	while ((di = readdir(d)) != NULL) {
++		if (!strcmp(di->d_name,".") || !strcmp(di->d_name,"..")) {
++			continue;
++		}
++
++		/* We need to have the largest fnbr in case we need to store
++		 * a new file. */
++		this_fnbr = atol(di->d_name);
++		if (this_fnbr > *fnbr)
++			*fnbr = this_fnbr;
++
++		hashfile = new_array(struct hashfile_struct, 1);
++		asprintf(&hashfile->name,"%s/%s",hashname,
++			 di->d_name);
++		if (do_stat(hashfile->name,&st) == -1) {
++			rsyserr(FERROR, errno, "stat failed: %s", hashfile->name);
++			kill_hashfile(hashfile);
++			continue;
++		}
++		if (st.st_size != size) {
++			kill_hashfile(hashfile);
++			continue;
++		}
++		hashfile->nlink = st.st_nlink;
++		hashfile->fd = open(hashfile->name,O_RDONLY|O_BINARY);
++		if (hashfile->fd == -1) {
++			rsyserr(FERROR, errno, "open failed: %s", hashfile->name);
++			kill_hashfile(hashfile);
++			continue;
++		}
++		if (hashfiles == NULL)
++			hashfiles = hashfile->next = hashfile->prev = hashfile;
++		else {
++			hashfile->next = hashfiles;
++			hashfile->prev = hashfiles->prev;
++			hashfile->next->prev = hashfile;
++			hashfile->prev->next = hashfile;
++		}
++	}
++	closedir(d);
++
++	return hashfiles;
++}
++
++
++struct hashfile_struct *compare_hashfiles(int fd,struct hashfile_struct *files)
++{
++	int amt, hamt;
++	char buffer[BUFSIZ], cmpbuffer[BUFSIZ];
++	struct hashfile_struct *iter, *next, *best;
++	uint32 nlink;
++
++	if (!files)
++		return NULL;
++
++	iter = files; /* in case files are 0 bytes */
++	while ((amt = read(fd, buffer, BUFSIZ)) > 0) {
++		iter = files;
++		do {
++			/* Icky bit to resync when we steal the first node. */
++			if (!files)
++				files = iter;
++
++			next = iter->next;
++
++			hamt = read(iter->fd, cmpbuffer, BUFSIZ);
++			if (amt != hamt || memcmp(buffer, cmpbuffer, amt)) {
++				if (iter == files) {
++					files = files->prev;
++				}
++				if (iter->next == iter) {
++					files = next = NULL;
++				} else {
++					next = iter->next;
++					if (iter == files) {
++						/* So we know to resync */
++						files = NULL;
++					}
++				}
++				iter->next->prev = iter->prev;
++				iter->prev->next = iter->next;
++				kill_hashfile(iter);
++			}
++
++			iter = next;
++		} while (iter != files);
++
++		if (iter == NULL && files == NULL) {
++			/* There are no matches. */
++			return NULL;
++		}
++	}
++
++	if (amt == -1) {
++		rsyserr(FERROR, errno, "read failed in compare_hashfiles()");
++		kill_hashfiles(files);
++		return NULL;
++	}
++
++	/* If we only have one file left, use it. */
++	if (files == files->next) {
++		return files;
++	}
++
++	/* All files which remain in the list are identical and should have
++	 * the same size.  We pick the one with the lowest link count (we
++	 * may have rolled over because we hit the maximum link count for
++	 * the filesystem). */
++	best = iter = files;
++	nlink = iter->nlink;
++	do {
++		if (iter->nlink < nlink) {
++			nlink = iter->nlink;
++			best = iter;
++		}
++		iter = iter->next;
++	} while (iter != files);
++
++	best->next->prev = best->prev;
++	best->prev->next = best->next;
++	if (files == best)
++		files = files->next;
++	kill_hashfiles(files);
++	return best;
++}
++
++
++int link_by_hash(char *fnametmp,char *fname,struct file_struct *file)
++{
++	STRUCT_STAT st;
++	char *hashname = make_hash_name(file);
++	int first = 0, rc;
++	char *linkname;
++	long last_fnbr;
++
++	if (file->length == 0)
++		return robust_rename(fnametmp, fname, NULL, 0644);
++
++	if (do_stat(hashname, &st) == -1) {
++		char *dirname;
++
++		/* Directory does not exist. */
++		dirname = strdup(hashname);
++		*strrchr(dirname,'/') = 0;
++		if (do_mkdir(dirname, 0755) == -1 && errno != EEXIST) {
++			rsyserr(FERROR, errno, "mkdir failed: %s", dirname);
++			free(hashname);
++			free(dirname);
++			return robust_rename(fnametmp, fname, NULL, 0644);
++		}
++		free(dirname);
++
++		if (do_mkdir(hashname, 0755) == -1 && errno != EEXIST) {
++			rsyserr(FERROR, errno, "mkdir failed: %s", hashname);
++			free(hashname);
++			return robust_rename(fnametmp, fname, NULL, 0644);
++		}
++
++		first = 1;
++		asprintf(&linkname,"%s/0",hashname);
++		rprintf(FINFO, "(1) linkname = %s\n", linkname);
++	} else {
++		struct hashfile_struct *hashfiles, *hashfile;
++
++		if (do_stat(fnametmp,&st) == -1) {
++			rsyserr(FERROR, errno, "stat failed: %s", fname);
++			return -1;
++		}
++		hashfiles = find_hashfiles(hashname, st.st_size, &last_fnbr);
++
++		if (hashfiles == NULL) {
++			first = 1;
++			asprintf(&linkname,"%s/0",hashname);
++			rprintf(FINFO, "(2) linkname = %s\n", linkname);
++		} else {
++			int fd;
++			/* Search for one identical to us. */
++			if ((fd = open(fnametmp,O_RDONLY|O_BINARY)) == -1) {
++				rsyserr(FERROR, errno, "open failed: %s", fnametmp);
++				kill_hashfiles(hashfiles);
++				return -1;
++			}
++			hashfile = compare_hashfiles(fd, hashfiles);
++			hashfiles = NULL;
++			close(fd);
++
++			if (hashfile) {
++				first = 0;
++				linkname = strdup(hashfile->name);
++				rprintf(FINFO, "(3) linkname = %s\n", linkname);
++				kill_hashfile(hashfile);
++			} else {
++				first = 1;
++				asprintf(&linkname, "%s/%ld", hashname,
++					 last_fnbr + 1);
++				rprintf(FINFO, "(4) linkname = %s\n", linkname);
++			}
++		}
++	}
++
++	if (!first) {
++		rprintf(FINFO, "link-by-hash (existing): \"%s\" -> %s\n",
++				linkname, full_fname(fname));
++		robust_unlink(fname);
++		rc = do_link(linkname, fname);
++		if (rc == -1) {
++			if (errno == EMLINK) {
++				first = 1;
++				free(linkname);
++				asprintf(&linkname,"%s/%ld",hashname,
++					 last_fnbr + 1);
++				rprintf(FINFO, "(5) linkname = %s\n", linkname);
++				rprintf(FINFO,"link-by-hash: max link count exceeded, starting new file \"%s\".\n", linkname);
++			} else {
++				rsyserr(FERROR, errno, "link \"%s\" -> \"%s\"",
++					linkname, full_fname(fname));
++				rc = robust_rename(fnametmp, fname, NULL, 0644);
++			}
++		} else {
++			do_unlink(fnametmp);
++		}
++	}
++
++	if (first) {
++		rprintf(FINFO, "link-by-hash (new): %s -> \"%s\"\n",
++				full_fname(fname),linkname);
++
++		rc = robust_rename(fnametmp, fname, NULL, 0644);
++		if (rc != 0) {
++			rsyserr(FERROR, errno, "rename \"%s\" -> \"%s\"",
++				full_fname(fnametmp), full_fname(fname));
++		}
++		rc = do_link(fname,linkname);
++		if (rc != 0) {
++			rsyserr(FERROR, errno, "link \"%s\" -> \"%s\"",
++				full_fname(fname), linkname);
++		}
++	}
++
++	free(linkname);
++	free(hashname);
++	return rc;
++}
++
++#endif
+--- old/options.c
++++ new/options.c
+@@ -145,6 +145,7 @@ char *backup_suffix = NULL;
+ char *tmpdir = NULL;
+ char *partial_dir = NULL;
+ char *basis_dir[MAX_BASIS_DIRS+1];
++char *link_by_hash_dir = NULL;
+ char *config_file = NULL;
+ char *shell_cmd = NULL;
+ char *logfile_name = NULL;
+@@ -349,6 +350,7 @@ void usage(enum logcode F)
+   rprintf(F,"     --compare-dest=DIR      also compare destination files relative to DIR\n");
+   rprintf(F,"     --copy-dest=DIR         ... and include copies of unchanged files\n");
+   rprintf(F,"     --link-dest=DIR         hardlink to files in DIR when unchanged\n");
++  rprintf(F,"     --link-by-hash=DIR      create hardlinks by hash into DIR\n");
+   rprintf(F," -z, --compress              compress file data during the transfer\n");
+   rprintf(F,"     --compress-level=NUM    explicitly set compression level\n");
+   rprintf(F," -C, --cvs-exclude           auto-ignore files the same way CVS does\n");
+@@ -398,7 +400,7 @@ enum {OPT_VERSION = 1000, OPT_DAEMON, OP
+       OPT_FILTER, OPT_COMPARE_DEST, OPT_COPY_DEST, OPT_LINK_DEST, OPT_HELP,
+       OPT_INCLUDE, OPT_INCLUDE_FROM, OPT_MODIFY_WINDOW, OPT_MIN_SIZE, OPT_CHMOD,
+       OPT_READ_BATCH, OPT_WRITE_BATCH, OPT_ONLY_WRITE_BATCH, OPT_MAX_SIZE,
+-      OPT_NO_D,
++      OPT_NO_D, OPT_LINK_BY_HASH,
+       OPT_SERVER, OPT_REFUSED_BASE = 9000};
+ 
+ static struct poptOption long_options[] = {
+@@ -499,6 +501,7 @@ static struct poptOption long_options[] 
+   {"compare-dest",     0,  POPT_ARG_STRING, 0, OPT_COMPARE_DEST, 0, 0 },
+   {"copy-dest",        0,  POPT_ARG_STRING, 0, OPT_COPY_DEST, 0, 0 },
+   {"link-dest",        0,  POPT_ARG_STRING, 0, OPT_LINK_DEST, 0, 0 },
++  {"link-by-hash",     0,  POPT_ARG_STRING, 0, OPT_LINK_BY_HASH, 0, 0},
+   {"fuzzy",           'y', POPT_ARG_NONE,   &fuzzy_basis, 0, 0, 0 },
+   {"compress",        'z', POPT_ARG_NONE,   0, 'z', 0, 0 },
+   {"compress-level",   0,  POPT_ARG_INT,    &def_compress_level, 'z', 0, 0 },
+@@ -1089,6 +1092,21 @@ int parse_arguments(int *argc, const cha
+ 			usage(FINFO);
+ 			exit_cleanup(0);
+ 
++                case OPT_LINK_BY_HASH:
++#if HAVE_LINK
++			arg = poptGetOptArg(pc);
++			if (sanitize_paths)
++				arg = sanitize_path(NULL, arg, NULL, 0, NULL);
++			link_by_hash_dir = (char *)arg;
++			break;
++#else
++			snprintf(err_buf, sizeof err_buf,
++				 "hard links are not supported on this %s\n",
++				 am_server ? "server" : "client");
++			rprintf(FERROR, "ERROR: %s", err_buf);
++			return 0;
++#endif
++
+ 		default:
+ 			/* A large opt value means that set_refuse_options()
+ 			 * turned this option off. */
+@@ -1739,6 +1757,11 @@ void server_options(char **args,int *arg
+ 		}
+ 	}
+ 
++	if (link_by_hash_dir && am_sender) {
++		args[ac++] = "--link-by-hash";
++		args[ac++] = link_by_hash_dir;
++	}
++
+ 	if (files_from && (!am_sender || filesfrom_host)) {
+ 		if (filesfrom_host) {
+ 			args[ac++] = "--files-from";
+--- old/receiver.c
++++ new/receiver.c
+@@ -50,6 +50,7 @@ extern int delay_updates;
+ extern struct stats stats;
+ extern char *stdout_format;
+ extern char *tmpdir;
++extern char *link_by_hash_dir;
+ extern char *partial_dir;
+ extern char *basis_dir[];
+ extern struct file_list *the_file_list;
+@@ -124,12 +125,13 @@ static int get_tmpname(char *fnametmp, c
+ 
+ 
+ static int receive_data(int f_in, char *fname_r, int fd_r, OFF_T size_r,
+-			char *fname, int fd, OFF_T total_size)
++			char *fname, int fd, OFF_T total_size, char *md4)
+ {
+ 	static char file_sum1[MD4_SUM_LENGTH];
+ 	static char file_sum2[MD4_SUM_LENGTH];
+ 	struct map_struct *mapbuf;
+ 	struct sum_struct sum;
++	struct mdfour mdfour_data;
+ 	int32 len;
+ 	OFF_T offset = 0;
+ 	OFF_T offset2;
+@@ -149,6 +151,9 @@ static int receive_data(int f_in, char *
+ 	} else
+ 		mapbuf = NULL;
+ 
++	if (md4)
++		mdfour_begin(&mdfour_data);
++
+ 	sum_init(checksum_seed);
+ 
+ 	if (append_mode) {
+@@ -191,6 +196,8 @@ static int receive_data(int f_in, char *
+ 			cleanup_got_literal = 1;
+ 
+ 			sum_update(data, i);
++			if (md4)
++				mdfour_update(&mdfour_data, (uchar*)data, i);
+ 
+ 			if (fd != -1 && write_file(fd,data,i) != i)
+ 				goto report_write_error;
+@@ -217,6 +224,8 @@ static int receive_data(int f_in, char *
+ 
+ 			see_token(map, len);
+ 			sum_update(map, len);
++			if (md4)
++				mdfour_update(&mdfour_data, (uchar*)map, len);
+ 		}
+ 
+ 		if (updating_basis) {
+@@ -259,6 +268,8 @@ static int receive_data(int f_in, char *
+ 	}
+ 
+ 	sum_end(file_sum1);
++	if (md4)
++		mdfour_result(&mdfour_data, (unsigned char*)md4);
+ 
+ 	if (mapbuf)
+ 		unmap_file(mapbuf);
+@@ -274,7 +285,7 @@ static int receive_data(int f_in, char *
+ 
+ static void discard_receive_data(int f_in, OFF_T length)
+ {
+-	receive_data(f_in, NULL, -1, 0, NULL, -1, length);
++	receive_data(f_in, NULL, -1, 0, NULL, -1, length, NULL);
+ }
+ 
+ static void handle_delayed_updates(struct file_list *flist, char *local_name)
+@@ -611,8 +622,12 @@ int recv_files(int f_in, struct file_lis
+ 			rprintf(FINFO, "%s\n", fname);
+ 
+ 		/* recv file data */
++#if HAVE_LINK
++		if (link_by_hash_dir)
++			file->u.sum = new_array(char, MD4_SUM_LENGTH);
++#endif
+ 		recv_ok = receive_data(f_in, fnamecmp, fd1, st.st_size,
+-				       fname, fd2, file->length);
++				       fname, fd2, file->length, file->u.sum);
+ 
+ 		log_item(log_code, file, &initial_stats, iflags, NULL);
+ 
+--- old/rsync.c
++++ new/rsync.c
+@@ -48,6 +48,7 @@ extern int inplace;
+ extern int keep_dirlinks;
+ extern int make_backups;
+ extern mode_t orig_umask;
++extern char *link_by_hash_dir;
+ extern struct stats stats;
+ extern struct chmod_mode_struct *daemon_chmod_modes;
+ 
+@@ -271,8 +272,15 @@ void finish_transfer(char *fname, char *
+ 	/* move tmp file over real file */
+ 	if (verbose > 2)
+ 		rprintf(FINFO, "renaming %s to %s\n", fnametmp, fname);
+-	ret = robust_rename(fnametmp, fname, partialptr,
+-			    file->mode & INITACCESSPERMS);
++#if HAVE_LINK
++	if (link_by_hash_dir)
++		ret = link_by_hash(fnametmp, fname, file);
++	else
++#endif
++	{
++		ret = robust_rename(fnametmp, fname, partialptr,
++				    file->mode & INITACCESSPERMS);
++	}
+ 	if (ret < 0) {
+ 		rsyserr(FERROR, errno, "%s %s -> \"%s\"",
+ 			ret == -2 ? "copy" : "rename",
+--- old/rsync.h
++++ new/rsync.h
+@@ -651,6 +651,14 @@ struct stats {
+ 	int current_file_index;
+ };
+ 
++struct hashfile_struct {
++	struct hashfile_struct *next;
++	struct hashfile_struct *prev;
++	char *name;
++	int fd;
++	uint32 nlink;
++};
++
+ struct chmod_mode_struct;
+ 
+ #include "byteorder.h"
+--- old/rsync.yo
++++ new/rsync.yo
+@@ -366,6 +366,7 @@ to the detailed description below for a 
+      --compare-dest=DIR      also compare received files relative to DIR
+      --copy-dest=DIR         ... and include copies of unchanged files
+      --link-dest=DIR         hardlink to files in DIR when unchanged
++     --link-by-hash=DIR      create hardlinks by hash into DIR
+  -z, --compress              compress file data during the transfer
+      --compress-level=NUM    explicitly set compression level
+  -C, --cvs-exclude           auto-ignore files in the same way CVS does
+--- old/proto.h
++++ new/proto.h
+@@ -89,6 +89,11 @@ void itemize(struct file_struct *file, i
+ int unchanged_file(char *fn, struct file_struct *file, STRUCT_STAT *st);
+ void check_for_finished_hlinks(int itemizing, enum logcode code);
+ void generate_files(int f_out, struct file_list *flist, char *local_name);
++void kill_hashfile(struct hashfile_struct *hashfile);
++void kill_hashfiles(struct hashfile_struct *hashfiles);
++struct hashfile_struct *find_hashfiles(char *hashname, int64 size, long *fnbr);
++struct hashfile_struct *compare_hashfiles(int fd,struct hashfile_struct *files);
++int link_by_hash(char *fnametmp,char *fname,struct file_struct *file);
+ void init_hard_links(void);
+ int hard_link_check(struct file_struct *file, int ndx, char *fname,
+ 		    int statret, STRUCT_STAT *st, int itemizing,
+--- old/rsync.1
++++ new/rsync.1
+@@ -432,6 +432,7 @@ to the detailed description below for a 
+      \-\-compare\-dest=DIR      also compare received files relative to DIR
+      \-\-copy\-dest=DIR         \&.\&.\&. and include copies of unchanged files
+      \-\-link\-dest=DIR         hardlink to files in DIR when unchanged
++     \-\-link\-by\-hash=DIR      create hardlinks by hash into DIR
+  \-z, \-\-compress              compress file data during the transfer
+      \-\-compress\-level=NUM    explicitly set compression level
+  \-C, \-\-cvs\-exclude           auto-ignore files in the same way CVS does

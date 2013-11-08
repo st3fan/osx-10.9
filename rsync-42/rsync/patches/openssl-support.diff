@@ -1,0 +1,1007 @@
+Casey Marshall wrote:
+
+I've been hacking together a way to use rsync with OpenSSL, and have
+attached my current patch against a recent CVS tree. The details of
+this implementation are:
+
+  1. The SSL code is added as a "layer" that is forked into its own
+     process.
+
+  2. An SSL connection is established by the client issuing the
+     command:
+
+       #starttls
+
+     And, if the daemon allows SSL, it replies with
+
+       @RSYNCD: starttls
+
+     At which point both sides begin negotiating the SSL connection.
+     Servers that can't or don't want to use SSL just treat it as a
+     normal unknown command.
+
+  3. The SSL code is meant to be unobtrusive, and when this patch is
+     applied the program may still be built with no SSL code.
+
+  4. There are a number of details not implemented.
+
+All warnings apply; I don't do C programming all that often, so I
+can't say if I've left any cleanup/compatibility errors in the code.
+
+To use this patch, run these commands for a successful build:
+
+    patch -p1 <patches/openssl-support.diff
+    ./prepare-source
+    ./configure
+    make
+
+--- old/Makefile.in
++++ new/Makefile.in
+@@ -39,7 +39,7 @@ OBJS3=progress.o pipe.o
+ DAEMON_OBJ = params.o loadparm.o clientserver.o access.o connection.o authenticate.o
+ popt_OBJS=popt/findme.o  popt/popt.o  popt/poptconfig.o \
+ 	popt/popthelp.o popt/poptparse.o
+-OBJS=$(OBJS1) $(OBJS2) $(OBJS3) $(DAEMON_OBJ) $(LIBOBJ) $(ZLIBOBJ) @BUILD_POPT@
++OBJS=$(OBJS1) $(OBJS2) $(OBJS3) $(DAEMON_OBJ) $(LIBOBJ) $(ZLIBOBJ) @BUILD_POPT@ @SSL_OBJS@
+ 
+ TLS_OBJ = tls.o syscall.o lib/compat.o lib/snprintf.o lib/permstring.o
+ 
+--- old/cleanup.c
++++ new/cleanup.c
+@@ -26,6 +26,9 @@
+ extern int am_server;
+ extern int am_daemon;
+ extern int io_error;
++#ifdef HAVE_OPENSSL
++extern int use_ssl;
++#endif
+ extern int keep_partial;
+ extern int log_got_error;
+ extern char *partial_dir;
+@@ -117,6 +120,14 @@ NORETURN void _exit_cleanup(int code, co
+ 				code, file, line);
+ 		}
+ 
++#ifdef HAVE_OPENSSL
++		/* FALLTHROUGH */
++#include "case_N.h"
++
++		if (use_ssl)
++			end_tls();
++#endif
++
+ 		/* FALLTHROUGH */
+ #include "case_N.h"
+ 
+--- old/clientserver.c
++++ new/clientserver.c
+@@ -30,6 +30,9 @@ extern int am_sender;
+ extern int am_server;
+ extern int am_daemon;
+ extern int am_root;
++#ifdef HAVE_OPENSSL
++extern int use_ssl;
++#endif
+ extern int rsync_port;
+ extern int kluge_around_eof;
+ extern int daemon_over_rsh;
+@@ -106,8 +109,18 @@ int start_socket_client(char *host, char
+ 	set_socket_options(fd, sockopts);
+ 
+ 	ret = start_inband_exchange(user, path, fd, fd, argc);
++	if (ret)
++		return ret;
+ 
+-	return ret ? ret : client_run(fd, fd, -1, argc, argv);
++#ifdef HAVE_OPENSSL
++	if (use_ssl) {
++		int f_in = get_tls_rfd();
++		int f_out = get_tls_wfd();
++		return client_run(f_in, f_out, -1, argc, argv);
++	}
++#endif
++
++	return client_run(fd, fd, -1, argc, argv);
+ }
+ 
+ int start_inband_exchange(char *user, char *path, int f_in, int f_out,
+@@ -168,6 +181,33 @@ int start_inband_exchange(char *user, ch
+ 	if (verbose > 1)
+ 		print_child_argv(sargs);
+ 
++#ifdef HAVE_OPENSSL
++	if (use_ssl) {
++		io_printf(f_out, "#starttls\n");
++		while (1) {
++			if (!read_line(f_in, line, sizeof(line)-1)) {
++				rprintf(FERROR, "rsync: did not receive reply to #starttls\n");
++				return -1;
++			}
++			if (strncmp(line, "@ERROR", 6) == 0) {
++				rprintf(FERROR, "%s\n", line);
++				return -1;
++			}
++			if (strcmp(line, "@RSYNCD: starttls") == 0) {
++				break;
++			}
++			rprintf(FINFO, "%s\n", line);
++		}
++		if (start_tls(f_in, f_out)) {
++			rprintf(FERROR, "rsync: error during SSL handshake: %s\n",
++				get_ssl_error());
++			return -1;
++		}
++		f_in = get_tls_rfd();
++		f_out = get_tls_wfd();
++	}
++#endif
++
+ 	p = strchr(path,'/');
+ 	if (p) *p = 0;
+ 	io_printf(f_out, "%s\n", path);
+@@ -196,6 +236,10 @@ int start_inband_exchange(char *user, ch
+ 			 * server to terminate the listing of modules.
+ 			 * We don't want to go on and transfer
+ 			 * anything; just exit. */
++#ifdef HAVE_OPENSSL
++			if (use_ssl)
++				end_tls();
++#endif
+ 			exit(0);
+ 		}
+ 
+@@ -203,6 +247,10 @@ int start_inband_exchange(char *user, ch
+ 			rprintf(FERROR, "%s\n", line);
+ 			/* This is always fatal; the server will now
+ 			 * close the socket. */
++#ifdef HAVE_OPENSSL
++			if (use_ssl)
++				end_tls();
++#endif
+ 			return -1;
+ 		}
+ 
+@@ -780,6 +828,9 @@ int start_daemon(int f_in, int f_out)
+ 	if (protocol_version > remote_protocol)
+ 		protocol_version = remote_protocol;
+ 
++#ifdef HAVE_OPENSSL
++retry:
++#endif
+ 	line[0] = 0;
+ 	if (!read_line(f_in, line, sizeof line - 1))
+ 		return -1;
+@@ -791,6 +842,20 @@ int start_daemon(int f_in, int f_out)
+ 		return -1;
+ 	}
+ 
++#ifdef HAVE_OPENSSL
++	if (use_ssl && strcmp(line, "#starttls") == 0) {
++		io_printf(f_out, "@RSYNCD: starttls\n");
++		if (start_tls(f_in, f_out)) {
++			rprintf(FLOG, "SSL connection failed: %s\n",
++				get_ssl_error());
++			return -1;
++		}
++		f_in = get_tls_rfd();
++		f_out = get_tls_wfd();
++		goto retry;
++	}
++#endif
++
+ 	if (*line == '#') {
+ 		/* it's some sort of command that I don't understand */
+ 		io_printf(f_out, "@ERROR: Unknown command '%s'\n", line);
+--- old/configure.in
++++ new/configure.in
+@@ -290,6 +290,21 @@ if test x"$enable_locale" != x"no"; then
+ 	AC_DEFINE(CONFIG_LOCALE)
+ fi
+ 
++AC_ARG_ENABLE(openssl,
++              AC_HELP_STRING([--enable-openssl], [compile SSL support with OpenSSL.]))
++
++if test "x$enable_openssl" != xno
++then
++	have_ssl=yes
++	AC_CHECK_LIB(ssl, SSL_library_init, , [have_ssl=no])
++	if test "x$have_ssl" = xyes
++	then
++		AC_DEFINE(HAVE_OPENSSL, 1, [true if you want to use SSL.])
++		SSL_OBJS=ssl.o
++		AC_SUBST(SSL_OBJS)
++	fi
++fi
++
+ AC_MSG_CHECKING([whether to call shutdown on all sockets])
+ case $host_os in
+ 	*cygwin* ) AC_MSG_RESULT(yes)
+--- old/options.c
++++ new/options.c
+@@ -173,6 +173,14 @@ int logfile_format_has_o_or_i = 0;
+ int always_checksum = 0;
+ int list_only = 0;
+ 
++#ifdef HAVE_OPENSSL
++int use_ssl = 0;
++char *ssl_cert_path = NULL;
++char *ssl_key_path = NULL;
++char *ssl_key_passwd = NULL;
++char *ssl_ca_path = NULL;
++#endif
++
+ #define MAX_BATCH_NAME_LEN 256	/* Must be less than MAXPATHLEN-13 */
+ char *batch_name = NULL;
+ 
+@@ -201,6 +209,7 @@ static void print_rsync_version(enum log
+ 	char const *hardlinks = "no ";
+ 	char const *links = "no ";
+ 	char const *ipv6 = "no ";
++	char const *ssl = "no ";
+ 	STRUCT_STAT *dumstat;
+ 
+ #ifdef HAVE_SOCKETPAIR
+@@ -223,6 +232,10 @@ static void print_rsync_version(enum log
+ 	ipv6 = "";
+ #endif
+ 
++#ifdef HAVE_OPENSSL
++	ssl = "";
++#endif
++
+ 	rprintf(f, "%s  version %s  protocol version %d\n",
+ 		RSYNC_NAME, RSYNC_VERSION, PROTOCOL_VERSION);
+ 	rprintf(f, "Copyright (C) 1996-2006 by Andrew Tridgell, Wayne Davison, and others.\n");
+@@ -235,9 +248,9 @@ static void print_rsync_version(enum log
+ 	/* Note that this field may not have type ino_t.  It depends
+ 	 * on the complicated interaction between largefile feature
+ 	 * macros. */
+-	rprintf(f, "              %sinplace, %sIPv6, "
++	rprintf(f, "              %sinplace, %sIPv6, %sSSL, "
+ 		"%d-bit system inums, %d-bit internal inums\n",
+-		have_inplace, ipv6,
++		have_inplace, ipv6, ssl,
+ 		(int) (sizeof dumstat->st_ino * 8),
+ 		(int) (sizeof (int64) * 8));
+ #ifdef MAINTAINER_MODE
+@@ -385,6 +398,13 @@ void usage(enum logcode F)
+   rprintf(F," -4, --ipv4                  prefer IPv4\n");
+   rprintf(F," -6, --ipv6                  prefer IPv6\n");
+ #endif
++#ifdef HAVE_OPENSSL
++  rprintf(F,"     --ssl                   allow socket connections to use SSL\n");
++  rprintf(F,"     --ssl-cert=FILE         path to daemon's SSL certificate\n");
++  rprintf(F,"     --ssl-key=FILE          path to daemon's SSL private key\n");
++  rprintf(F,"     --ssl-key-passwd=PASS   password for PEM-encoded private key\n");
++  rprintf(F,"     --ssl-ca-certs=FILE     path to trusted CA certificates\n");
++#endif
+   rprintf(F,"     --version               print version number\n");
+   rprintf(F,"(-h) --help                  show this help (-h works with no other options)\n");
+ 
+@@ -398,7 +418,7 @@ enum {OPT_VERSION = 1000, OPT_DAEMON, OP
+       OPT_FILTER, OPT_COMPARE_DEST, OPT_COPY_DEST, OPT_LINK_DEST, OPT_HELP,
+       OPT_INCLUDE, OPT_INCLUDE_FROM, OPT_MODIFY_WINDOW, OPT_MIN_SIZE, OPT_CHMOD,
+       OPT_READ_BATCH, OPT_WRITE_BATCH, OPT_ONLY_WRITE_BATCH, OPT_MAX_SIZE,
+-      OPT_NO_D,
++      OPT_NO_D, OPT_USE_SSL,
+       OPT_SERVER, OPT_REFUSED_BASE = 9000};
+ 
+ static struct poptOption long_options[] = {
+@@ -545,6 +565,13 @@ static struct poptOption long_options[] 
+   {"checksum-seed",    0,  POPT_ARG_INT,    &checksum_seed, 0, 0, 0 },
+   {"server",           0,  POPT_ARG_NONE,   0, OPT_SERVER, 0, 0 },
+   {"sender",           0,  POPT_ARG_NONE,   0, OPT_SENDER, 0, 0 },
++#ifdef HAVE_OPENSSL
++  {"ssl",              0,  POPT_ARG_NONE,   0, OPT_USE_SSL, 0, 0},
++  {"ssl-cert",         0,  POPT_ARG_STRING, &ssl_cert_path, OPT_USE_SSL, 0, 0},
++  {"ssl-key",          0,  POPT_ARG_STRING, &ssl_key_path, OPT_USE_SSL, 0, 0},
++  {"ssl-key-passwd",   0,  POPT_ARG_STRING, &ssl_key_passwd, OPT_USE_SSL, 0, 0},
++  {"ssl-ca-certs",     0,  POPT_ARG_STRING, &ssl_ca_path, OPT_USE_SSL, 0, 0},
++#endif
+   /* All the following options switch us into daemon-mode option-parsing. */
+   {"config",           0,  POPT_ARG_STRING, 0, OPT_DAEMON, 0, 0 },
+   {"daemon",           0,  POPT_ARG_NONE,   0, OPT_DAEMON, 0, 0 },
+@@ -572,6 +599,13 @@ static void daemon_usage(enum logcode F)
+   rprintf(F," -4, --ipv4                  prefer IPv4\n");
+   rprintf(F," -6, --ipv6                  prefer IPv6\n");
+ #endif
++#ifdef HAVE_OPENSSL
++  rprintf(F,"     --ssl                   allow socket connections to use SSL\n");
++  rprintf(F,"     --ssl-cert=FILE         path to daemon's SSL certificate\n");
++  rprintf(F,"     --ssl-key=FILE          path to daemon's SSL private key\n");
++  rprintf(F,"     --ssl-key-passwd=PASS   password for PEM-encoded private key\n");
++  rprintf(F,"     --ssl-ca-certs=FILE     path to trusted CA certificates\n");
++#endif
+   rprintf(F,"     --help                  show this help screen\n");
+ 
+   rprintf(F,"\n");
+@@ -598,6 +632,13 @@ static struct poptOption long_daemon_opt
+   {"protocol",         0,  POPT_ARG_INT,    &protocol_version, 0, 0, 0 },
+   {"server",           0,  POPT_ARG_NONE,   &am_server, 0, 0, 0 },
+   {"temp-dir",        'T', POPT_ARG_STRING, &tmpdir, 0, 0, 0 },
++#ifdef HAVE_OPENSSL
++  {"ssl",              0,  POPT_ARG_NONE,   0, OPT_USE_SSL, 0, 0},
++  {"ssl-cert",         0,  POPT_ARG_STRING, &ssl_cert_path, OPT_USE_SSL, 0, 0},
++  {"ssl-key",          0,  POPT_ARG_STRING, &ssl_key_path, OPT_USE_SSL, 0, 0},
++  {"ssl-key-passwd",   0,  POPT_ARG_STRING, &ssl_key_passwd, OPT_USE_SSL, 0, 0},
++  {"ssl-ca-certs",     0,  POPT_ARG_STRING, &ssl_ca_path, OPT_USE_SSL, 0, 0},
++#endif
+   {"verbose",         'v', POPT_ARG_NONE,   0, 'v', 0, 0 },
+   {"no-verbose",       0,  POPT_ARG_VAL,    &verbose, 0, 0, 0 },
+   {"no-v",             0,  POPT_ARG_VAL,    &verbose, 0, 0, 0 },
+@@ -855,6 +896,12 @@ int parse_arguments(int *argc, const cha
+ 					verbose++;
+ 					break;
+ 
++#ifdef HAVE_OPENSSL
++				case OPT_USE_SSL:
++					use_ssl = 1;
++					break;
++#endif
++
+ 				default:
+ 					rprintf(FERROR,
+ 					    "rsync: %s: %s (in daemon mode)\n",
+@@ -878,6 +925,17 @@ int parse_arguments(int *argc, const cha
+ 				exit_cleanup(RERR_SYNTAX);
+ 			}
+ 
++#ifdef HAVE_OPENSSL
++			if (use_ssl) {
++				if (init_tls()) {
++					snprintf(err_buf, sizeof(err_buf),
++						 "Openssl error: %s\n",
++						 get_ssl_error());
++					return 0;
++				}
++			}
++#endif
++
+ 			*argv = poptGetArgs(pc);
+ 			*argc = count_args(*argv);
+ 			am_starting_up = 0;
+@@ -1089,6 +1147,12 @@ int parse_arguments(int *argc, const cha
+ 			usage(FINFO);
+ 			exit_cleanup(0);
+ 
++#ifdef HAVE_OPENSSL
++		case OPT_USE_SSL:
++			use_ssl = 1;
++			break;
++#endif
++
+ 		default:
+ 			/* A large opt value means that set_refuse_options()
+ 			 * turned this option off. */
+@@ -1365,6 +1429,17 @@ int parse_arguments(int *argc, const cha
+ 	if (delay_updates && !partial_dir)
+ 		partial_dir = tmp_partialdir;
+ 
++#ifdef HAVE_OPENSSL
++	if (use_ssl) {
++		if (init_tls()) {
++			snprintf(err_buf, sizeof(err_buf),
++				 "Openssl error: %s\n",
++				 get_ssl_error());
++			return 0;
++		}
++	}
++#endif
++
+ 	if (inplace) {
+ #ifdef HAVE_FTRUNCATE
+ 		if (partial_dir) {
+@@ -1782,10 +1857,27 @@ char *check_for_hostspec(char *s, char *
+ 	char *p;
+ 	int not_host;
+ 	int hostlen;
++	int url_prefix_len = sizeof URL_PREFIX - 1;
+ 
+-	if (port_ptr && strncasecmp(URL_PREFIX, s, strlen(URL_PREFIX)) == 0) {
++	if (!port_ptr)
++		url_prefix_len = 0;
++	else if (strncasecmp(URL_PREFIX, s, url_prefix_len) != 0) {
++#ifdef HAVE_OPENSSL
++		url_prefix_len = sizeof SSL_URL_PREFIX - 1;
++		if (strncasecmp(SSL_URL_PREFIX, s, url_prefix_len) != 0)
++			url_prefix_len = 0;
++		else {
++			if (!use_ssl)
++				init_tls();
++			use_ssl = 1;
++		}
++#else
++		url_prefix_len = 0;
++#endif
++	}
++	if (url_prefix_len) {
+ 		char *path;
+-		s += strlen(URL_PREFIX);
++		s += url_prefix_len;
+ 		if ((p = strchr(s, '/')) != NULL) {
+ 			hostlen = p - s;
+ 			path = p + 1;
+--- old/rsync.h
++++ new/rsync.h
+@@ -32,6 +32,7 @@
+ 
+ #define DEFAULT_LOCK_FILE "/var/run/rsyncd.lock"
+ #define URL_PREFIX "rsync://"
++#define SSL_URL_PREFIX "rsyncs://"
+ 
+ #define BACKUP_SUFFIX "~"
+ 
+@@ -419,6 +420,11 @@ enum msgcode {
+ # define SIZEOF_INT64 SIZEOF_OFF_T
+ #endif
+ 
++#ifdef HAVE_OPENSSL
++#include <openssl/ssl.h>
++#include <openssl/err.h>
++#endif
++
+ /* Starting from protocol version 26, we always use 64-bit
+  * ino_t and dev_t internally, even if this platform does not
+  * allow files to have 64-bit inums.  That's because the
+--- old/ssl.c
++++ new/ssl.c
+@@ -0,0 +1,370 @@
++/* -*- c-file-style: "linux" -*-
++ * ssl.c: operations for negotiating SSL rsync connections. 
++ *
++ * Copyright (C) 2003  Casey Marshall <rsdio@metastatic.org>
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ * 
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ * 
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
++ */
++
++#include "rsync.h"
++
++#ifdef HAVE_SYS_SELECT_H
++#include <sys/select.h>
++#else
++#include <sys/time.h>
++#include <sys/types.h>
++#include <unistd.h>
++#endif
++#include <string.h>
++
++#define BUF_SIZE 1024
++
++extern int verbose;
++extern int am_daemon;
++extern int am_server;
++
++extern char *ssl_cert_path;
++extern char *ssl_key_path;
++extern char *ssl_key_passwd;
++extern char *ssl_ca_path;
++
++static SSL_CTX *ssl_ctx;
++static SSL *ssl;
++static int tls_read[2] = { -1, -1 };
++static int tls_write[2] = { -1, -1 };
++static int ssl_running;
++static int ssl_pid = -1;
++
++#ifdef HAVE_SIGACTION
++static struct sigaction sigact;
++#endif
++
++/**
++ * A non-interactive callback to be passed to SSL_CTX_set_default_password_cb,
++ * which merely copies the value of ssl_key_passwd into buf. This is
++ * used for when the private key password is supplied via an option.
++ */
++static int default_password_cb(char *buf, int n, UNUSED(int f), UNUSED(void *u))
++{
++	if (ssl_key_passwd == NULL || n < (int)strlen(ssl_key_passwd))
++		return 0;
++	strncpy(buf, ssl_key_passwd, n-1);
++	return strlen(ssl_key_passwd);
++}
++
++/**
++ * If verbose, this method traces the status of the SSL handshake.
++ */
++static void info_callback(const SSL *ssl, int cb, int val)
++{
++	char buf[128];
++	char *cbs;
++
++	switch (cb) {
++	case SSL_CB_LOOP:
++		cbs = "SSL_CB_LOOP";
++		break;
++	case SSL_CB_EXIT:
++		cbs = "SSL_CB_EXIT";
++		break;
++	case SSL_CB_READ:
++		cbs = "SSL_CB_READ";
++		break;
++	case SSL_CB_WRITE:
++		cbs = "SSL_CB_WRITE";
++		break;
++	case SSL_CB_ALERT:
++		cbs = "SSL_CB_ALERT";
++		break;
++	case SSL_CB_READ_ALERT:
++		cbs = "SSL_CB_READ_ALERT";
++		break;
++	case SSL_CB_WRITE_ALERT:
++		cbs = "SSL_CB_WRITE_ALERT";
++		break;
++	case SSL_CB_ACCEPT_LOOP:
++		cbs = "SSL_CB_ACCEPT_LOOP";
++		break;
++	case SSL_CB_ACCEPT_EXIT:
++		cbs = "SSL_CB_ACCEPT_EXIT";
++		break;
++	case SSL_CB_CONNECT_LOOP:
++		cbs = "SSL_CB_CONNECT_LOOP";
++		break;
++	case SSL_CB_CONNECT_EXIT:
++		cbs = "SSL_CB_CONNECT_EXIT";
++		break;
++	case SSL_CB_HANDSHAKE_START:
++		cbs = "SSL_CB_HANDSHAKE_START";
++		break;
++	case SSL_CB_HANDSHAKE_DONE:
++		cbs = "SSL_CB_HANDSHAKE_DONE";
++		break;
++	default:
++		snprintf(buf, sizeof buf, "??? (%d)", cb);
++		cbs = buf;
++		break;
++	}
++	if (verbose > 2) {
++		rprintf(FLOG, "SSL: info_callback(%p,%s,%d)\n", ssl, cbs, val);
++		if (cb == SSL_CB_HANDSHAKE_DONE) {
++			SSL_CIPHER_description(SSL_get_current_cipher((SSL*)ssl),
++					       buf, sizeof buf);
++			rprintf(FLOG, "SSL: cipher: %s", buf);
++		}
++	}
++}
++
++/**
++ * Initializes the SSL context for TLSv1 connections; returns zero on
++ * success.
++ */
++int init_tls(void)
++{
++	if (ssl_ctx)
++		return 0;
++	SSL_library_init();
++	SSL_load_error_strings();
++	ssl_ctx = SSL_CTX_new(TLSv1_method());
++	if (!ssl_ctx)
++		return 1;
++	SSL_CTX_set_info_callback(ssl_ctx, info_callback);
++
++	/* Sets the certificate sent to the other party. */
++	if (ssl_cert_path != NULL
++	    && SSL_CTX_use_certificate_file(ssl_ctx, ssl_cert_path,
++					    SSL_FILETYPE_PEM) != 1)
++		return 1;
++	/* Set up the simple non-interactive callback if the password
++	 * was supplied on the command line. */
++	if (ssl_key_passwd != NULL)
++		SSL_CTX_set_default_passwd_cb(ssl_ctx, default_password_cb);
++	/* Sets the private key that matches the public certificate. */
++	if (ssl_key_path != NULL) {
++		if (SSL_CTX_use_PrivateKey_file(ssl_ctx, ssl_key_path,
++						SSL_FILETYPE_PEM) != 1)
++			return 1;
++		if (SSL_CTX_check_private_key(ssl_ctx) != 1)
++			return 1;
++	}
++	if (ssl_ca_path != NULL
++	    && !SSL_CTX_load_verify_locations(ssl_ctx, ssl_ca_path, NULL))
++		return 1;
++
++	return 0;
++}
++
++/**
++ * Returns the error string for the current SSL error, if any.
++ */
++char *get_ssl_error(void)
++{
++	return ERR_error_string(ERR_get_error(), NULL);
++}
++
++/**
++ * Returns the input file descriptor for the SSL connection.
++ */
++int get_tls_rfd(void)
++{
++	return tls_read[0];
++}
++
++/**
++ * Returns the output file descriptor for the SSL connection.
++ */
++int get_tls_wfd(void)
++{
++	return tls_write[1];
++}
++
++/**
++ * Signal handler that ends the SSL connection.
++ */
++static RETSIGTYPE tls_sigusr1(int UNUSED(val))
++{
++	if (ssl) {
++		SSL_shutdown(ssl);
++		SSL_free(ssl);
++		ssl = NULL;
++	}
++	ssl_running = 0;
++}
++
++/**
++ * Negotiates the TLS connection, creates a socket pair for communicating
++ * with the rsync process, then forks into a new process that will handle
++ * the communication.
++ *
++ * 0 is returned on success.
++ */
++int start_tls(int f_in, int f_out)
++{
++	int tls_fd;
++	int n = 0, r;
++	unsigned char buf1[BUF_SIZE], buf2[BUF_SIZE];
++	int avail1 = 0, avail2 = 0, write1 = 0, write2 = 0;
++	fd_set rd, wd;
++
++	if (fd_pair(tls_read))
++		return 1;
++	if (fd_pair(tls_write))
++		return 1;
++
++	set_blocking(tls_read[0]);
++	set_blocking(tls_read[1]);
++	set_blocking(tls_write[0]);
++	set_blocking(tls_write[1]);
++	set_blocking(f_in);
++	set_blocking(f_out);
++
++	ssl_pid = do_fork();
++	if (ssl_pid < 0)
++		return -1;
++	if (ssl_pid != 0) {
++		close(tls_write[0]);
++		close(tls_read[1]);
++		return 0;
++	}
++
++	SIGACTION(SIGUSR1, tls_sigusr1);
++	ssl = SSL_new(ssl_ctx);
++	if (!ssl)
++		goto closed;
++	if (am_daemon || am_server)
++		SSL_set_accept_state(ssl);
++	else
++		SSL_set_connect_state(ssl);
++	SSL_set_rfd(ssl, f_in);
++	SSL_set_wfd(ssl, f_out);
++
++	tls_fd = SSL_get_fd(ssl);
++	n = tls_write[0];
++	n = MAX(tls_read[1], n);
++	n = MAX(tls_fd, n) + 1;
++
++	ssl_running = 1;
++	while (ssl_running) {
++		FD_ZERO(&rd);
++		FD_ZERO(&wd);
++		FD_SET(tls_write[0], &rd);
++		FD_SET(tls_read[1], &wd);
++		FD_SET(tls_fd, &rd);
++		FD_SET(tls_fd, &wd);
++
++		r = select(n, &rd, &wd, NULL, NULL);
++
++		if (r == -1 && errno == EINTR)
++			continue;
++		if (FD_ISSET(tls_write[0], &rd)) {
++			r = read(tls_write[0], buf1+avail1, BUF_SIZE-avail1);
++			if (r >= 0)
++				avail1 += r;
++			else {
++				rprintf(FERROR, "pipe read error: %s\n",
++					strerror(errno));
++				break;
++			}
++		}
++		if (FD_ISSET(tls_fd, &rd)) {
++			r = SSL_read(ssl, buf2+avail2, BUF_SIZE-avail2);
++			if (r > 0)
++				avail2 += r;
++			else {
++				switch (SSL_get_error(ssl, r)) {
++				case SSL_ERROR_ZERO_RETURN:
++					goto closed;
++				case SSL_ERROR_WANT_READ:
++				case SSL_ERROR_WANT_WRITE:
++					break;
++				case SSL_ERROR_SYSCALL:
++					if (r == 0)
++						rprintf(FERROR, "SSL spurious EOF\n");
++					else
++						rprintf(FERROR, "SSL I/O error: %s\n",
++							strerror(errno));
++					goto closed;
++				case SSL_ERROR_SSL:
++					rprintf(FERROR, "SSL: %s\n",
++						ERR_error_string(ERR_get_error(), NULL));
++					goto closed;
++				default:
++					rprintf(FERROR, "unexpected ssl error %d\n", r);
++					goto closed;
++				}
++			}
++		}
++		if (FD_ISSET(tls_read[1], &wd) && write2 < avail2) {
++			r = write(tls_read[1], buf2+write2, avail2-write2);
++			if (r >= 0)
++				write2 += r;
++			else {
++				rprintf(FERROR, "pipe write error: %s\n",
++					strerror(errno));
++				break;
++			}
++		}
++		if (FD_ISSET(tls_fd, &wd) && write1 < avail1) {
++			r = SSL_write(ssl, buf1+write1, avail1-write1);
++			if (r > 0)
++				write1 += r;
++			else {
++				switch (SSL_get_error(ssl, r)) {
++				case SSL_ERROR_ZERO_RETURN:
++					goto closed;
++				case SSL_ERROR_WANT_READ:
++				case SSL_ERROR_WANT_WRITE:
++					break;
++				case SSL_ERROR_SYSCALL:
++					if (r == 0)
++						rprintf(FERROR, "SSL: spurious EOF\n");
++					else
++						rprintf(FERROR, "SSL: I/O error: %s\n",
++							strerror(errno));
++					goto closed;
++				case SSL_ERROR_SSL:
++					rprintf(FERROR, "SSL: %s\n",
++						ERR_error_string(ERR_get_error(), NULL));
++					goto closed;
++				default:
++					rprintf(FERROR, "unexpected ssl error %d\n", r);
++					goto closed;
++				}
++			}
++		}
++		if (avail1 == write1)
++			avail1 = write1 = 0;
++		if (avail2 == write2)
++			avail2 = write2 = 0;
++	}
++
++	/* XXX I'm pretty sure that there is a lot that I am not considering
++	   here. Bugs? Yes, probably. */
++
++	/* We're finished. */
++    closed:
++	close(tls_read[1]);
++	close(tls_write[0]);
++	exit(0);
++}
++
++/**
++ * Ends the TLS connection.
++ */
++void end_tls(void)
++{
++	if (ssl_pid > 0)
++		kill(ssl_pid, SIGUSR1);
++}
+--- old/proto.h
++++ new/proto.h
+@@ -246,6 +246,12 @@ void start_accept_loop(int port, int (*f
+ void set_socket_options(int fd, char *options);
+ void become_daemon(void);
+ int sock_exec(const char *prog);
++int init_tls(void);
++char *get_ssl_error(void);
++int get_tls_rfd(void);
++int get_tls_wfd(void);
++int start_tls(int f_in, int f_out);
++void end_tls(void);
+ int do_unlink(const char *fname);
+ int do_symlink(const char *fname1, const char *fname2);
+ int do_link(const char *fname1, const char *fname2);
+--- old/configure
++++ new/configure
+@@ -662,6 +662,7 @@ INSTALL_PROGRAM
+ INSTALL_SCRIPT
+ INSTALL_DATA
+ HAVE_REMSH
++SSL_OBJS
+ LIBOBJS
+ ALLOCA
+ OBJ_SAVE
+@@ -1258,6 +1259,7 @@ Optional Features:
+   --disable-largefile     omit support for large files
+   --disable-ipv6          don't even try to use IPv6
+   --disable-locale        turn off locale features
++  --enable-openssl        compile SSL support with OpenSSL.
+ 
+ Optional Packages:
+   --with-PACKAGE[=ARG]    use PACKAGE [ARG=yes]
+@@ -4827,6 +4829,116 @@ _ACEOF
+ 
+ fi
+ 
++# Check whether --enable-openssl was given.
++if test "${enable_openssl+set}" = set; then
++  enableval=$enable_openssl;
++fi
++
++
++if test "x$enable_openssl" != xno
++then
++	have_ssl=yes
++
++{ echo "$as_me:$LINENO: checking for SSL_library_init in -lssl" >&5
++echo $ECHO_N "checking for SSL_library_init in -lssl... $ECHO_C" >&6; }
++if test "${ac_cv_lib_ssl_SSL_library_init+set}" = set; then
++  echo $ECHO_N "(cached) $ECHO_C" >&6
++else
++  ac_check_lib_save_LIBS=$LIBS
++LIBS="-lssl  $LIBS"
++cat >conftest.$ac_ext <<_ACEOF
++/* confdefs.h.  */
++_ACEOF
++cat confdefs.h >>conftest.$ac_ext
++cat >>conftest.$ac_ext <<_ACEOF
++/* end confdefs.h.  */
++
++/* Override any GCC internal prototype to avoid an error.
++   Use char because int might match the return type of a GCC
++   builtin and then its argument prototype would still apply.  */
++#ifdef __cplusplus
++extern "C"
++#endif
++char SSL_library_init ();
++int
++main ()
++{
++return SSL_library_init ();
++  ;
++  return 0;
++}
++_ACEOF
++rm -f conftest.$ac_objext conftest$ac_exeext
++if { (ac_try="$ac_link"
++case "(($ac_try" in
++  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
++  *) ac_try_echo=$ac_try;;
++esac
++eval "echo \"\$as_me:$LINENO: $ac_try_echo\"") >&5
++  (eval "$ac_link") 2>conftest.er1
++  ac_status=$?
++  grep -v '^ *+' conftest.er1 >conftest.err
++  rm -f conftest.er1
++  cat conftest.err >&5
++  echo "$as_me:$LINENO: \$? = $ac_status" >&5
++  (exit $ac_status); } &&
++	 { ac_try='test -z "$ac_c_werror_flag" || test ! -s conftest.err'
++  { (case "(($ac_try" in
++  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
++  *) ac_try_echo=$ac_try;;
++esac
++eval "echo \"\$as_me:$LINENO: $ac_try_echo\"") >&5
++  (eval "$ac_try") 2>&5
++  ac_status=$?
++  echo "$as_me:$LINENO: \$? = $ac_status" >&5
++  (exit $ac_status); }; } &&
++	 { ac_try='test -s conftest$ac_exeext'
++  { (case "(($ac_try" in
++  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
++  *) ac_try_echo=$ac_try;;
++esac
++eval "echo \"\$as_me:$LINENO: $ac_try_echo\"") >&5
++  (eval "$ac_try") 2>&5
++  ac_status=$?
++  echo "$as_me:$LINENO: \$? = $ac_status" >&5
++  (exit $ac_status); }; }; then
++  ac_cv_lib_ssl_SSL_library_init=yes
++else
++  echo "$as_me: failed program was:" >&5
++sed 's/^/| /' conftest.$ac_ext >&5
++
++	ac_cv_lib_ssl_SSL_library_init=no
++fi
++
++rm -f core conftest.err conftest.$ac_objext conftest_ipa8_conftest.oo \
++      conftest$ac_exeext conftest.$ac_ext
++LIBS=$ac_check_lib_save_LIBS
++fi
++{ echo "$as_me:$LINENO: result: $ac_cv_lib_ssl_SSL_library_init" >&5
++echo "${ECHO_T}$ac_cv_lib_ssl_SSL_library_init" >&6; }
++if test $ac_cv_lib_ssl_SSL_library_init = yes; then
++  cat >>confdefs.h <<_ACEOF
++#define HAVE_LIBSSL 1
++_ACEOF
++
++  LIBS="-lssl $LIBS"
++
++else
++  have_ssl=no
++fi
++
++	if test "x$have_ssl" = xyes
++	then
++
++cat >>confdefs.h <<\_ACEOF
++#define HAVE_OPENSSL 1
++_ACEOF
++
++		SSL_OBJS=ssl.o
++
++	fi
++fi
++
+ { echo "$as_me:$LINENO: checking whether to call shutdown on all sockets" >&5
+ echo $ECHO_N "checking whether to call shutdown on all sockets... $ECHO_C" >&6; }
+ case $host_os in
+@@ -15481,6 +15593,7 @@ INSTALL_PROGRAM!$INSTALL_PROGRAM$ac_deli
+ INSTALL_SCRIPT!$INSTALL_SCRIPT$ac_delim
+ INSTALL_DATA!$INSTALL_DATA$ac_delim
+ HAVE_REMSH!$HAVE_REMSH$ac_delim
++SSL_OBJS!$SSL_OBJS$ac_delim
+ LIBOBJS!$LIBOBJS$ac_delim
+ ALLOCA!$ALLOCA$ac_delim
+ OBJ_SAVE!$OBJ_SAVE$ac_delim
+@@ -15490,7 +15603,7 @@ BUILD_POPT!$BUILD_POPT$ac_delim
+ LTLIBOBJS!$LTLIBOBJS$ac_delim
+ _ACEOF
+ 
+-  if test `sed -n "s/.*$ac_delim\$/X/p" conf$$subs.sed | grep -c X` = 71; then
++  if test `sed -n "s/.*$ac_delim\$/X/p" conf$$subs.sed | grep -c X` = 72; then
+     break
+   elif $ac_last_try; then
+     { { echo "$as_me:$LINENO: error: could not make $CONFIG_STATUS" >&5
+--- old/config.h.in
++++ new/config.h.in
+@@ -164,6 +164,9 @@
+ /* Define to 1 if you have the `socket' library (-lsocket). */
+ #undef HAVE_LIBSOCKET
+ 
++/* Define to 1 if you have the `ssl' library (-lssl). */
++#undef HAVE_LIBSSL
++
+ /* Define to 1 if you have the <limits.h> header file. */
+ #undef HAVE_LIMITS_H
+ 
+@@ -229,6 +232,9 @@
+ /* Define to 1 if you have the `open64' function. */
+ #undef HAVE_OPEN64
+ 
++/* true if you want to use SSL. */
++#undef HAVE_OPENSSL
++
+ /* Define to 1 if you have the `putenv' function. */
+ #undef HAVE_PUTENV
+ 

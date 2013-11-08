@@ -1,0 +1,52 @@
+#! /bin/sh
+
+# Copyright (C) 2004 by Wayne Davison <wayned@samba.org>
+
+# This program is distributable under the terms of the GNU GPL (see
+# COPYING).
+
+# Make sure we can merge files from multiple directories into one.
+
+. "$suitedir/rsync.fns"
+
+# Build some files/dirs/links to copy
+
+from1dir="${fromdir}1"
+from2dir="${fromdir}2"
+from3dir="${fromdir}3"
+
+mkdir "$from1dir" "$from2dir" "$from3dir"
+mkdir "$from2dir"/sub1 "$from3dir"/sub1
+mkdir "$from3dir"/sub2 "$from1dir"/dir-and-not-dir
+mkdir "$chkdir" "$chkdir"/sub1 "$chkdir"/sub2 "$chkdir"/dir-and-not-dir
+echo "one" >"$from1dir"/one
+cp -p "$from1dir"/one "$from2dir"/one
+cp -p "$from1dir"/one "$from3dir"/one
+echo "two" >"$from1dir"/two
+echo "three" >"$from2dir"/three
+echo "four" >"$from3dir"/four
+echo "five" >"$from1dir"/five
+echo "six" >"$from3dir"/six
+echo "sub1" >"$from2dir"/sub1/uno
+cp -p "$from2dir"/sub1/uno "$from3dir"/sub1/uno
+echo "sub2" >"$from3dir"/sub1/dos
+echo "sub3" >"$from2dir"/sub1/tres
+echo "subby" >"$from3dir"/sub2/subby
+echo "extra" >"$from1dir"/dir-and-not-dir/inside
+echo "not-dir" >"$from3dir"/dir-and-not-dir
+
+cp -p "$from1dir"/one "$from1dir"/two "$from2dir"/three "$from3dir"/four "$from1dir"/five "$from3dir"/six "$chkdir"
+cp -p "$from1dir"/dir-and-not-dir/inside "$chkdir"/dir-and-not-dir
+cp -p "$from2dir"/sub1/uno "$from3dir"/sub1/dos "$from2dir"/sub1/tres "$chkdir"/sub1
+cp -p "$from3dir"/sub2/subby "$chkdir"/sub2
+
+# Get rid of any directory-time differences
+$RSYNC -av --existing -f 'exclude,! */' "$from1dir/" "$from2dir/"
+$RSYNC -av --existing -f 'exclude,! */' "$from2dir/" "$from3dir/"
+$RSYNC -av --existing -f 'exclude,! */' "$from1dir/" "$chkdir/"
+$RSYNC -av --existing -f 'exclude,! */' "$from3dir/" "$chkdir/"
+
+checkit "$RSYNC -aHvv \"$from1dir/\" \"$from2dir/\" \"$from3dir/\" \"$todir/\"" "$chkdir" "$todir"
+
+# The script would have aborted on error, so getting here means we've won.
+exit 0

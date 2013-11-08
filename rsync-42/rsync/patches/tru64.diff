@@ -1,0 +1,41 @@
+This is an adapted version of the original by Zoong Pham.
+
+To use this patch, run these commands for a successful build:
+
+    patch -p1 <patches/tru64.diff
+    ./configure                          (optional if already run)
+    make
+
+--- old/lib/getaddrinfo.c
++++ new/lib/getaddrinfo.c
+@@ -41,6 +41,20 @@
+ 
+ #include <rsync.h>
+ 
++/****** Start Zoong added here */
++
++#define EAI_BADHINTS	12
++#define EAI_PROTOCOL	13
++#define EAI_MAX	14
++
++#define AI_PASSIVE	0x00000001 /* get address to use bind() */
++#define AI_CANONNAME	0x00000002 /* fill ai_canonname */
++#define AI_NUMERICHOST	0x00000004 /* prevent name resolution */
++#define AI_MASK	(AI_PASSIVE | AI_CANONNAME | AI_NUMERICHOST)
++
++/****** End Zoong added here */
++
++
+ #if defined(__KAME__) && defined(INET6)
+ # define FAITH
+ #endif
+--- old/syscall.c
++++ new/syscall.c
+@@ -24,6 +24,7 @@
+ #include "rsync.h"
+ 
+ #if !defined MKNOD_CREATES_SOCKETS && defined HAVE_SYS_UN_H
++#define _SOCKADDR_LEN
+ #include <sys/un.h>
+ #endif
+ 

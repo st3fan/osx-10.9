@@ -1,0 +1,30 @@
+Marco d'Itri wrote:
+
+I run one of the debian mirrors, and I had to write this patch because
+my archive is split between more than one disk. Would you accept a more
+polished version of this patch for inclusion in rsync?
+
+To use this patch, run these commands for a successful build:
+
+    patch -p1 <patches/soften-links.diff
+    ./configure                           (optional if already run)
+    make
+
+--- old/syscall.c
++++ new/syscall.c
+@@ -59,9 +59,14 @@ int do_symlink(const char *fname1, const
+ #ifdef HAVE_LINK
+ int do_link(const char *fname1, const char *fname2)
+ {
++	int st;
++
+ 	if (dry_run) return 0;
+ 	RETURN_ERROR_IF_RO_OR_LO;
+-	return link(fname1, fname2);
++	st = link(fname1, fname2);
++	if (/*soften_links &&*/ st != 0 && errno == EXDEV)
++		st = symlink(fname1, fname2);
++	return st;
+ }
+ #endif
+ 
