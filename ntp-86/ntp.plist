@@ -1,0 +1,32 @@
+<plist version="1.0">
+<dict>
+	<key>OpenSourceProject</key>
+	<string>ntp</string>
+	<key>OpenSourceVersion</key>
+	<string>4.2.6</string>
+	<key>OpenSourceWebsiteURL</key>
+	<string>http://www.ntp.org</string>
+	<key>OpenSourceURL</key>
+	<string>http://archive.ntp.org/ntp4/ntp-4.2/ntp-4.2.6.tar.gz</string>
+	<key>OpenSourceSHA1</key>
+	<string>a1f21b23c8c80f35801d59e30ba30779f2025a72</string>
+	<key>OpenSourceImportDate</key>
+	<string>2009-12-31</string>
+	<key>OpenSourceModifications</key>
+	<array>
+		<string>Build fixes</string>
+		<string>Map getaddrinfo EAI_NONAME to EAI_AGAIN</string>
+		<string>Use DNS txt record for configuration options</string>	
+		<string>Don't bind ipv6 if interface is still tentative</string>
+		<string>Instant off and reduced disk i/o</string>
+		<string>Defer first log till after log level is set</string>
+		<string>Force a timesync after each machine wakeup</string>
+		<string>Turn off DEBUG in kod_managment.c</string>
+		<string>Fix sntp -4/-6 option</string>
+	</array>
+	<key>OpenSourceLicenseFile</key>
+	<string>ntp.txt</string>
+	<key>OpenSourceLicense</key>
+	<string>other</string>
+</dict>
+</plist>
