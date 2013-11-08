@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>OpenSourceImportDate</key>
+	<string>2013-06-20</string>
+	<key>OpenSourceLicense</key>
+	<string>BSD</string>
+	<key>OpenSourceLicenseFile</key>
+	<string>OpenSSH.txt</string>
+	<key>OpenSourceModifications</key>
+	<array>
+		<string>Storing keys in Keychain on Leopard and later.</string>
+		<string>A getpwuid usage fix.</string>
+		<string>Some manpage fixes.</string>
+		<string>Added EAs to scp.</string>
+		<string>Corrected UsePAM comment in sshd config file.</string>
+		<string>An auth_error logging fix.</string>
+		<string>A fix to preserve EA mtime.</string>
+		<string>Launch ssh-agent via launchd.</string>
+		<string>Enable GSSAPI by default (pre-Leopard).</string>
+		<string>PAM support.</string>
+		<string>A GSSKEX patch.</string>
+		<string>Using membership APIs for AllowGroups.</string>
+		<string>Modified scp to pre-allocate files.</string>
+		<string>Logging local IP for break in attempts.</string>
+		<string>Added cross-realm authorization mechanism.</string>
+		<string>CVE-2011-0539 patch.</string>
+		<string>Updated sandbox for privilege-separated pre-authorization sshd process</string>
+		<string>Replaced use of OpenSSL with CommonCrypto</string>
+	</array>
+	<key>OpenSourceProject</key>
+	<string>OpenSSH</string>
+	<key>OpenSourceSHA1</key>
+	<string>c2b4909eba6f5ec6f9f75866c202db47f3b501ba</string>
+	<key>OpenSourceURL</key>
+	<string> http://ftp5.usa.openbsd.org/pub/OpenBSD/OpenSSH/portable</string>
+	<key>OpenSourceVersion</key>
+	<string>6.2p2</string>
+	<key>OpenSourceWebsiteURL</key>
+	<string>http://www.openssh.org/</string>
+</dict>
+</plist>
