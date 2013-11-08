@@ -1,0 +1,10 @@
+#include "common.xcconfig"
+
+#include "libcurl-version.xcconfig"
+
+// Upstream changes moved CURL_HIDDEN_SYMBOLS out of curl_config.h
+CURL_PREPROCESSOR_DEFINITIONS = BUILDING_LIBCURL CURL_HIDDEN_SYMBOLS
+
+OTHER_LDFLAGS = -framework Security -framework CoreFoundation
+OTHER_LDFLAGS[sdk=iphoneos*] = $(inherited)
+OTHER_LDFLAGS[sdk=macosx*] = $(inherited) -weak_framework LDAP -weak_framework Kerberos
