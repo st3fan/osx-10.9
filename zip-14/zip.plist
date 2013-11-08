@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>OpenSourceImportDate</key>
+		<string>2008-09-22</string>
+		<key>OpenSourceLicense</key>
+		<string>Info-ZIP</string>
+		<key>OpenSourceLicenseFile</key>
+		<string>zip.txt</string>
+		<key>OpenSourceSHA1</key>
+		<string>4f244128ee8fa3fc07eedfee3d4ac634dcabd492</string>
+		<key>OpenSourceModifications</key>
+		<array>
+		  <string>Porting fixes for Mac OS X</string>
+		</array>
+		<key>OpenSourceProject</key>
+		<string>zip</string>
+		<key>OpenSourceURL</key>
+		<string>http://superb-east.dl.sourceforge.net/sourceforge/infozip/zip30.zip</string>
+		<key>OpenSourceVersion</key>
+		<string>3.0</string>
+		<key>OpenSourceWebsiteURL</key>
+		<string>http://www.info-zip.org/pub/infozip/Zip.html</string>
+	</dict>
+	<dict>
+		<key>OpenSourceImportDate</key>
+		<string>2006-10-05</string>
+		<key>OpenSourceLicense</key>
+		<string>Info-ZIP</string>
+		<key>OpenSourceLicenseFile</key>
+		<string>unzip.txt</string>
+		<key>OpenSourceSHA1</key>
+		<string>1831bd59b9e607a69052f83b263384895e2d4a19</string>
+		<key>OpenSourceModifications</key>
+		<array>
+		  <string>CVE-2005-2475, obtained from FreeBSD ports/85920</string>
+		  <string>Support for quarantine</string>
+		  <string>CVE-2008-8880, obtained from FedoraProject</string>
+		</array>
+		<key>OpenSourceProject</key>
+		<string>unzip</string>
+		<key>OpenSourceURL</key>
+		<string>http://ftp.info-zip.org/pub/infozip/src/unzip552.tar.gz</string>
+		<key>OpenSourceVersion</key>
+		<string>5.52</string>
+		<key>OpenSourceWebsiteURL</key>
+		<string>http://www.info-zip.org/UnZip.html</string>
+	</dict>
+</array>
+</plist>
