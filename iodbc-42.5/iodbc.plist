@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>OpenSourceImportDate</key>
+	<string>2009-01-12</string>
+	<key>OpenSourceLicense</key>
+	<string>BSD</string>
+	<key>OpenSourceLicenseFile</key>
+	<string>iodbc.txt</string>
+	<key>OpenSourceMD5</key>
+	<string>761ad547467bd63ac0b2b4f3ee4b5afb</string>
+	<key>Open Source Modifications</key>
+	<array>
+		<string>rdar://problem/3872514</string>
+	</array>
+	<key>OpenSourceProject</key>
+	<string>iodbc</string>
+	<key>OpenSourceURL</key>
+	<string>http://www.iodbc.org/downloads/iODBC/libiodbc-3.52.6.tar.gz</string>
+	<key>OpenSourceVersion</key>
+	<string>3.52.6</string>
+	<key>OpenSourceWebsiteURL</key>
+	<string>http://www.iodbc.org/</string>
+</dict>
+</plist>

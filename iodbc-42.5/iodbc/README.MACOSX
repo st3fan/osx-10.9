@@ -1,0 +1,74 @@
+iODBC Driver Manager
+Copyright (C) 1995 by Ke Jin <kejin@empress.com>
+Copyright (C) 1996-2006 by OpenLink Software <iodbc@openlinksw.com>
+All Rights Reserved.
+
+
+
+How to build iODBC for Mac OS X
+===============================
+
+
+Method 1: Using Project builder
+-------------------------------
+
+You first need to install the latest Mac OS X Developer Packages,
+which can be found at:
+
+	http://developer.apple.com/tools
+
+
+Then, you can open the Xcode Project Builder files under mac/iODBCinst,
+mac/iODBC, mac/iODBCtest and mac/iODBCtestw, or execute the following
+commands from a terminal session to build all the frameworks and
+demo applications:
+
+	$ cd mac
+	$ make
+
+
+After building the iODBC and iODBCinst frameworks, you have to
+install them on your system with the command:
+
+	$ cd mac
+	$ make install
+
+
+This installs the iODBCinst and iODBC frameworks into:
+
+	/Library/Frameworks
+
+and the demo applications iodbctest and iodbctest into:
+
+	/Library/Application Support/iODBC/bin
+
+
+Now that you have installed the iODBC frameworks on your system,
+you are able to use ODBC applications or build your own applications
+using the iODBC API.
+
+
+Once you have installed an ODBC driver and configured a DSN, you
+will be able to make a connection using the iodbctest command which
+is located in:
+
+	/Library/Application Support/iODBC/bin/iodbctest
+
+
+
+Method 2: Using configure and make
+----------------------------------
+
+The iODBC package can also be build like any other OpenSource package
+not using any frameworks.
+
+To build the libraries, open up a terminal session and execute the
+following commands:
+
+	$ ./configure
+	$ make
+
+To install the header files and libraries in /usr/local, you execute
+the following command as administrator:
+
+	$ sudo make install
