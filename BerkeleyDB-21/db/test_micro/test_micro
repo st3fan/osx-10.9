@@ -1,0 +1,135 @@
+#! /bin/sh
+#
+# $Id: test_micro,v 1.51 2008/04/14 02:21:47 david Exp $
+
+# build_test_micro_posix
+#	Build test_micro on a POSIX system.
+build_test_micro_posix()
+{
+	# See if there's a test_micro binary already.
+	test $clean -eq 0 && test -x test_micro && return 0
+
+	echo 'Compiling test_micro...'
+	rm -f test_micro
+	CC=${CC:-gcc}
+	if [ "$CC" = "gcc" ]; then
+		CC="$CC -O3 -Wall"
+	else
+		CC="$CC -O"
+	fi
+	$CC -I. -I.. -I../include -I../include_auto -I$h/source\
+	    $SRC -o test_micro libdb.a $LIBS || return 1
+}
+
+# build_test_micro_windows
+#	Build test_micro on a Windows system.
+build_test_micro_windows()
+{
+	# See if there's a test_micro binary already.
+	test $clean -eq 0 && test -x test_micro && return 0
+
+	echo 'Compiling test_micro...'
+	rm -f test_micro
+	cl /nologo /o test_micro /DDB_WIN32 /G6 /Ox /MD\
+	    -I.. -I../.. -I../include -I../include_auto $SRC $WINSRC\
+	    libdb*.lib ws2_32.lib advapi32.lib || return 1
+}
+
+# run --
+#	$1: args
+run()
+{
+	# You can set the MAJOR and MINOR environment variables to limit
+	# the BDB releases on which the tests are run.
+	for i in db-${MAJOR:-[3-9]}.${MINOR:-*}.*; do
+		if [ -f $i/build_unix/libdb.a ] ; then
+			(cd $i/build_unix/ &&
+			    build_test_micro_posix || exit 1)
+		elif [ -f $i/build_win*/Release/libdb??.lib ] ; then
+			(cd $i/build_win*/Release &&
+			    build_test_micro_windows || exit 1)
+		fi
+
+		echo "$i run begins: `date`"
+		echo "test_micro $1..."
+		if [ -f $i/build_unix/libdb.a ] ; then
+			(cd $i/build_unix/ && ./test_micro $1 || exit 1)
+		elif [ -f $i/build_win*/Release/libdb??.lib ] ; then
+			(cd $i/build_win*/Release && ./test_micro $1 || exit 1)
+		fi
+		echo "$i run ends: `date`"
+	done
+}
+
+# Get a path to this shellscript.
+t=`dirname $0`
+h=`(cd $t && echo $PWD)`
+
+# We may need to re-compile, create a list of our sources.
+SRC="$h/source/b_curalloc.c $h/source/b_curwalk.c $h/source/b_del.c
+$h/source/b_get.c $h/source/b_inmem.c $h/source/b_load.c
+$h/source/b_open.c $h/source/b_put.c $h/source/b_recover.c
+$h/source/b_txn.c $h/source/b_txn_write.c $h/source/b_uname.c
+$h/source/b_util.c $h/source/b_workload.c $h/source/test_micro.c
+$h/../common/util_arg.c"
+
+WINSRC="$h/../clib/getopt.c"
+
+# Process arguments.
+clean=0					# Rebuild test_micro
+workload=0				# Run workload tests
+start_test=0				# Start test
+end_test=0				# End test
+while :
+	do case "$1" in
+	-c)				# Rebuild test_micro.
+		clean=1
+		shift;;
+	-w)				# Run workload tests
+		workload=1
+		shift;;
+	[1-9]*-[0-9]*)			# Range: -3, 3-, 3-10
+		start_test=`echo $1|sed 's/-.*//'`
+		start_test=${start_test:=1}
+		end_test=`echo $1|sed 's/.*-//'`
+		end_test=${end_test:=0}
+		shift;;
+	[1-9]*)				# Specific test
+		start_test="$1"
+		end_test="$1"
+		shift;;
+	*)
+		break;;
+	esac
+done
+test "$#" -ne 0 && {
+	echo 'usage: test_micro [-cw] [# | #- | -# | #-#]' >& 2
+	exit 1
+}
+
+if test $start_test != 0; then
+	cmd="$cmd -s $start_test"
+fi
+if test $end_test != 0; then
+	cmd="$cmd -e $end_test"
+fi
+
+# Create the run directory, and initialize test_micro's arguments.
+t=RUN.`hostname | sed 's/\..*//'`
+[ -d $t ] || mkdir $t
+cmd="$cmd -d `(cd $t && pwd)`"
+
+# Set input file.
+if test "$workload" -eq 1; then
+	cmd="$cmd -i $h/configs/run.workload"
+else
+	cmd="$cmd -i $h/configs/run.std"
+fi
+
+# Flush any I/O, just to get as a clean a timing as we can, ignore errors,
+# sync is privleged on some systems.
+(sync && sleep 1 2>&1) > /dev/null
+
+run "$cmd"
+
+exit 0

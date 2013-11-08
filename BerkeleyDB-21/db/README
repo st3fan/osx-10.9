@@ -1,0 +1,5 @@
+Berkeley DB 4.7.25: (May 15, 2008)
+
+This is version 4.7.25 of Berkeley DB from Oracle.  To view release and
+installation documentation, load the distribution file docs/index.html
+into your web browser.
