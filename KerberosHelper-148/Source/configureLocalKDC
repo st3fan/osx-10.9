@@ -1,0 +1,126 @@
+#!/usr/bin/perl
+# 
+# Copyright (c) 2007, 2008, 2009 Apple Inc. All rights reserved.
+#
+# @APPLE_LICENSE_HEADER_START@
+#
+# This file contains Original Code and/or Modifications of Original Code
+# as defined in and that are subject to the Apple Public Source License
+# Version 2.0 (the 'License'). You may not use this file except in
+# compliance with the License. Please obtain a copy of the License at
+# http://www.opensource.apple.com/apsl/ and read it before using this
+# file.
+#
+# The Original Code and all software distributed under the License are
+# distributed on an 'AS IS' basis, WITHOUT WARRANTY OF ANY KIND, EITHER
+# EXPRESS OR IMPLIED, AND APPLE HEREBY DISCLAIMS ALL SUCH WARRANTIES,
+# INCLUDING WITHOUT LIMITATION, ANY WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE, QUIET ENJOYMENT OR NON-INFRINGEMENT.
+# Please see the License for the specific language governing rights and
+# limitations under the License.
+#
+# @APPLE_LICENSE_HEADER_END@
+#
+# This script generates a LocalKDC and provisions LKDC service principals.
+#
+# The script is destructive - it can be run multiple times though and
+# will geneate new KDC and service keys every time.
+#
+# Flow
+# =======
+#   1. Redirect output to /Library/Logs/LKDC-setup
+#   2. generate: create the LKDC certificates
+#   3. Create database
+#   4. If creating the database, make launchd not launch us again
+#
+
+use strict;
+use File::Basename;
+
+my $configured = "/var/db/.configureLocalKDC";
+
+my $progname = basename ($0);
+
+chdir '/' or die "chdir: $!\n";
+
+if ($< != 0) {
+	print 'Error: '. $progname ." needs to be run by root\n";
+	exit 1;
+}
+
+umask 022;
+
+close STDOUT;
+open STDOUT, ">>/Library/Logs/LKDC-setup.log" || die "Failed to open STDOUT";
+open STDERR, ">&STDOUT" || die "Failed to open STDERR";
+
+# print when we are running
+system("date");
+
+my $hod_admin = '/System/Library/PrivateFrameworks/Heimdal.framework/Helpers/hod-admin';
+my $system_keychain = '/Library/Keychains/System.keychain';
+
+my $restore = 0;
+
+my $argc = scalar @ARGV;
+my $i;
+for ($i = 0; $i < $argc; ++$i) {
+	if ($ARGV[$i] eq '--plist') {
+	} elsif ($ARGV[$i] eq '--source') {
+		$restore = 1;
+		die "Error: --source requires an argument\n" unless ++$i < $argc;
+	} elsif ($ARGV[$i] eq '--source-version') {
+	    die "Error: --source-version requires an argument\n" unless ++$i < $argc;
+	} elsif ($ARGV[$i] eq '--mode') {
+	    die "Error: --mode requires an argument\n" unless ++$i < $argc;
+	} else {
+		die "Error: unknown argument $ARGV[$i]\n";
+	}
+}
+
+if ($restore) {
+    unlink $configured;
+    print "lkdc restore trigger re-setup of LKDC on next boot\n";
+    exit 0;
+}
+
+my $res;
+
+# certtool requires a system keychain to be present.  Bootstrap one if it is missing.
+if (! -f $system_keychain) {
+	system '/usr/sbin/systemkeychain', '-C';
+}
+
+printf("creating system keychain entries\n");
+
+$res = system '/usr/bin/certtool', 'C', 'com.apple.systemdefault', 'u', 'P', 'v';
+if ($res != 0) {
+    unlink $configured;
+    die "cert tool failed for com.apple.systemdefault";
+}
+$res = system '/usr/bin/certtool', 'C', 'com.apple.kerberos.kdc', 'u', 'P', 'v', 'x=S';
+if ($res != 0) {
+    unlink $configured;
+    die "cert tool failed for com.apple.kerberos.kdc";
+}
+
+$res = system '/System/Library/PrivateFrameworks/KerberosHelper.framework/Helpers/lkdc_acl',
+     '-s', 'com.apple.kerberos.kdc', '-a',
+    '/System/Library/PrivateFrameworks/Heimdal.framework/Helpers/kdc';
+if ($res != 0) {
+    print "ldkc_acl failed with: $res\n";
+}
+
+$res = system $hod_admin, '.', 'setup-lkdc';
+if ($res != 0) {
+    print "hod-admin . setup-lkdc failed with: $res\n";
+}
+
+if ($res eq 0) {
+    print "Done LKDC setup\n";
+    system "touch", $configured;
+    system 'killall', '-9', 'kdc', 'digest-service';
+} else {
+    print "Failed LKDC setup\n";
+    unlink $configured;
+}
