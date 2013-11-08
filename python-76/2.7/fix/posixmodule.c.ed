@@ -1,0 +1,25 @@
+/^posix_setgroups/a
+.
+/gid_t grouplist\[MAX_GROUPS\];/s//gid_t *grouplist;/
+/if (len > MAX_GROUPS) {/a
+.
+.,/^[ 	]*}/c
+    if ((grouplist = (gid_t *)alloca(len * sizeof(gid_t))) == NULL) {
+	    PyErr_NoMemory();
+	    return NULL;
+    }
+.
+/^static struct constdef posix_constants_confstr/a
+.
+/^};/i
+#ifdef _CS_DARWIN_USER_DIR
+    {"CS_DARWIN_USER_DIR", _CS_DARWIN_USER_DIR},
+#endif
+#ifdef _CS_DARWIN_USER_TEMP_DIR
+    {"CS_DARWIN_USER_TEMP_DIR", _CS_DARWIN_USER_TEMP_DIR},
+#endif
+#ifdef _CS_DARWIN_USER_CACHE_DIR
+    {"CS_DARWIN_USER_CACHE_DIR", _CS_DARWIN_USER_CACHE_DIR},
+#endif
+.
+w

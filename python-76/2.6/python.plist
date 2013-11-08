@@ -1,0 +1,34 @@
+<plist version="1.0">
+<array>
+<dict>
+        <key>OpenSourceProject</key>
+        <string>python</string>
+        <key>OpenSourceVersion</key>
+        <string>2.6.8</string>
+        <key>OpenSourceWebsiteURL</key>
+        <string>http://www.python.org/</string>
+        <key>OpenSourceURL</key>
+        <string>http://www.python.org/ftp/python/2.6.8/Python-2.6.8.tar.bz2</string>
+        <key>OpenSourceMD5</key>
+        <string>c6e0420a21d8b23dee8b0195c9b9a125</string>
+        <key>OpenSourceImportDate</key>
+        <string>2012-08-12</string>
+        <key>OpenSourceLicense</key>
+        <string>PSFL</string>
+        <key>OpenSourceLicenseFile</key>
+        <string>python.txt</string>
+	<key>OpenSourceModifications</key>
+	<array>
+		<string>changes to build under XBS</string>
+		<string>changes to build simultaneously with multiple architectures</string>
+		<string>endian fixes Mac-specific files</string>
+		<string>builds with _XOPEN_SOURCE and _DARWIN_C_SOURCE</string>
+		<string>uses dlfcn.h routines instead of NS* routines</string>
+		<string>/Library/Python/2.x/site-packages is now native</string>
+		<string>man page explains readline modules use of libedit</string>
+		<string>initial dtrace probe support</string>
+		<string>CVE-2011-4944 patch</string>
+	</array>	
+</dict>
+</array>
+</plist>
