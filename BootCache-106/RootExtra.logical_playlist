@@ -1,0 +1,4 @@
+/private/var/log/asl/StoreData
+/private/var/db/launchd.db/com.apple.launchd/overrides.plist
+/Library/Preferences/com.apple.loginwindow.plist
+/Library/Preferences/com.apple.Bluetooth.plist
