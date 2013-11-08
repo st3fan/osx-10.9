@@ -1,0 +1,9 @@
+if [ "${Target}" = "IONetworkingFamily" ]; then
+	Targets='InstallHeaders
+IONetworkingFamily'
+elif [ "${Target}" = "InstallHeaders" ]; then
+	Targets='InstallHeaders'
+else
+	Targets='InstallHeaders
+IONetworkingFamily'
+fi
