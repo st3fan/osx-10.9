@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>OpenSourceImportDate</key>
+		<string>2013-05-10</string>
+		<key>OpenSourceLicense</key>
+		<string>GPL</string>
+		<key>OpenSourceLicenseFile</key>
+		<string>LICENSE.txt</string>
+		<key>OpenSourceMD5</key>
+		<string></string>
+		<key>OpenSourceModifications</key>
+		<array>
+		</array>
+		<key>OpenSourceProject</key>
+		<string>CUPS</string>
+		<key>OpenSourceURL</key>
+		<string>http://www.cups.org/software.php</string>
+		<key>OpenSourceVersion</key>
+		<string>1.7b1 (r10972)</string>
+		<key>OpenSourceWebsiteURL</key>
+		<string>http://www.cups.org/</string>
+	</dict>
+</array>
+</plist>
