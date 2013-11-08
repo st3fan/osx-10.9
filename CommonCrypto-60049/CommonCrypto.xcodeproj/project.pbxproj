@@ -1,0 +1,1814 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		4825E170158FA24A0059CCF8 /* libCommonCryptoMacOSX */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 4825E173158FA24A0059CCF8 /* Build configuration list for PBXAggregateTarget "libCommonCryptoMacOSX" */;
+			buildPhases = (
+			);
+			dependencies = (
+				4825E17E158FA3770059CCF8 /* PBXTargetDependency */,
+				48B4206315E2D8FE00871A6E /* PBXTargetDependency */,
+				485906C6167170DB00976E15 /* PBXTargetDependency */,
+			);
+			name = libCommonCryptoMacOSX;
+			productName = libcommonCrypto;
+		};
+		4825E175158FA27C0059CCF8 /* commonCryptoMacIOS */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 4825E176158FA27C0059CCF8 /* Build configuration list for PBXAggregateTarget "commonCryptoMacIOS" */;
+			buildPhases = (
+			);
+			dependencies = (
+				4825E180158FA37F0059CCF8 /* PBXTargetDependency */,
+				48B4206515E2D90400871A6E /* PBXTargetDependency */,
+			);
+			name = commonCryptoMacIOS;
+			productName = commonCryptoMacIOS;
+		};
+		4825E179158FA35C0059CCF8 /* CommonCrypto_Sim */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 4825E17A158FA35C0059CCF8 /* Build configuration list for PBXAggregateTarget "CommonCrypto_Sim" */;
+			buildPhases = (
+			);
+			dependencies = (
+				4825E182158FA3820059CCF8 /* PBXTargetDependency */,
+			);
+			name = CommonCrypto_Sim;
+			productName = CommonCrypto_Sim;
+		};
+		4825E184158FD5280059CCF8 /* OpenSource Docs */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 4825E185158FD5280059CCF8 /* Build configuration list for PBXAggregateTarget "OpenSource Docs" */;
+			buildPhases = (
+				4825E188158FD5380059CCF8 /* CopyFiles */,
+				4825E1BD158FD5E00059CCF8 /* CopyFiles */,
+			);
+			dependencies = (
+			);
+			name = "OpenSource Docs";
+			productName = "OpenSource Docs";
+		};
+		4825E1BF158FD6100059CCF8 /* Man Pages */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 4825E1C0158FD6100059CCF8 /* Build configuration list for PBXAggregateTarget "Man Pages" */;
+			buildPhases = (
+				4825E1C3158FD6150059CCF8 /* CopyFiles */,
+			);
+			dependencies = (
+			);
+			name = "Man Pages";
+			productName = "Man Pages";
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		4825E1BC158FD5D50059CCF8 /* CommonCrypto.plist in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4825E1BA158FD5AB0059CCF8 /* CommonCrypto.plist */; };
+		4825E1BE158FD5FD0059CCF8 /* CommonCrypto.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4825E1BB158FD5AB0059CCF8 /* CommonCrypto.txt */; };
+		4825E1C4158FD64D0059CCF8 /* CC_crypto.3cc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4825E18A158FD5AB0059CCF8 /* CC_crypto.3cc */; };
+		4825E1C5158FD64D0059CCF8 /* CC_MD2.3cc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4825E18B158FD5AB0059CCF8 /* CC_MD2.3cc */; };
+		4825E1C6158FD64D0059CCF8 /* CC_MD2_Final.3cc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4825E18C158FD5AB0059CCF8 /* CC_MD2_Final.3cc */; };
+		4825E1C7158FD64D0059CCF8 /* CC_MD2_Init.3cc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4825E18D158FD5AB0059CCF8 /* CC_MD2_Init.3cc */; };
+		4825E1C8158FD64D0059CCF8 /* CC_MD2_Update.3cc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4825E18E158FD5AB0059CCF8 /* CC_MD2_Update.3cc */; };
+		4825E1C9158FD64D0059CCF8 /* CC_MD4.3cc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4825E18F158FD5AB0059CCF8 /* CC_MD4.3cc */; };
+		4825E1CA158FD64D0059CCF8 /* CC_MD4_Final.3cc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4825E190158FD5AB0059CCF8 /* CC_MD4_Final.3cc */; };
+		4825E1CB158FD64D0059CCF8 /* CC_MD4_Init.3cc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4825E191158FD5AB0059CCF8 /* CC_MD4_Init.3cc */; };
+		4825E1CC158FD64D0059CCF8 /* CC_MD4_Update.3cc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4825E192158FD5AB0059CCF8 /* CC_MD4_Update.3cc */; };
+		4825E1CD158FD64D0059CCF8 /* CC_MD5.3cc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4825E193158FD5AB0059CCF8 /* CC_MD5.3cc */; };
+		4825E1CE158FD64D0059CCF8 /* CC_MD5_Final.3cc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4825E194158FD5AB0059CCF8 /* CC_MD5_Final.3cc */; };
+		4825E1CF158FD64D0059CCF8 /* CC_MD5_Init.3cc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4825E195158FD5AB0059CCF8 /* CC_MD5_Init.3cc */; };
+		4825E1D0158FD64D0059CCF8 /* CC_MD5_Update.3cc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4825E196158FD5AB0059CCF8 /* CC_MD5_Update.3cc */; };
+		4825E1D1158FD64D0059CCF8 /* CC_SHA.3cc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4825E197158FD5AB0059CCF8 /* CC_SHA.3cc */; };
+		4825E1D2158FD64D0059CCF8 /* CC_SHA1.3cc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4825E198158FD5AB0059CCF8 /* CC_SHA1.3cc */; };
+		4825E1D3158FD64D0059CCF8 /* CC_SHA1_Final.3cc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4825E199158FD5AB0059CCF8 /* CC_SHA1_Final.3cc */; };
+		4825E1D4158FD64D0059CCF8 /* CC_SHA1_Init.3cc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4825E19A158FD5AB0059CCF8 /* CC_SHA1_Init.3cc */; };
+		4825E1D5158FD64D0059CCF8 /* CC_SHA1_Update.3cc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4825E19B158FD5AB0059CCF8 /* CC_SHA1_Update.3cc */; };
+		4825E1D6158FD64D0059CCF8 /* CC_SHA224.3cc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4825E19C158FD5AB0059CCF8 /* CC_SHA224.3cc */; };
+		4825E1D7158FD64D0059CCF8 /* CC_SHA224_Final.3cc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4825E19D158FD5AB0059CCF8 /* CC_SHA224_Final.3cc */; };
+		4825E1D8158FD64D0059CCF8 /* CC_SHA224_Init.3cc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4825E19E158FD5AB0059CCF8 /* CC_SHA224_Init.3cc */; };
+		4825E1D9158FD64D0059CCF8 /* CC_SHA224_Update.3cc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4825E19F158FD5AB0059CCF8 /* CC_SHA224_Update.3cc */; };
+		4825E1DA158FD64D0059CCF8 /* CC_SHA256.3cc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4825E1A0158FD5AB0059CCF8 /* CC_SHA256.3cc */; };
+		4825E1DB158FD64D0059CCF8 /* CC_SHA256_Final.3cc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4825E1A1158FD5AB0059CCF8 /* CC_SHA256_Final.3cc */; };
+		4825E1DC158FD64D0059CCF8 /* CC_SHA256_Init.3cc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4825E1A2158FD5AB0059CCF8 /* CC_SHA256_Init.3cc */; };
+		4825E1DD158FD64D0059CCF8 /* CC_SHA256_Update.3cc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4825E1A3158FD5AB0059CCF8 /* CC_SHA256_Update.3cc */; };
+		4825E1DE158FD64D0059CCF8 /* CC_SHA384.3cc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4825E1A4158FD5AB0059CCF8 /* CC_SHA384.3cc */; };
+		4825E1DF158FD64D0059CCF8 /* CC_SHA384_Final.3cc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4825E1A5158FD5AB0059CCF8 /* CC_SHA384_Final.3cc */; };
+		4825E1E0158FD64D0059CCF8 /* CC_SHA384_Init.3cc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4825E1A6158FD5AB0059CCF8 /* CC_SHA384_Init.3cc */; };
+		4825E1E1158FD64D0059CCF8 /* CC_SHA384_Update.3cc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4825E1A7158FD5AB0059CCF8 /* CC_SHA384_Update.3cc */; };
+		4825E1E2158FD64D0059CCF8 /* CC_SHA512.3cc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4825E1A8158FD5AB0059CCF8 /* CC_SHA512.3cc */; };
+		4825E1E3158FD64D0059CCF8 /* CC_SHA512_Final.3cc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4825E1A9158FD5AB0059CCF8 /* CC_SHA512_Final.3cc */; };
+		4825E1E4158FD64D0059CCF8 /* CC_SHA512_Init.3cc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4825E1AA158FD5AB0059CCF8 /* CC_SHA512_Init.3cc */; };
+		4825E1E5158FD64D0059CCF8 /* CC_SHA512_Update.3cc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4825E1AB158FD5AB0059CCF8 /* CC_SHA512_Update.3cc */; };
+		4825E1E6158FD64D0059CCF8 /* CCCrypt.3cc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4825E1AC158FD5AB0059CCF8 /* CCCrypt.3cc */; };
+		4825E1E7158FD64D0059CCF8 /* CCCryptor.3cc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4825E1AD158FD5AB0059CCF8 /* CCCryptor.3cc */; };
+		4825E1E8158FD64D0059CCF8 /* CCCryptorCreate.3cc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4825E1AE158FD5AB0059CCF8 /* CCCryptorCreate.3cc */; };
+		4825E1E9158FD64D0059CCF8 /* CCCryptorFinal.3cc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4825E1AF158FD5AB0059CCF8 /* CCCryptorFinal.3cc */; };
+		4825E1EA158FD64D0059CCF8 /* CCCryptorGetOutputLength.3cc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4825E1B0158FD5AB0059CCF8 /* CCCryptorGetOutputLength.3cc */; };
+		4825E1EB158FD64D0059CCF8 /* CCCryptorRelease.3cc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4825E1B1158FD5AB0059CCF8 /* CCCryptorRelease.3cc */; };
+		4825E1EC158FD64D0059CCF8 /* CCCryptorReset.3cc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4825E1B2158FD5AB0059CCF8 /* CCCryptorReset.3cc */; };
+		4825E1ED158FD64D0059CCF8 /* CCCryptorUpdate.3cc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4825E1B3158FD5AB0059CCF8 /* CCCryptorUpdate.3cc */; };
+		4825E1EE158FD64D0059CCF8 /* CCHmac.3cc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4825E1B4158FD5AB0059CCF8 /* CCHmac.3cc */; };
+		4825E1EF158FD64D0059CCF8 /* CCHmacFinal.3cc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4825E1B5158FD5AB0059CCF8 /* CCHmacFinal.3cc */; };
+		4825E1F0158FD64D0059CCF8 /* CCHmacInit.3cc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4825E1B6158FD5AB0059CCF8 /* CCHmacInit.3cc */; };
+		4825E1F1158FD64D0059CCF8 /* CCHmacUpdate.3cc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4825E1B7158FD5AB0059CCF8 /* CCHmacUpdate.3cc */; };
+		4825E1F2158FD64D0059CCF8 /* CCryptorCreateFromData.3cc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4825E1B8158FD5AB0059CCF8 /* CCryptorCreateFromData.3cc */; };
+		4825E1F3158FD64D0059CCF8 /* Common Crypto.3cc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4825E1B9158FD5AB0059CCF8 /* Common Crypto.3cc */; };
+		482B9DB515869BF500F49463 /* ccGlobals.h in Headers */ = {isa = PBXBuildFile; fileRef = 482B9DB415869BF500F49463 /* ccGlobals.h */; };
+		482B9DB81586A8E700F49463 /* CommonRandomPriv.h in Headers */ = {isa = PBXBuildFile; fileRef = 482B9DB71586A8E700F49463 /* CommonRandomPriv.h */; };
+		482B9DFF1586B50F00F49463 /* CCCryptorTestFuncs.c in Sources */ = {isa = PBXBuildFile; fileRef = 482B9DE01586B50F00F49463 /* CCCryptorTestFuncs.c */; };
+		482B9E011586B50F00F49463 /* CommonBigDigest.c in Sources */ = {isa = PBXBuildFile; fileRef = 482B9DE31586B50F00F49463 /* CommonBigDigest.c */; };
+		482B9E021586B50F00F49463 /* CommonBigNum.c in Sources */ = {isa = PBXBuildFile; fileRef = 482B9DE41586B50F00F49463 /* CommonBigNum.c */; };
+		482B9E031586B50F00F49463 /* CommonCMac.c in Sources */ = {isa = PBXBuildFile; fileRef = 482B9DE51586B50F00F49463 /* CommonCMac.c */; };
+		482B9E041586B50F00F49463 /* CommonCryptoCTSPadding.c in Sources */ = {isa = PBXBuildFile; fileRef = 482B9DE61586B50F00F49463 /* CommonCryptoCTSPadding.c */; };
+		482B9E051586B50F00F49463 /* CommonCryptoReset.c in Sources */ = {isa = PBXBuildFile; fileRef = 482B9DE71586B50F00F49463 /* CommonCryptoReset.c */; };
+		482B9E061586B50F00F49463 /* CommonCryptoSymCBC.c in Sources */ = {isa = PBXBuildFile; fileRef = 482B9DE81586B50F00F49463 /* CommonCryptoSymCBC.c */; };
+		482B9E071586B50F00F49463 /* CommonCryptoSymCFB.c in Sources */ = {isa = PBXBuildFile; fileRef = 482B9DE91586B50F00F49463 /* CommonCryptoSymCFB.c */; };
+		482B9E081586B50F00F49463 /* CommonCryptoSymCTR.c in Sources */ = {isa = PBXBuildFile; fileRef = 482B9DEA1586B50F00F49463 /* CommonCryptoSymCTR.c */; };
+		482B9E091586B50F00F49463 /* CommonCryptoSymGCM.c in Sources */ = {isa = PBXBuildFile; fileRef = 482B9DEB1586B50F00F49463 /* CommonCryptoSymGCM.c */; };
+		482B9E0A1586B50F00F49463 /* CommonCryptoSymmetricWrap.c in Sources */ = {isa = PBXBuildFile; fileRef = 482B9DEC1586B50F00F49463 /* CommonCryptoSymmetricWrap.c */; };
+		482B9E0B1586B50F00F49463 /* CommonCryptoSymOFB.c in Sources */ = {isa = PBXBuildFile; fileRef = 482B9DED1586B50F00F49463 /* CommonCryptoSymOFB.c */; };
+		482B9E0C1586B50F00F49463 /* CommonCryptoSymOffset.c in Sources */ = {isa = PBXBuildFile; fileRef = 482B9DEE1586B50F00F49463 /* CommonCryptoSymOffset.c */; };
+		482B9E0D1586B50F00F49463 /* CommonCryptoSymRC2.c in Sources */ = {isa = PBXBuildFile; fileRef = 482B9DEF1586B50F00F49463 /* CommonCryptoSymRC2.c */; };
+		482B9E0E1586B50F00F49463 /* CommonCryptoSymRegression.c in Sources */ = {isa = PBXBuildFile; fileRef = 482B9DF01586B50F00F49463 /* CommonCryptoSymRegression.c */; };
+		482B9E0F1586B50F00F49463 /* CommonCryptoSymXTS.c in Sources */ = {isa = PBXBuildFile; fileRef = 482B9DF11586B50F00F49463 /* CommonCryptoSymXTS.c */; };
+		482B9E101586B50F00F49463 /* CommonCryptoSymZeroLength.c in Sources */ = {isa = PBXBuildFile; fileRef = 482B9DF21586B50F00F49463 /* CommonCryptoSymZeroLength.c */; };
+		482B9E111586B50F00F49463 /* CommonDHtest.c in Sources */ = {isa = PBXBuildFile; fileRef = 482B9DF31586B50F00F49463 /* CommonDHtest.c */; };
+		482B9E121586B50F00F49463 /* CommonDigest.c in Sources */ = {isa = PBXBuildFile; fileRef = 482B9DF41586B50F00F49463 /* CommonDigest.c */; };
+		482B9E131586B50F00F49463 /* CommonEC.c in Sources */ = {isa = PBXBuildFile; fileRef = 482B9DF51586B50F00F49463 /* CommonEC.c */; };
+		482B9E141586B50F00F49463 /* CommonHMacClone.c in Sources */ = {isa = PBXBuildFile; fileRef = 482B9DF61586B50F00F49463 /* CommonHMacClone.c */; };
+		482B9E151586B50F00F49463 /* CommonRandom.c in Sources */ = {isa = PBXBuildFile; fileRef = 482B9DF71586B50F00F49463 /* CommonRandom.c */; };
+		482B9E161586B50F00F49463 /* CommonRSA.c in Sources */ = {isa = PBXBuildFile; fileRef = 482B9DF81586B50F00F49463 /* CommonRSA.c */; };
+		482B9E171586B50F00F49463 /* CryptorPadFailure.c in Sources */ = {isa = PBXBuildFile; fileRef = 482B9DF91586B50F00F49463 /* CryptorPadFailure.c */; };
+		482B9E181586B50F00F49463 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 482B9DFE1586B50F00F49463 /* main.c */; };
+		482B9E291586B52200F49463 /* testenv.c in Sources */ = {isa = PBXBuildFile; fileRef = 482B9E1D1586B52200F49463 /* testenv.c */; };
+		482B9E2A1586B52200F49463 /* testlist.c in Sources */ = {isa = PBXBuildFile; fileRef = 482B9E1F1586B52200F49463 /* testlist.c */; };
+		482B9E2B1586B52200F49463 /* testmore.c in Sources */ = {isa = PBXBuildFile; fileRef = 482B9E221586B52200F49463 /* testmore.c */; };
+		482B9E2C1586B52200F49463 /* testbyteBuffer.c in Sources */ = {isa = PBXBuildFile; fileRef = 482B9E261586B52200F49463 /* testbyteBuffer.c */; };
+		4836297515893D0C0064232C /* CommonCryptorRC4.c in Sources */ = {isa = PBXBuildFile; fileRef = 4836297415893D0C0064232C /* CommonCryptorRC4.c */; };
+		4836297815893DE20064232C /* CommonCryptorDES.c in Sources */ = {isa = PBXBuildFile; fileRef = 4836297715893DE20064232C /* CommonCryptorDES.c */; };
+		484C048B15DAF870002E8891 /* CommonCRC.c in Sources */ = {isa = PBXBuildFile; fileRef = 484C048A15DAF870002E8891 /* CommonCRC.c */; };
+		485029BA15D5C2710053166A /* CommonCryptoBlowfish.c in Sources */ = {isa = PBXBuildFile; fileRef = 485029B915D5C2710053166A /* CommonCryptoBlowfish.c */; };
+		485CB94215E8350E00EC6390 /* dummy.c in Sources */ = {isa = PBXBuildFile; fileRef = 485CB94115E8350E00EC6390 /* dummy.c */; };
+		485CB94315E8350E00EC6390 /* dummy.c in Sources */ = {isa = PBXBuildFile; fileRef = 485CB94115E8350E00EC6390 /* dummy.c */; };
+		485CB94415E8359E00EC6390 /* CommonBaseXX.h in Headers */ = {isa = PBXBuildFile; fileRef = 48E5035515DDAC1D00045A4B /* CommonBaseXX.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		485CB94515E8359E00EC6390 /* CommonCRC.h in Headers */ = {isa = PBXBuildFile; fileRef = 48C489D615DAF10400B301EC /* CommonCRC.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		485CB94615E8359E00EC6390 /* CommonNumerics.h in Headers */ = {isa = PBXBuildFile; fileRef = 48C489D715DAF10400B301EC /* CommonNumerics.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		485CB94815E835B900EC6390 /* CommonBigNum.h in Headers */ = {isa = PBXBuildFile; fileRef = 48BEE6BE15800C1800A6A1E7 /* CommonBigNum.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		485CB94915E835B900EC6390 /* CommonCMACSPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 48BEE6BF15800C1800A6A1E7 /* CommonCMACSPI.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		485CB94A15E835B900EC6390 /* CommonCrypto.h in Headers */ = {isa = PBXBuildFile; fileRef = 48BEE6C015800C1800A6A1E7 /* CommonCrypto.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		485CB94B15E835B900EC6390 /* CommonCryptoPriv.h in Headers */ = {isa = PBXBuildFile; fileRef = 48BEE6C115800C1800A6A1E7 /* CommonCryptoPriv.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		485CB94C15E835B900EC6390 /* CommonCryptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 48BEE6C215800C1800A6A1E7 /* CommonCryptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		485CB94D15E835B900EC6390 /* CommonCryptorSPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 48BEE6C315800C1800A6A1E7 /* CommonCryptorSPI.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		485CB94E15E835B900EC6390 /* CommonDH.h in Headers */ = {isa = PBXBuildFile; fileRef = 48BEE6C415800C1800A6A1E7 /* CommonDH.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		485CB94F15E835B900EC6390 /* CommonDigest.h in Headers */ = {isa = PBXBuildFile; fileRef = 48BEE6C515800C1800A6A1E7 /* CommonDigest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		485CB95015E835B900EC6390 /* CommonDigestSPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 48BEE6C615800C1800A6A1E7 /* CommonDigestSPI.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		485CB95115E835B900EC6390 /* CommonECCryptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 48BEE6C715800C1800A6A1E7 /* CommonECCryptor.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		485CB95215E835B900EC6390 /* CommonHMAC.h in Headers */ = {isa = PBXBuildFile; fileRef = 48BEE6C815800C1800A6A1E7 /* CommonHMAC.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		485CB95315E835B900EC6390 /* CommonHMacSPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 48BEE6C915800C1800A6A1E7 /* CommonHMacSPI.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		485CB95415E835B900EC6390 /* CommonKeyDerivation.h in Headers */ = {isa = PBXBuildFile; fileRef = 48BEE6CA15800C1800A6A1E7 /* CommonKeyDerivation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		485CB95515E835B900EC6390 /* CommonRandomSPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 48BEE6CB15800C1800A6A1E7 /* CommonRandomSPI.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		485CB95615E835B900EC6390 /* CommonRSACryptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 48BEE6CC15800C1800A6A1E7 /* CommonRSACryptor.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		485CB95715E835B900EC6390 /* CommonSymmetricKeywrap.h in Headers */ = {isa = PBXBuildFile; fileRef = 48BEE6CD15800C1800A6A1E7 /* CommonSymmetricKeywrap.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4873482515A22C0A00E6EF15 /* CommonCryptoOutputLength.c in Sources */ = {isa = PBXBuildFile; fileRef = 4873482415A22C0A00E6EF15 /* CommonCryptoOutputLength.c */; };
+		48AC91E61581508C00BA9060 /* exports.exp-in in Sources */ = {isa = PBXBuildFile; fileRef = 48AC91E51581508C00BA9060 /* exports.exp-in */; };
+		48B4205B15E2BB5800871A6E /* cn.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 486C539215DDBD2800C8DE50 /* cn.1 */; };
+		48BEE6D015800C1800A6A1E7 /* CommonBigNum.h in Headers */ = {isa = PBXBuildFile; fileRef = 48BEE6BE15800C1800A6A1E7 /* CommonBigNum.h */; settings = {ATTRIBUTES = (); }; };
+		48BEE6D115800C1800A6A1E7 /* CommonCMACSPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 48BEE6BF15800C1800A6A1E7 /* CommonCMACSPI.h */; settings = {ATTRIBUTES = (); }; };
+		48BEE6D215800C1800A6A1E7 /* CommonCrypto.h in Headers */ = {isa = PBXBuildFile; fileRef = 48BEE6C015800C1800A6A1E7 /* CommonCrypto.h */; settings = {ATTRIBUTES = (); }; };
+		48BEE6D315800C1800A6A1E7 /* CommonCryptoPriv.h in Headers */ = {isa = PBXBuildFile; fileRef = 48BEE6C115800C1800A6A1E7 /* CommonCryptoPriv.h */; settings = {ATTRIBUTES = (); }; };
+		48BEE6D415800C1800A6A1E7 /* CommonCryptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 48BEE6C215800C1800A6A1E7 /* CommonCryptor.h */; settings = {ATTRIBUTES = (); }; };
+		48BEE6D515800C1800A6A1E7 /* CommonCryptorSPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 48BEE6C315800C1800A6A1E7 /* CommonCryptorSPI.h */; settings = {ATTRIBUTES = (); }; };
+		48BEE6D615800C1800A6A1E7 /* CommonDH.h in Headers */ = {isa = PBXBuildFile; fileRef = 48BEE6C415800C1800A6A1E7 /* CommonDH.h */; settings = {ATTRIBUTES = (); }; };
+		48BEE6D715800C1800A6A1E7 /* CommonDigest.h in Headers */ = {isa = PBXBuildFile; fileRef = 48BEE6C515800C1800A6A1E7 /* CommonDigest.h */; settings = {ATTRIBUTES = (); }; };
+		48BEE6D815800C1800A6A1E7 /* CommonDigestSPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 48BEE6C615800C1800A6A1E7 /* CommonDigestSPI.h */; settings = {ATTRIBUTES = (); }; };
+		48BEE6D915800C1800A6A1E7 /* CommonECCryptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 48BEE6C715800C1800A6A1E7 /* CommonECCryptor.h */; settings = {ATTRIBUTES = (); }; };
+		48BEE6DA15800C1800A6A1E7 /* CommonHMAC.h in Headers */ = {isa = PBXBuildFile; fileRef = 48BEE6C815800C1800A6A1E7 /* CommonHMAC.h */; settings = {ATTRIBUTES = (); }; };
+		48BEE6DB15800C1800A6A1E7 /* CommonHMacSPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 48BEE6C915800C1800A6A1E7 /* CommonHMacSPI.h */; settings = {ATTRIBUTES = (); }; };
+		48BEE6DC15800C1800A6A1E7 /* CommonKeyDerivation.h in Headers */ = {isa = PBXBuildFile; fileRef = 48BEE6CA15800C1800A6A1E7 /* CommonKeyDerivation.h */; settings = {ATTRIBUTES = (); }; };
+		48BEE6DD15800C1800A6A1E7 /* CommonRandomSPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 48BEE6CB15800C1800A6A1E7 /* CommonRandomSPI.h */; settings = {ATTRIBUTES = (); }; };
+		48BEE6DE15800C1800A6A1E7 /* CommonRSACryptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 48BEE6CC15800C1800A6A1E7 /* CommonRSACryptor.h */; settings = {ATTRIBUTES = (); }; };
+		48BEE6DF15800C1800A6A1E7 /* CommonSymmetricKeywrap.h in Headers */ = {isa = PBXBuildFile; fileRef = 48BEE6CD15800C1800A6A1E7 /* CommonSymmetricKeywrap.h */; settings = {ATTRIBUTES = (); }; };
+		48BEE6FD15800C2600A6A1E7 /* ccdebug.c in Sources */ = {isa = PBXBuildFile; fileRef = 48BEE6E415800C2600A6A1E7 /* ccdebug.c */; };
+		48BEE6FE15800C2600A6A1E7 /* ccdebug.h in Headers */ = {isa = PBXBuildFile; fileRef = 48BEE6E515800C2600A6A1E7 /* ccdebug.h */; };
+		48BEE6FF15800C2600A6A1E7 /* ccErrors.h in Headers */ = {isa = PBXBuildFile; fileRef = 48BEE6E615800C2600A6A1E7 /* ccErrors.h */; };
+		48BEE70015800C2600A6A1E7 /* ccMemory.h in Headers */ = {isa = PBXBuildFile; fileRef = 48BEE6E715800C2600A6A1E7 /* ccMemory.h */; };
+		48BEE70115800C2600A6A1E7 /* CommonBigNum.c in Sources */ = {isa = PBXBuildFile; fileRef = 48BEE6E815800C2600A6A1E7 /* CommonBigNum.c */; };
+		48BEE70215800C2600A6A1E7 /* CommonBigNumPriv.h in Headers */ = {isa = PBXBuildFile; fileRef = 48BEE6E915800C2600A6A1E7 /* CommonBigNumPriv.h */; };
+		48BEE70315800C2600A6A1E7 /* CommonCMAC.c in Sources */ = {isa = PBXBuildFile; fileRef = 48BEE6EA15800C2600A6A1E7 /* CommonCMAC.c */; };
+		48BEE70615800C2600A6A1E7 /* CommonCryptor.c in Sources */ = {isa = PBXBuildFile; fileRef = 48BEE6ED15800C2600A6A1E7 /* CommonCryptor.c */; };
+		48BEE70715800C2600A6A1E7 /* CommonCryptorPriv.h in Headers */ = {isa = PBXBuildFile; fileRef = 48BEE6EE15800C2600A6A1E7 /* CommonCryptorPriv.h */; };
+		48BEE70815800C2600A6A1E7 /* CommonDH.c in Sources */ = {isa = PBXBuildFile; fileRef = 48BEE6EF15800C2600A6A1E7 /* CommonDH.c */; };
+		48BEE70915800C2600A6A1E7 /* CommonDigest.c in Sources */ = {isa = PBXBuildFile; fileRef = 48BEE6F015800C2600A6A1E7 /* CommonDigest.c */; };
+		48BEE70A15800C2600A6A1E7 /* CommonDigestPriv.h in Headers */ = {isa = PBXBuildFile; fileRef = 48BEE6F115800C2600A6A1E7 /* CommonDigestPriv.h */; };
+		48BEE70B15800C2600A6A1E7 /* CommonECCryptor.c in Sources */ = {isa = PBXBuildFile; fileRef = 48BEE6F215800C2600A6A1E7 /* CommonECCryptor.c */; };
+		48BEE70C15800C2600A6A1E7 /* CommonCryptorGCM.c in Sources */ = {isa = PBXBuildFile; fileRef = 48BEE6F315800C2600A6A1E7 /* CommonCryptorGCM.c */; };
+		48BEE70D15800C2600A6A1E7 /* CommonHMAC.c in Sources */ = {isa = PBXBuildFile; fileRef = 48BEE6F415800C2600A6A1E7 /* CommonHMAC.c */; };
+		48BEE70E15800C2600A6A1E7 /* CommonKeyDerivation.c in Sources */ = {isa = PBXBuildFile; fileRef = 48BEE6F515800C2600A6A1E7 /* CommonKeyDerivation.c */; };
+		48BEE70F15800C2600A6A1E7 /* CommonRandom.c in Sources */ = {isa = PBXBuildFile; fileRef = 48BEE6F615800C2600A6A1E7 /* CommonRandom.c */; };
+		48BEE71015800C2600A6A1E7 /* CommonRSACryptor.c in Sources */ = {isa = PBXBuildFile; fileRef = 48BEE6F715800C2600A6A1E7 /* CommonRSACryptor.c */; };
+		48BEE71115800C2600A6A1E7 /* CommonSymmetricKeywrap.c in Sources */ = {isa = PBXBuildFile; fileRef = 48BEE6F815800C2600A6A1E7 /* CommonSymmetricKeywrap.c */; };
+		48BEE71215800C2600A6A1E7 /* corecryptoSymmetricBridge.c in Sources */ = {isa = PBXBuildFile; fileRef = 48BEE6F915800C2600A6A1E7 /* corecryptoSymmetricBridge.c */; };
+		48BEE71315800C2600A6A1E7 /* corecryptoSymmetricBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = 48BEE6FA15800C2600A6A1E7 /* corecryptoSymmetricBridge.h */; };
+		48C489B515DAF0E500B301EC /* ccMemory.h in Headers */ = {isa = PBXBuildFile; fileRef = 48C4899315DAF0E500B301EC /* ccMemory.h */; };
+		48C489B615DAF0E500B301EC /* cn_globals.h in Headers */ = {isa = PBXBuildFile; fileRef = 48C4899415DAF0E500B301EC /* cn_globals.h */; };
+		48C489B715DAF0E500B301EC /* CommonCRC.c in Sources */ = {isa = PBXBuildFile; fileRef = 48C4899515DAF0E500B301EC /* CommonCRC.c */; };
+		48C489B815DAF0E500B301EC /* crc.h in Headers */ = {isa = PBXBuildFile; fileRef = 48C4899615DAF0E500B301EC /* crc.h */; };
+		48C489D815DAF10400B301EC /* CommonCRC.h in Headers */ = {isa = PBXBuildFile; fileRef = 48C489D615DAF10400B301EC /* CommonCRC.h */; settings = {ATTRIBUTES = (); }; };
+		48C489D915DAF10400B301EC /* CommonNumerics.h in Headers */ = {isa = PBXBuildFile; fileRef = 48C489D715DAF10400B301EC /* CommonNumerics.h */; settings = {ATTRIBUTES = (); }; };
+		48E5035115DDAC0900045A4B /* basexx.h in Headers */ = {isa = PBXBuildFile; fileRef = 48E5034D15DDAC0900045A4B /* basexx.h */; };
+		48E5035215DDAC0900045A4B /* CommonBaseXX.c in Sources */ = {isa = PBXBuildFile; fileRef = 48E5034E15DDAC0900045A4B /* CommonBaseXX.c */; };
+		48E5035315DDAC0900045A4B /* CommonBuffering.c in Sources */ = {isa = PBXBuildFile; fileRef = 48E5034F15DDAC0900045A4B /* CommonBuffering.c */; };
+		48E5035415DDAC0900045A4B /* CommonBufferingPriv.h in Headers */ = {isa = PBXBuildFile; fileRef = 48E5035015DDAC0900045A4B /* CommonBufferingPriv.h */; };
+		48E5035615DDAC1D00045A4B /* CommonBaseXX.h in Headers */ = {isa = PBXBuildFile; fileRef = 48E5035515DDAC1D00045A4B /* CommonBaseXX.h */; };
+		48E5035A15DDBABF00045A4B /* CommonBaseEncoding.c in Sources */ = {isa = PBXBuildFile; fileRef = 48E5035815DDB99900045A4B /* CommonBaseEncoding.c */; };
+		48ED815D15D308A900E40487 /* CommonCryptorWithData.c in Sources */ = {isa = PBXBuildFile; fileRef = 48ED815C15D308A900E40487 /* CommonCryptorWithData.c */; };
+		48EEF03F15E2E0C600429FF7 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 486C539315DDBD2800C8DE50 /* main.c */; };
+		48EEF07515E2E65B00429FF7 /* crc16-a.c in Sources */ = {isa = PBXBuildFile; fileRef = 48C4899715DAF0E500B301EC /* crc16-a.c */; };
+		48EEF07615E2E65B00429FF7 /* crc16-b.c in Sources */ = {isa = PBXBuildFile; fileRef = 48C4899815DAF0E500B301EC /* crc16-b.c */; };
+		48EEF07715E2E65B00429FF7 /* crc16-ccitt-false.c in Sources */ = {isa = PBXBuildFile; fileRef = 48C4899915DAF0E500B301EC /* crc16-ccitt-false.c */; };
+		48EEF07815E2E65B00429FF7 /* crc16-ccitt-true.c in Sources */ = {isa = PBXBuildFile; fileRef = 48C4899A15DAF0E500B301EC /* crc16-ccitt-true.c */; };
+		48EEF07915E2E65B00429FF7 /* crc16-dect-r.c in Sources */ = {isa = PBXBuildFile; fileRef = 48C4899B15DAF0E500B301EC /* crc16-dect-r.c */; };
+		48EEF07A15E2E65B00429FF7 /* crc16-dect-x.c in Sources */ = {isa = PBXBuildFile; fileRef = 48C4899C15DAF0E500B301EC /* crc16-dect-x.c */; };
+		48EEF07B15E2E65B00429FF7 /* crc16-icode.c in Sources */ = {isa = PBXBuildFile; fileRef = 48C4899D15DAF0E500B301EC /* crc16-icode.c */; };
+		48EEF07C15E2E65B00429FF7 /* crc16-usb.c in Sources */ = {isa = PBXBuildFile; fileRef = 48C4899E15DAF0E500B301EC /* crc16-usb.c */; };
+		48EEF07D15E2E65B00429FF7 /* crc16-verifone.c in Sources */ = {isa = PBXBuildFile; fileRef = 48C4899F15DAF0E500B301EC /* crc16-verifone.c */; };
+		48EEF07E15E2E65B00429FF7 /* crc16-xmodem.c in Sources */ = {isa = PBXBuildFile; fileRef = 48C489A015DAF0E500B301EC /* crc16-xmodem.c */; };
+		48EEF07F15E2E65B00429FF7 /* crc16.c in Sources */ = {isa = PBXBuildFile; fileRef = 48C489A115DAF0E500B301EC /* crc16.c */; };
+		48EEF08015E2E65B00429FF7 /* crc32-bzip2.c in Sources */ = {isa = PBXBuildFile; fileRef = 48C489A215DAF0E500B301EC /* crc32-bzip2.c */; };
+		48EEF08115E2E65B00429FF7 /* crc32-castagnoli.c in Sources */ = {isa = PBXBuildFile; fileRef = 48C489A315DAF0E500B301EC /* crc32-castagnoli.c */; };
+		48EEF08215E2E65B00429FF7 /* crc32-mpeg-2.c in Sources */ = {isa = PBXBuildFile; fileRef = 48C489A415DAF0E500B301EC /* crc32-mpeg-2.c */; };
+		48EEF08315E2E65B00429FF7 /* crc32-posix.c in Sources */ = {isa = PBXBuildFile; fileRef = 48C489A515DAF0E500B301EC /* crc32-posix.c */; };
+		48EEF08415E2E65B00429FF7 /* crc32-xfer.c in Sources */ = {isa = PBXBuildFile; fileRef = 48C489A615DAF0E500B301EC /* crc32-xfer.c */; };
+		48EEF08515E2E65B00429FF7 /* crc32.c in Sources */ = {isa = PBXBuildFile; fileRef = 48C489A715DAF0E500B301EC /* crc32.c */; };
+		48EEF08615E2E65B00429FF7 /* crc64-ecma-182.c in Sources */ = {isa = PBXBuildFile; fileRef = 48C489A815DAF0E500B301EC /* crc64-ecma-182.c */; };
+		48EEF08715E2E65B00429FF7 /* crc8-icode.c in Sources */ = {isa = PBXBuildFile; fileRef = 48C489A915DAF0E500B301EC /* crc8-icode.c */; };
+		48EEF08815E2E65B00429FF7 /* crc8-itu.c in Sources */ = {isa = PBXBuildFile; fileRef = 48C489AA15DAF0E500B301EC /* crc8-itu.c */; };
+		48EEF08915E2E65B00429FF7 /* crc8-rohc.c in Sources */ = {isa = PBXBuildFile; fileRef = 48C489AB15DAF0E500B301EC /* crc8-rohc.c */; };
+		48EEF08A15E2E65B00429FF7 /* crc8-wcdma.c in Sources */ = {isa = PBXBuildFile; fileRef = 48C489AC15DAF0E500B301EC /* crc8-wcdma.c */; };
+		48EEF08B15E2E65B00429FF7 /* crc8.c in Sources */ = {isa = PBXBuildFile; fileRef = 48C489AD15DAF0E500B301EC /* crc8.c */; };
+		48EEF08C15E2E65B00429FF7 /* gen_std_crc_table.c in Sources */ = {isa = PBXBuildFile; fileRef = 48C489AE15DAF0E500B301EC /* gen_std_crc_table.c */; };
+		48EEF08D15E2E65B00429FF7 /* normal_crc.c in Sources */ = {isa = PBXBuildFile; fileRef = 48C489AF15DAF0E500B301EC /* normal_crc.c */; };
+		48EEF08E15E2E65B00429FF7 /* reflect.c in Sources */ = {isa = PBXBuildFile; fileRef = 48C489B015DAF0E500B301EC /* reflect.c */; };
+		48EEF08F15E2E65B00429FF7 /* reverse_crc.c in Sources */ = {isa = PBXBuildFile; fileRef = 48C489B115DAF0E500B301EC /* reverse_crc.c */; };
+		48EEF09015E2E65B00429FF7 /* reverse_poly.c in Sources */ = {isa = PBXBuildFile; fileRef = 48C489B215DAF0E500B301EC /* reverse_poly.c */; };
+		48EEF09515E2EAA600429FF7 /* adler32.c in Sources */ = {isa = PBXBuildFile; fileRef = 48C4899115DAF0E500B301EC /* adler32.c */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXBuildRule section */
+		48AC91F11581514F00BA9060 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			filePatterns = "*.exp-in";
+			fileType = pattern.proxy;
+			isEditable = 1;
+			outputFiles = (
+				"$(BUILT_PRODUCTS_DIR)/commonCrypto_dylib.$(CURRENT_ARCH).exp",
+			);
+			script = "#!/bin/sh\n\nfor file in ${HEADER_SEARCH_PATHS[@]} ; do\nHEADER_SEARCH_OPTIONS=\"${HEADER_SEARCH_OPTIONS} -I${file}\"\ndone\n\nxcrun clang -E -Xpreprocessor -P -x c -arch ${CURRENT_ARCH} ${HEADER_SEARCH_OPTIONS} ${INPUT_FILE_PATH} -o ${BUILT_PRODUCTS_DIR}/commonCrypto_dylib.${CURRENT_ARCH}.exp\n";
+		};
+/* End PBXBuildRule section */
+
+/* Begin PBXContainerItemProxy section */
+		4825E17D158FA3770059CCF8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 48BEE6AC1580085A00A6A1E7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 48BEE6B41580085A00A6A1E7;
+			remoteInfo = CommonCrypto;
+		};
+		4825E17F158FA37F0059CCF8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 48BEE6AC1580085A00A6A1E7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 48BEE6B41580085A00A6A1E7;
+			remoteInfo = CommonCrypto;
+		};
+		4825E181158FA3820059CCF8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 48BEE6AC1580085A00A6A1E7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 48BEE6B41580085A00A6A1E7;
+			remoteInfo = CommonCrypto;
+		};
+		485906C5167170DB00976E15 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 48BEE6AC1580085A00A6A1E7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4825E1BF158FD6100059CCF8;
+			remoteInfo = "Man Pages";
+		};
+		485CB95915E8363D00EC6390 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 48BEE6AC1580085A00A6A1E7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 485CB93315E834B600EC6390;
+			remoteInfo = CommonCrypto_Headers;
+		};
+		485CB95B15E8363D00EC6390 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 48BEE6AC1580085A00A6A1E7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 485CB93C15E834CA00EC6390;
+			remoteInfo = CommonNumerics_Headers;
+		};
+		48B4206215E2D8FE00871A6E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 48BEE6AC1580085A00A6A1E7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 486C539815DDBD5700C8DE50;
+			remoteInfo = cn;
+		};
+		48B4206415E2D90400871A6E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 48BEE6AC1580085A00A6A1E7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 486C539815DDBD5700C8DE50;
+			remoteInfo = cn;
+		};
+		48EEF03B15E2E0B300429FF7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 48BEE6AC1580085A00A6A1E7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 48BEE6B41580085A00A6A1E7;
+			remoteInfo = CommonCrypto;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4825E188158FD5380059CCF8 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 8;
+			dstPath = /usr/local/OpenSourceVersions/;
+			dstSubfolderSpec = 0;
+			files = (
+				4825E1BC158FD5D50059CCF8 /* CommonCrypto.plist in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		4825E1BD158FD5E00059CCF8 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 8;
+			dstPath = /usr/local/OpenSourceLicenses;
+			dstSubfolderSpec = 0;
+			files = (
+				4825E1BE158FD5FD0059CCF8 /* CommonCrypto.txt in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		4825E1C3158FD6150059CCF8 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 8;
+			dstPath = /usr/share/man/man3;
+			dstSubfolderSpec = 0;
+			files = (
+				4825E1C4158FD64D0059CCF8 /* CC_crypto.3cc in CopyFiles */,
+				4825E1C5158FD64D0059CCF8 /* CC_MD2.3cc in CopyFiles */,
+				4825E1C6158FD64D0059CCF8 /* CC_MD2_Final.3cc in CopyFiles */,
+				4825E1C7158FD64D0059CCF8 /* CC_MD2_Init.3cc in CopyFiles */,
+				4825E1C8158FD64D0059CCF8 /* CC_MD2_Update.3cc in CopyFiles */,
+				4825E1C9158FD64D0059CCF8 /* CC_MD4.3cc in CopyFiles */,
+				4825E1CA158FD64D0059CCF8 /* CC_MD4_Final.3cc in CopyFiles */,
+				4825E1CB158FD64D0059CCF8 /* CC_MD4_Init.3cc in CopyFiles */,
+				4825E1CC158FD64D0059CCF8 /* CC_MD4_Update.3cc in CopyFiles */,
+				4825E1CD158FD64D0059CCF8 /* CC_MD5.3cc in CopyFiles */,
+				4825E1CE158FD64D0059CCF8 /* CC_MD5_Final.3cc in CopyFiles */,
+				4825E1CF158FD64D0059CCF8 /* CC_MD5_Init.3cc in CopyFiles */,
+				4825E1D0158FD64D0059CCF8 /* CC_MD5_Update.3cc in CopyFiles */,
+				4825E1D1158FD64D0059CCF8 /* CC_SHA.3cc in CopyFiles */,
+				4825E1D2158FD64D0059CCF8 /* CC_SHA1.3cc in CopyFiles */,
+				4825E1D3158FD64D0059CCF8 /* CC_SHA1_Final.3cc in CopyFiles */,
+				4825E1D4158FD64D0059CCF8 /* CC_SHA1_Init.3cc in CopyFiles */,
+				4825E1D5158FD64D0059CCF8 /* CC_SHA1_Update.3cc in CopyFiles */,
+				4825E1D6158FD64D0059CCF8 /* CC_SHA224.3cc in CopyFiles */,
+				4825E1D7158FD64D0059CCF8 /* CC_SHA224_Final.3cc in CopyFiles */,
+				4825E1D8158FD64D0059CCF8 /* CC_SHA224_Init.3cc in CopyFiles */,
+				4825E1D9158FD64D0059CCF8 /* CC_SHA224_Update.3cc in CopyFiles */,
+				4825E1DA158FD64D0059CCF8 /* CC_SHA256.3cc in CopyFiles */,
+				4825E1DB158FD64D0059CCF8 /* CC_SHA256_Final.3cc in CopyFiles */,
+				4825E1DC158FD64D0059CCF8 /* CC_SHA256_Init.3cc in CopyFiles */,
+				4825E1DD158FD64D0059CCF8 /* CC_SHA256_Update.3cc in CopyFiles */,
+				4825E1DE158FD64D0059CCF8 /* CC_SHA384.3cc in CopyFiles */,
+				4825E1DF158FD64D0059CCF8 /* CC_SHA384_Final.3cc in CopyFiles */,
+				4825E1E0158FD64D0059CCF8 /* CC_SHA384_Init.3cc in CopyFiles */,
+				4825E1E1158FD64D0059CCF8 /* CC_SHA384_Update.3cc in CopyFiles */,
+				4825E1E2158FD64D0059CCF8 /* CC_SHA512.3cc in CopyFiles */,
+				4825E1E3158FD64D0059CCF8 /* CC_SHA512_Final.3cc in CopyFiles */,
+				4825E1E4158FD64D0059CCF8 /* CC_SHA512_Init.3cc in CopyFiles */,
+				4825E1E5158FD64D0059CCF8 /* CC_SHA512_Update.3cc in CopyFiles */,
+				4825E1E6158FD64D0059CCF8 /* CCCrypt.3cc in CopyFiles */,
+				4825E1E7158FD64D0059CCF8 /* CCCryptor.3cc in CopyFiles */,
+				4825E1E8158FD64D0059CCF8 /* CCCryptorCreate.3cc in CopyFiles */,
+				4825E1E9158FD64D0059CCF8 /* CCCryptorFinal.3cc in CopyFiles */,
+				4825E1EA158FD64D0059CCF8 /* CCCryptorGetOutputLength.3cc in CopyFiles */,
+				4825E1EB158FD64D0059CCF8 /* CCCryptorRelease.3cc in CopyFiles */,
+				4825E1EC158FD64D0059CCF8 /* CCCryptorReset.3cc in CopyFiles */,
+				4825E1ED158FD64D0059CCF8 /* CCCryptorUpdate.3cc in CopyFiles */,
+				4825E1EE158FD64D0059CCF8 /* CCHmac.3cc in CopyFiles */,
+				4825E1EF158FD64D0059CCF8 /* CCHmacFinal.3cc in CopyFiles */,
+				4825E1F0158FD64D0059CCF8 /* CCHmacInit.3cc in CopyFiles */,
+				4825E1F1158FD64D0059CCF8 /* CCHmacUpdate.3cc in CopyFiles */,
+				4825E1F2158FD64D0059CCF8 /* CCryptorCreateFromData.3cc in CopyFiles */,
+				4825E1F3158FD64D0059CCF8 /* Common Crypto.3cc in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		486C539715DDBD5700C8DE50 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+				48B4205B15E2BB5800871A6E /* cn.1 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		4825E18A158FD5AB0059CCF8 /* CC_crypto.3cc */ = {isa = PBXFileReference; lastKnownFileType = text; path = CC_crypto.3cc; sourceTree = "<group>"; };
+		4825E18B158FD5AB0059CCF8 /* CC_MD2.3cc */ = {isa = PBXFileReference; lastKnownFileType = text; path = CC_MD2.3cc; sourceTree = "<group>"; };
+		4825E18C158FD5AB0059CCF8 /* CC_MD2_Final.3cc */ = {isa = PBXFileReference; lastKnownFileType = text; path = CC_MD2_Final.3cc; sourceTree = "<group>"; };
+		4825E18D158FD5AB0059CCF8 /* CC_MD2_Init.3cc */ = {isa = PBXFileReference; lastKnownFileType = text; path = CC_MD2_Init.3cc; sourceTree = "<group>"; };
+		4825E18E158FD5AB0059CCF8 /* CC_MD2_Update.3cc */ = {isa = PBXFileReference; lastKnownFileType = text; path = CC_MD2_Update.3cc; sourceTree = "<group>"; };
+		4825E18F158FD5AB0059CCF8 /* CC_MD4.3cc */ = {isa = PBXFileReference; lastKnownFileType = text; path = CC_MD4.3cc; sourceTree = "<group>"; };
+		4825E190158FD5AB0059CCF8 /* CC_MD4_Final.3cc */ = {isa = PBXFileReference; lastKnownFileType = text; path = CC_MD4_Final.3cc; sourceTree = "<group>"; };
+		4825E191158FD5AB0059CCF8 /* CC_MD4_Init.3cc */ = {isa = PBXFileReference; lastKnownFileType = text; path = CC_MD4_Init.3cc; sourceTree = "<group>"; };
+		4825E192158FD5AB0059CCF8 /* CC_MD4_Update.3cc */ = {isa = PBXFileReference; lastKnownFileType = text; path = CC_MD4_Update.3cc; sourceTree = "<group>"; };
+		4825E193158FD5AB0059CCF8 /* CC_MD5.3cc */ = {isa = PBXFileReference; lastKnownFileType = text; path = CC_MD5.3cc; sourceTree = "<group>"; };
+		4825E194158FD5AB0059CCF8 /* CC_MD5_Final.3cc */ = {isa = PBXFileReference; lastKnownFileType = text; path = CC_MD5_Final.3cc; sourceTree = "<group>"; };
+		4825E195158FD5AB0059CCF8 /* CC_MD5_Init.3cc */ = {isa = PBXFileReference; lastKnownFileType = text; path = CC_MD5_Init.3cc; sourceTree = "<group>"; };
+		4825E196158FD5AB0059CCF8 /* CC_MD5_Update.3cc */ = {isa = PBXFileReference; lastKnownFileType = text; path = CC_MD5_Update.3cc; sourceTree = "<group>"; };
+		4825E197158FD5AB0059CCF8 /* CC_SHA.3cc */ = {isa = PBXFileReference; lastKnownFileType = text; path = CC_SHA.3cc; sourceTree = "<group>"; };
+		4825E198158FD5AB0059CCF8 /* CC_SHA1.3cc */ = {isa = PBXFileReference; lastKnownFileType = text; path = CC_SHA1.3cc; sourceTree = "<group>"; };
+		4825E199158FD5AB0059CCF8 /* CC_SHA1_Final.3cc */ = {isa = PBXFileReference; lastKnownFileType = text; path = CC_SHA1_Final.3cc; sourceTree = "<group>"; };
+		4825E19A158FD5AB0059CCF8 /* CC_SHA1_Init.3cc */ = {isa = PBXFileReference; lastKnownFileType = text; path = CC_SHA1_Init.3cc; sourceTree = "<group>"; };
+		4825E19B158FD5AB0059CCF8 /* CC_SHA1_Update.3cc */ = {isa = PBXFileReference; lastKnownFileType = text; path = CC_SHA1_Update.3cc; sourceTree = "<group>"; };
+		4825E19C158FD5AB0059CCF8 /* CC_SHA224.3cc */ = {isa = PBXFileReference; lastKnownFileType = text; path = CC_SHA224.3cc; sourceTree = "<group>"; };
+		4825E19D158FD5AB0059CCF8 /* CC_SHA224_Final.3cc */ = {isa = PBXFileReference; lastKnownFileType = text; path = CC_SHA224_Final.3cc; sourceTree = "<group>"; };
+		4825E19E158FD5AB0059CCF8 /* CC_SHA224_Init.3cc */ = {isa = PBXFileReference; lastKnownFileType = text; path = CC_SHA224_Init.3cc; sourceTree = "<group>"; };
+		4825E19F158FD5AB0059CCF8 /* CC_SHA224_Update.3cc */ = {isa = PBXFileReference; lastKnownFileType = text; path = CC_SHA224_Update.3cc; sourceTree = "<group>"; };
+		4825E1A0158FD5AB0059CCF8 /* CC_SHA256.3cc */ = {isa = PBXFileReference; lastKnownFileType = text; path = CC_SHA256.3cc; sourceTree = "<group>"; };
+		4825E1A1158FD5AB0059CCF8 /* CC_SHA256_Final.3cc */ = {isa = PBXFileReference; lastKnownFileType = text; path = CC_SHA256_Final.3cc; sourceTree = "<group>"; };
+		4825E1A2158FD5AB0059CCF8 /* CC_SHA256_Init.3cc */ = {isa = PBXFileReference; lastKnownFileType = text; path = CC_SHA256_Init.3cc; sourceTree = "<group>"; };
+		4825E1A3158FD5AB0059CCF8 /* CC_SHA256_Update.3cc */ = {isa = PBXFileReference; lastKnownFileType = text; path = CC_SHA256_Update.3cc; sourceTree = "<group>"; };
+		4825E1A4158FD5AB0059CCF8 /* CC_SHA384.3cc */ = {isa = PBXFileReference; lastKnownFileType = text; path = CC_SHA384.3cc; sourceTree = "<group>"; };
+		4825E1A5158FD5AB0059CCF8 /* CC_SHA384_Final.3cc */ = {isa = PBXFileReference; lastKnownFileType = text; path = CC_SHA384_Final.3cc; sourceTree = "<group>"; };
+		4825E1A6158FD5AB0059CCF8 /* CC_SHA384_Init.3cc */ = {isa = PBXFileReference; lastKnownFileType = text; path = CC_SHA384_Init.3cc; sourceTree = "<group>"; };
+		4825E1A7158FD5AB0059CCF8 /* CC_SHA384_Update.3cc */ = {isa = PBXFileReference; lastKnownFileType = text; path = CC_SHA384_Update.3cc; sourceTree = "<group>"; };
+		4825E1A8158FD5AB0059CCF8 /* CC_SHA512.3cc */ = {isa = PBXFileReference; lastKnownFileType = text; path = CC_SHA512.3cc; sourceTree = "<group>"; };
+		4825E1A9158FD5AB0059CCF8 /* CC_SHA512_Final.3cc */ = {isa = PBXFileReference; lastKnownFileType = text; path = CC_SHA512_Final.3cc; sourceTree = "<group>"; };
+		4825E1AA158FD5AB0059CCF8 /* CC_SHA512_Init.3cc */ = {isa = PBXFileReference; lastKnownFileType = text; path = CC_SHA512_Init.3cc; sourceTree = "<group>"; };
+		4825E1AB158FD5AB0059CCF8 /* CC_SHA512_Update.3cc */ = {isa = PBXFileReference; lastKnownFileType = text; path = CC_SHA512_Update.3cc; sourceTree = "<group>"; };
+		4825E1AC158FD5AB0059CCF8 /* CCCrypt.3cc */ = {isa = PBXFileReference; lastKnownFileType = text; path = CCCrypt.3cc; sourceTree = "<group>"; };
+		4825E1AD158FD5AB0059CCF8 /* CCCryptor.3cc */ = {isa = PBXFileReference; lastKnownFileType = text; path = CCCryptor.3cc; sourceTree = "<group>"; };
+		4825E1AE158FD5AB0059CCF8 /* CCCryptorCreate.3cc */ = {isa = PBXFileReference; lastKnownFileType = text; path = CCCryptorCreate.3cc; sourceTree = "<group>"; };
+		4825E1AF158FD5AB0059CCF8 /* CCCryptorFinal.3cc */ = {isa = PBXFileReference; lastKnownFileType = text; path = CCCryptorFinal.3cc; sourceTree = "<group>"; };
+		4825E1B0158FD5AB0059CCF8 /* CCCryptorGetOutputLength.3cc */ = {isa = PBXFileReference; lastKnownFileType = text; path = CCCryptorGetOutputLength.3cc; sourceTree = "<group>"; };
+		4825E1B1158FD5AB0059CCF8 /* CCCryptorRelease.3cc */ = {isa = PBXFileReference; lastKnownFileType = text; path = CCCryptorRelease.3cc; sourceTree = "<group>"; };
+		4825E1B2158FD5AB0059CCF8 /* CCCryptorReset.3cc */ = {isa = PBXFileReference; lastKnownFileType = text; path = CCCryptorReset.3cc; sourceTree = "<group>"; };
+		4825E1B3158FD5AB0059CCF8 /* CCCryptorUpdate.3cc */ = {isa = PBXFileReference; lastKnownFileType = text; path = CCCryptorUpdate.3cc; sourceTree = "<group>"; };
+		4825E1B4158FD5AB0059CCF8 /* CCHmac.3cc */ = {isa = PBXFileReference; lastKnownFileType = text; path = CCHmac.3cc; sourceTree = "<group>"; };
+		4825E1B5158FD5AB0059CCF8 /* CCHmacFinal.3cc */ = {isa = PBXFileReference; lastKnownFileType = text; path = CCHmacFinal.3cc; sourceTree = "<group>"; };
+		4825E1B6158FD5AB0059CCF8 /* CCHmacInit.3cc */ = {isa = PBXFileReference; lastKnownFileType = text; path = CCHmacInit.3cc; sourceTree = "<group>"; };
+		4825E1B7158FD5AB0059CCF8 /* CCHmacUpdate.3cc */ = {isa = PBXFileReference; lastKnownFileType = text; path = CCHmacUpdate.3cc; sourceTree = "<group>"; };
+		4825E1B8158FD5AB0059CCF8 /* CCryptorCreateFromData.3cc */ = {isa = PBXFileReference; lastKnownFileType = text; path = CCryptorCreateFromData.3cc; sourceTree = "<group>"; };
+		4825E1B9158FD5AB0059CCF8 /* Common Crypto.3cc */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Common Crypto.3cc"; sourceTree = "<group>"; };
+		4825E1BA158FD5AB0059CCF8 /* CommonCrypto.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = CommonCrypto.plist; sourceTree = "<group>"; };
+		4825E1BB158FD5AB0059CCF8 /* CommonCrypto.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = CommonCrypto.txt; sourceTree = "<group>"; };
+		482B9DB415869BF500F49463 /* ccGlobals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ccGlobals.h; sourceTree = "<group>"; };
+		482B9DB71586A8E700F49463 /* CommonRandomPriv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonRandomPriv.h; sourceTree = "<group>"; };
+		482B9DE01586B50F00F49463 /* CCCryptorTestFuncs.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CCCryptorTestFuncs.c; sourceTree = "<group>"; };
+		482B9DE11586B50F00F49463 /* CCCryptorTestFuncs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCCryptorTestFuncs.h; sourceTree = "<group>"; };
+		482B9DE31586B50F00F49463 /* CommonBigDigest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CommonBigDigest.c; sourceTree = "<group>"; };
+		482B9DE41586B50F00F49463 /* CommonBigNum.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CommonBigNum.c; sourceTree = "<group>"; };
+		482B9DE51586B50F00F49463 /* CommonCMac.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CommonCMac.c; sourceTree = "<group>"; };
+		482B9DE61586B50F00F49463 /* CommonCryptoCTSPadding.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CommonCryptoCTSPadding.c; sourceTree = "<group>"; };
+		482B9DE71586B50F00F49463 /* CommonCryptoReset.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CommonCryptoReset.c; sourceTree = "<group>"; };
+		482B9DE81586B50F00F49463 /* CommonCryptoSymCBC.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CommonCryptoSymCBC.c; sourceTree = "<group>"; };
+		482B9DE91586B50F00F49463 /* CommonCryptoSymCFB.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CommonCryptoSymCFB.c; sourceTree = "<group>"; };
+		482B9DEA1586B50F00F49463 /* CommonCryptoSymCTR.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CommonCryptoSymCTR.c; sourceTree = "<group>"; };
+		482B9DEB1586B50F00F49463 /* CommonCryptoSymGCM.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CommonCryptoSymGCM.c; sourceTree = "<group>"; };
+		482B9DEC1586B50F00F49463 /* CommonCryptoSymmetricWrap.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CommonCryptoSymmetricWrap.c; sourceTree = "<group>"; };
+		482B9DED1586B50F00F49463 /* CommonCryptoSymOFB.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CommonCryptoSymOFB.c; sourceTree = "<group>"; };
+		482B9DEE1586B50F00F49463 /* CommonCryptoSymOffset.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CommonCryptoSymOffset.c; sourceTree = "<group>"; };
+		482B9DEF1586B50F00F49463 /* CommonCryptoSymRC2.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CommonCryptoSymRC2.c; sourceTree = "<group>"; };
+		482B9DF01586B50F00F49463 /* CommonCryptoSymRegression.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CommonCryptoSymRegression.c; sourceTree = "<group>"; };
+		482B9DF11586B50F00F49463 /* CommonCryptoSymXTS.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CommonCryptoSymXTS.c; sourceTree = "<group>"; };
+		482B9DF21586B50F00F49463 /* CommonCryptoSymZeroLength.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CommonCryptoSymZeroLength.c; sourceTree = "<group>"; };
+		482B9DF31586B50F00F49463 /* CommonDHtest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CommonDHtest.c; sourceTree = "<group>"; };
+		482B9DF41586B50F00F49463 /* CommonDigest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CommonDigest.c; sourceTree = "<group>"; };
+		482B9DF51586B50F00F49463 /* CommonEC.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CommonEC.c; sourceTree = "<group>"; };
+		482B9DF61586B50F00F49463 /* CommonHMacClone.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CommonHMacClone.c; sourceTree = "<group>"; };
+		482B9DF71586B50F00F49463 /* CommonRandom.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CommonRandom.c; sourceTree = "<group>"; };
+		482B9DF81586B50F00F49463 /* CommonRSA.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CommonRSA.c; sourceTree = "<group>"; };
+		482B9DF91586B50F00F49463 /* CryptorPadFailure.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CryptorPadFailure.c; sourceTree = "<group>"; };
+		482B9DFE1586B50F00F49463 /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = main.c; path = test/main.c; sourceTree = SOURCE_ROOT; };
+		482B9E1B1586B52200F49463 /* run_tests.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = run_tests.sh; sourceTree = "<group>"; };
+		482B9E1C1586B52200F49463 /* testcpp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testcpp.h; sourceTree = "<group>"; };
+		482B9E1D1586B52200F49463 /* testenv.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = testenv.c; sourceTree = "<group>"; };
+		482B9E1E1586B52200F49463 /* testenv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testenv.h; sourceTree = "<group>"; };
+		482B9E1F1586B52200F49463 /* testlist.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = testlist.c; sourceTree = "<group>"; };
+		482B9E201586B52200F49463 /* testlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testlist.h; sourceTree = "<group>"; };
+		482B9E211586B52200F49463 /* testlistInc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testlistInc.h; sourceTree = "<group>"; };
+		482B9E221586B52200F49463 /* testmore.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = testmore.c; sourceTree = "<group>"; };
+		482B9E231586B52200F49463 /* testmore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testmore.h; sourceTree = "<group>"; };
+		482B9E251586B52200F49463 /* capabilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = capabilities.h; sourceTree = "<group>"; };
+		482B9E261586B52200F49463 /* testbyteBuffer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = testbyteBuffer.c; sourceTree = "<group>"; };
+		482B9E271586B52200F49463 /* testbyteBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testbyteBuffer.h; sourceTree = "<group>"; };
+		4836297415893D0C0064232C /* CommonCryptorRC4.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CommonCryptorRC4.c; sourceTree = "<group>"; };
+		4836297715893DE20064232C /* CommonCryptorDES.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CommonCryptorDES.c; sourceTree = "<group>"; };
+		484C048A15DAF870002E8891 /* CommonCRC.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CommonCRC.c; sourceTree = "<group>"; };
+		485029B915D5C2710053166A /* CommonCryptoBlowfish.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CommonCryptoBlowfish.c; sourceTree = "<group>"; };
+		485CB93415E834B600EC6390 /* CommonCrypto.empty.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = CommonCrypto.empty.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		485CB93D15E834CA00EC6390 /* libCommonNumerics.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCommonNumerics.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		485CB94115E8350E00EC6390 /* dummy.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = dummy.c; sourceTree = "<group>"; };
+		486C539215DDBD2800C8DE50 /* cn.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = cn.1; sourceTree = "<group>"; };
+		486C539315DDBD2800C8DE50 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		486C539915DDBD5700C8DE50 /* cn */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = cn; sourceTree = BUILT_PRODUCTS_DIR; };
+		4873482415A22C0A00E6EF15 /* CommonCryptoOutputLength.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CommonCryptoOutputLength.c; sourceTree = "<group>"; };
+		48AC91E51581508C00BA9060 /* exports.exp-in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "exports.exp-in"; sourceTree = "<group>"; };
+		48AC91F61581554800BA9060 /* CCRegression */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CCRegression; sourceTree = BUILT_PRODUCTS_DIR; };
+		48BEE6B51580085A00A6A1E7 /* libcommonCrypto.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libcommonCrypto.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		48BEE6BD15800C1800A6A1E7 /* aes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aes.h; sourceTree = "<group>"; };
+		48BEE6BE15800C1800A6A1E7 /* CommonBigNum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonBigNum.h; sourceTree = "<group>"; };
+		48BEE6BF15800C1800A6A1E7 /* CommonCMACSPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonCMACSPI.h; sourceTree = "<group>"; };
+		48BEE6C015800C1800A6A1E7 /* CommonCrypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonCrypto.h; sourceTree = "<group>"; };
+		48BEE6C115800C1800A6A1E7 /* CommonCryptoPriv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonCryptoPriv.h; sourceTree = "<group>"; };
+		48BEE6C215800C1800A6A1E7 /* CommonCryptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonCryptor.h; sourceTree = "<group>"; };
+		48BEE6C315800C1800A6A1E7 /* CommonCryptorSPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonCryptorSPI.h; sourceTree = "<group>"; };
+		48BEE6C415800C1800A6A1E7 /* CommonDH.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonDH.h; sourceTree = "<group>"; };
+		48BEE6C515800C1800A6A1E7 /* CommonDigest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonDigest.h; sourceTree = "<group>"; };
+		48BEE6C615800C1800A6A1E7 /* CommonDigestSPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonDigestSPI.h; sourceTree = "<group>"; };
+		48BEE6C715800C1800A6A1E7 /* CommonECCryptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonECCryptor.h; sourceTree = "<group>"; };
+		48BEE6C815800C1800A6A1E7 /* CommonHMAC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonHMAC.h; sourceTree = "<group>"; };
+		48BEE6C915800C1800A6A1E7 /* CommonHMacSPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonHMacSPI.h; sourceTree = "<group>"; };
+		48BEE6CA15800C1800A6A1E7 /* CommonKeyDerivation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonKeyDerivation.h; sourceTree = "<group>"; };
+		48BEE6CB15800C1800A6A1E7 /* CommonRandomSPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonRandomSPI.h; sourceTree = "<group>"; };
+		48BEE6CC15800C1800A6A1E7 /* CommonRSACryptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonRSACryptor.h; sourceTree = "<group>"; };
+		48BEE6CD15800C1800A6A1E7 /* CommonSymmetricKeywrap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonSymmetricKeywrap.h; sourceTree = "<group>"; };
+		48BEE6CE15800C1800A6A1E7 /* lionCompat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lionCompat.h; sourceTree = "<group>"; };
+		48BEE6E415800C2600A6A1E7 /* ccdebug.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ccdebug.c; sourceTree = "<group>"; };
+		48BEE6E515800C2600A6A1E7 /* ccdebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ccdebug.h; sourceTree = "<group>"; };
+		48BEE6E615800C2600A6A1E7 /* ccErrors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ccErrors.h; sourceTree = "<group>"; };
+		48BEE6E715800C2600A6A1E7 /* ccMemory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ccMemory.h; sourceTree = "<group>"; };
+		48BEE6E815800C2600A6A1E7 /* CommonBigNum.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CommonBigNum.c; sourceTree = "<group>"; };
+		48BEE6E915800C2600A6A1E7 /* CommonBigNumPriv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonBigNumPriv.h; sourceTree = "<group>"; };
+		48BEE6EA15800C2600A6A1E7 /* CommonCMAC.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CommonCMAC.c; sourceTree = "<group>"; };
+		48BEE6EB15800C2600A6A1E7 /* CommonCryptoAESShoefly.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CommonCryptoAESShoefly.c; sourceTree = "<group>"; };
+		48BEE6EC15800C2600A6A1E7 /* CommonCryptoCASTShoefly.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CommonCryptoCASTShoefly.c; sourceTree = "<group>"; };
+		48BEE6ED15800C2600A6A1E7 /* CommonCryptor.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CommonCryptor.c; sourceTree = "<group>"; };
+		48BEE6EE15800C2600A6A1E7 /* CommonCryptorPriv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonCryptorPriv.h; sourceTree = "<group>"; };
+		48BEE6EF15800C2600A6A1E7 /* CommonDH.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CommonDH.c; sourceTree = "<group>"; };
+		48BEE6F015800C2600A6A1E7 /* CommonDigest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CommonDigest.c; sourceTree = "<group>"; };
+		48BEE6F115800C2600A6A1E7 /* CommonDigestPriv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonDigestPriv.h; sourceTree = "<group>"; };
+		48BEE6F215800C2600A6A1E7 /* CommonECCryptor.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CommonECCryptor.c; sourceTree = "<group>"; };
+		48BEE6F315800C2600A6A1E7 /* CommonCryptorGCM.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CommonCryptorGCM.c; sourceTree = "<group>"; };
+		48BEE6F415800C2600A6A1E7 /* CommonHMAC.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CommonHMAC.c; sourceTree = "<group>"; };
+		48BEE6F515800C2600A6A1E7 /* CommonKeyDerivation.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CommonKeyDerivation.c; sourceTree = "<group>"; };
+		48BEE6F615800C2600A6A1E7 /* CommonRandom.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CommonRandom.c; sourceTree = "<group>"; };
+		48BEE6F715800C2600A6A1E7 /* CommonRSACryptor.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CommonRSACryptor.c; sourceTree = "<group>"; };
+		48BEE6F815800C2600A6A1E7 /* CommonSymmetricKeywrap.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CommonSymmetricKeywrap.c; sourceTree = "<group>"; };
+		48BEE6F915800C2600A6A1E7 /* corecryptoSymmetricBridge.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = corecryptoSymmetricBridge.c; sourceTree = "<group>"; };
+		48BEE6FA15800C2600A6A1E7 /* corecryptoSymmetricBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = corecryptoSymmetricBridge.h; sourceTree = "<group>"; };
+		48BEE77E1580112E00A6A1E7 /* libcorecrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcorecrypto.dylib; path = ../../../../../../usr/lib/system/libcorecrypto.dylib; sourceTree = "<group>"; };
+		48C4899115DAF0E500B301EC /* adler32.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = adler32.c; sourceTree = "<group>"; };
+		48C4899315DAF0E500B301EC /* ccMemory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ccMemory.h; sourceTree = "<group>"; };
+		48C4899415DAF0E500B301EC /* cn_globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cn_globals.h; sourceTree = "<group>"; };
+		48C4899515DAF0E500B301EC /* CommonCRC.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CommonCRC.c; sourceTree = "<group>"; };
+		48C4899615DAF0E500B301EC /* crc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crc.h; sourceTree = "<group>"; };
+		48C4899715DAF0E500B301EC /* crc16-a.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "crc16-a.c"; sourceTree = "<group>"; };
+		48C4899815DAF0E500B301EC /* crc16-b.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "crc16-b.c"; sourceTree = "<group>"; };
+		48C4899915DAF0E500B301EC /* crc16-ccitt-false.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "crc16-ccitt-false.c"; sourceTree = "<group>"; };
+		48C4899A15DAF0E500B301EC /* crc16-ccitt-true.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "crc16-ccitt-true.c"; sourceTree = "<group>"; };
+		48C4899B15DAF0E500B301EC /* crc16-dect-r.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "crc16-dect-r.c"; sourceTree = "<group>"; };
+		48C4899C15DAF0E500B301EC /* crc16-dect-x.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "crc16-dect-x.c"; sourceTree = "<group>"; };
+		48C4899D15DAF0E500B301EC /* crc16-icode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "crc16-icode.c"; sourceTree = "<group>"; };
+		48C4899E15DAF0E500B301EC /* crc16-usb.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "crc16-usb.c"; sourceTree = "<group>"; };
+		48C4899F15DAF0E500B301EC /* crc16-verifone.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "crc16-verifone.c"; sourceTree = "<group>"; };
+		48C489A015DAF0E500B301EC /* crc16-xmodem.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "crc16-xmodem.c"; sourceTree = "<group>"; };
+		48C489A115DAF0E500B301EC /* crc16.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = crc16.c; sourceTree = "<group>"; };
+		48C489A215DAF0E500B301EC /* crc32-bzip2.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "crc32-bzip2.c"; sourceTree = "<group>"; };
+		48C489A315DAF0E500B301EC /* crc32-castagnoli.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "crc32-castagnoli.c"; sourceTree = "<group>"; };
+		48C489A415DAF0E500B301EC /* crc32-mpeg-2.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "crc32-mpeg-2.c"; sourceTree = "<group>"; };
+		48C489A515DAF0E500B301EC /* crc32-posix.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "crc32-posix.c"; sourceTree = "<group>"; };
+		48C489A615DAF0E500B301EC /* crc32-xfer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "crc32-xfer.c"; sourceTree = "<group>"; };
+		48C489A715DAF0E500B301EC /* crc32.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = crc32.c; sourceTree = "<group>"; };
+		48C489A815DAF0E500B301EC /* crc64-ecma-182.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "crc64-ecma-182.c"; sourceTree = "<group>"; };
+		48C489A915DAF0E500B301EC /* crc8-icode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "crc8-icode.c"; sourceTree = "<group>"; };
+		48C489AA15DAF0E500B301EC /* crc8-itu.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "crc8-itu.c"; sourceTree = "<group>"; };
+		48C489AB15DAF0E500B301EC /* crc8-rohc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "crc8-rohc.c"; sourceTree = "<group>"; };
+		48C489AC15DAF0E500B301EC /* crc8-wcdma.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "crc8-wcdma.c"; sourceTree = "<group>"; };
+		48C489AD15DAF0E500B301EC /* crc8.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = crc8.c; sourceTree = "<group>"; };
+		48C489AE15DAF0E500B301EC /* gen_std_crc_table.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = gen_std_crc_table.c; sourceTree = "<group>"; };
+		48C489AF15DAF0E500B301EC /* normal_crc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = normal_crc.c; sourceTree = "<group>"; };
+		48C489B015DAF0E500B301EC /* reflect.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = reflect.c; sourceTree = "<group>"; };
+		48C489B115DAF0E500B301EC /* reverse_crc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = reverse_crc.c; sourceTree = "<group>"; };
+		48C489B215DAF0E500B301EC /* reverse_poly.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = reverse_poly.c; sourceTree = "<group>"; };
+		48C489D615DAF10400B301EC /* CommonCRC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonCRC.h; sourceTree = "<group>"; };
+		48C489D715DAF10400B301EC /* CommonNumerics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonNumerics.h; sourceTree = "<group>"; };
+		48E5034D15DDAC0900045A4B /* basexx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = basexx.h; sourceTree = "<group>"; };
+		48E5034E15DDAC0900045A4B /* CommonBaseXX.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CommonBaseXX.c; sourceTree = "<group>"; };
+		48E5034F15DDAC0900045A4B /* CommonBuffering.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CommonBuffering.c; sourceTree = "<group>"; };
+		48E5035015DDAC0900045A4B /* CommonBufferingPriv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonBufferingPriv.h; sourceTree = "<group>"; };
+		48E5035515DDAC1D00045A4B /* CommonBaseXX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonBaseXX.h; sourceTree = "<group>"; };
+		48E5035815DDB99900045A4B /* CommonBaseEncoding.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CommonBaseEncoding.c; sourceTree = "<group>"; };
+		48ED815C15D308A900E40487 /* CommonCryptorWithData.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CommonCryptorWithData.c; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		485CB93115E834B600EC6390 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		485CB93A15E834CA00EC6390 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		486C539615DDBD5700C8DE50 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		48AC91F31581554800BA9060 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		48BEE6B21580085A00A6A1E7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4825E189158FD5AB0059CCF8 /* doc */ = {
+			isa = PBXGroup;
+			children = (
+				4825E18A158FD5AB0059CCF8 /* CC_crypto.3cc */,
+				4825E18B158FD5AB0059CCF8 /* CC_MD2.3cc */,
+				4825E18C158FD5AB0059CCF8 /* CC_MD2_Final.3cc */,
+				4825E18D158FD5AB0059CCF8 /* CC_MD2_Init.3cc */,
+				4825E18E158FD5AB0059CCF8 /* CC_MD2_Update.3cc */,
+				4825E18F158FD5AB0059CCF8 /* CC_MD4.3cc */,
+				4825E190158FD5AB0059CCF8 /* CC_MD4_Final.3cc */,
+				4825E191158FD5AB0059CCF8 /* CC_MD4_Init.3cc */,
+				4825E192158FD5AB0059CCF8 /* CC_MD4_Update.3cc */,
+				4825E193158FD5AB0059CCF8 /* CC_MD5.3cc */,
+				4825E194158FD5AB0059CCF8 /* CC_MD5_Final.3cc */,
+				4825E195158FD5AB0059CCF8 /* CC_MD5_Init.3cc */,
+				4825E196158FD5AB0059CCF8 /* CC_MD5_Update.3cc */,
+				4825E197158FD5AB0059CCF8 /* CC_SHA.3cc */,
+				4825E198158FD5AB0059CCF8 /* CC_SHA1.3cc */,
+				4825E199158FD5AB0059CCF8 /* CC_SHA1_Final.3cc */,
+				4825E19A158FD5AB0059CCF8 /* CC_SHA1_Init.3cc */,
+				4825E19B158FD5AB0059CCF8 /* CC_SHA1_Update.3cc */,
+				4825E19C158FD5AB0059CCF8 /* CC_SHA224.3cc */,
+				4825E19D158FD5AB0059CCF8 /* CC_SHA224_Final.3cc */,
+				4825E19E158FD5AB0059CCF8 /* CC_SHA224_Init.3cc */,
+				4825E19F158FD5AB0059CCF8 /* CC_SHA224_Update.3cc */,
+				4825E1A0158FD5AB0059CCF8 /* CC_SHA256.3cc */,
+				4825E1A1158FD5AB0059CCF8 /* CC_SHA256_Final.3cc */,
+				4825E1A2158FD5AB0059CCF8 /* CC_SHA256_Init.3cc */,
+				4825E1A3158FD5AB0059CCF8 /* CC_SHA256_Update.3cc */,
+				4825E1A4158FD5AB0059CCF8 /* CC_SHA384.3cc */,
+				4825E1A5158FD5AB0059CCF8 /* CC_SHA384_Final.3cc */,
+				4825E1A6158FD5AB0059CCF8 /* CC_SHA384_Init.3cc */,
+				4825E1A7158FD5AB0059CCF8 /* CC_SHA384_Update.3cc */,
+				4825E1A8158FD5AB0059CCF8 /* CC_SHA512.3cc */,
+				4825E1A9158FD5AB0059CCF8 /* CC_SHA512_Final.3cc */,
+				4825E1AA158FD5AB0059CCF8 /* CC_SHA512_Init.3cc */,
+				4825E1AB158FD5AB0059CCF8 /* CC_SHA512_Update.3cc */,
+				4825E1AC158FD5AB0059CCF8 /* CCCrypt.3cc */,
+				4825E1AD158FD5AB0059CCF8 /* CCCryptor.3cc */,
+				4825E1AE158FD5AB0059CCF8 /* CCCryptorCreate.3cc */,
+				4825E1AF158FD5AB0059CCF8 /* CCCryptorFinal.3cc */,
+				4825E1B0158FD5AB0059CCF8 /* CCCryptorGetOutputLength.3cc */,
+				4825E1B1158FD5AB0059CCF8 /* CCCryptorRelease.3cc */,
+				4825E1B2158FD5AB0059CCF8 /* CCCryptorReset.3cc */,
+				4825E1B3158FD5AB0059CCF8 /* CCCryptorUpdate.3cc */,
+				4825E1B4158FD5AB0059CCF8 /* CCHmac.3cc */,
+				4825E1B5158FD5AB0059CCF8 /* CCHmacFinal.3cc */,
+				4825E1B6158FD5AB0059CCF8 /* CCHmacInit.3cc */,
+				4825E1B7158FD5AB0059CCF8 /* CCHmacUpdate.3cc */,
+				4825E1B8158FD5AB0059CCF8 /* CCryptorCreateFromData.3cc */,
+				4825E1B9158FD5AB0059CCF8 /* Common Crypto.3cc */,
+				4825E1BA158FD5AB0059CCF8 /* CommonCrypto.plist */,
+				4825E1BB158FD5AB0059CCF8 /* CommonCrypto.txt */,
+			);
+			path = doc;
+			sourceTree = "<group>";
+		};
+		482B9DDF1586B50F00F49463 /* CommonCrypto */ = {
+			isa = PBXGroup;
+			children = (
+				482B9DE01586B50F00F49463 /* CCCryptorTestFuncs.c */,
+				482B9DE11586B50F00F49463 /* CCCryptorTestFuncs.h */,
+				482B9DE31586B50F00F49463 /* CommonBigDigest.c */,
+				482B9DE41586B50F00F49463 /* CommonBigNum.c */,
+				482B9DE51586B50F00F49463 /* CommonCMac.c */,
+				482B9DE61586B50F00F49463 /* CommonCryptoCTSPadding.c */,
+				482B9DE71586B50F00F49463 /* CommonCryptoReset.c */,
+				482B9DE81586B50F00F49463 /* CommonCryptoSymCBC.c */,
+				482B9DE91586B50F00F49463 /* CommonCryptoSymCFB.c */,
+				482B9DEA1586B50F00F49463 /* CommonCryptoSymCTR.c */,
+				482B9DEB1586B50F00F49463 /* CommonCryptoSymGCM.c */,
+				482B9DEC1586B50F00F49463 /* CommonCryptoSymmetricWrap.c */,
+				482B9DED1586B50F00F49463 /* CommonCryptoSymOFB.c */,
+				482B9DEE1586B50F00F49463 /* CommonCryptoSymOffset.c */,
+				482B9DEF1586B50F00F49463 /* CommonCryptoSymRC2.c */,
+				482B9DF01586B50F00F49463 /* CommonCryptoSymRegression.c */,
+				482B9DF11586B50F00F49463 /* CommonCryptoSymXTS.c */,
+				482B9DF21586B50F00F49463 /* CommonCryptoSymZeroLength.c */,
+				4873482415A22C0A00E6EF15 /* CommonCryptoOutputLength.c */,
+				482B9DF31586B50F00F49463 /* CommonDHtest.c */,
+				482B9DF41586B50F00F49463 /* CommonDigest.c */,
+				482B9DF51586B50F00F49463 /* CommonEC.c */,
+				482B9DF61586B50F00F49463 /* CommonHMacClone.c */,
+				482B9DF71586B50F00F49463 /* CommonRandom.c */,
+				482B9DF81586B50F00F49463 /* CommonRSA.c */,
+				482B9DF91586B50F00F49463 /* CryptorPadFailure.c */,
+				48ED815C15D308A900E40487 /* CommonCryptorWithData.c */,
+				485029B915D5C2710053166A /* CommonCryptoBlowfish.c */,
+			);
+			name = CommonCrypto;
+			path = test/CommonCrypto;
+			sourceTree = SOURCE_ROOT;
+		};
+		482B9E191586B52200F49463 /* test */ = {
+			isa = PBXGroup;
+			children = (
+				482B9E1B1586B52200F49463 /* run_tests.sh */,
+				482B9E1C1586B52200F49463 /* testcpp.h */,
+				482B9E1D1586B52200F49463 /* testenv.c */,
+				482B9E1E1586B52200F49463 /* testenv.h */,
+				482B9E1F1586B52200F49463 /* testlist.c */,
+				482B9E201586B52200F49463 /* testlist.h */,
+				482B9E211586B52200F49463 /* testlistInc.h */,
+				482B9E221586B52200F49463 /* testmore.c */,
+				482B9E231586B52200F49463 /* testmore.h */,
+			);
+			name = test;
+			path = test/test;
+			sourceTree = SOURCE_ROOT;
+		};
+		482B9E241586B52200F49463 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				482B9E251586B52200F49463 /* capabilities.h */,
+				482B9E261586B52200F49463 /* testbyteBuffer.c */,
+				482B9E271586B52200F49463 /* testbyteBuffer.h */,
+			);
+			name = util;
+			path = test/util;
+			sourceTree = SOURCE_ROOT;
+		};
+		484C048915DAF870002E8891 /* CommonNumerics */ = {
+			isa = PBXGroup;
+			children = (
+				48E5035815DDB99900045A4B /* CommonBaseEncoding.c */,
+				484C048A15DAF870002E8891 /* CommonCRC.c */,
+			);
+			name = CommonNumerics;
+			path = test/CommonNumerics;
+			sourceTree = SOURCE_ROOT;
+		};
+		486C539115DDBD2800C8DE50 /* cn_tool */ = {
+			isa = PBXGroup;
+			children = (
+				486C539215DDBD2800C8DE50 /* cn.1 */,
+				486C539315DDBD2800C8DE50 /* main.c */,
+			);
+			path = cn_tool;
+			sourceTree = "<group>";
+		};
+		48AC91F81581554800BA9060 /* CCRegression */ = {
+			isa = PBXGroup;
+			children = (
+				482B9E191586B52200F49463 /* test */,
+				482B9E241586B52200F49463 /* util */,
+				482B9DDF1586B50F00F49463 /* CommonCrypto */,
+				484C048915DAF870002E8891 /* CommonNumerics */,
+				482B9DFE1586B50F00F49463 /* main.c */,
+			);
+			path = CCRegression;
+			sourceTree = "<group>";
+		};
+		48BEE6AA1580085A00A6A1E7 = {
+			isa = PBXGroup;
+			children = (
+				48AC91E51581508C00BA9060 /* exports.exp-in */,
+				48BEE77E1580112E00A6A1E7 /* libcorecrypto.dylib */,
+				48BEE6E115800C2600A6A1E7 /* lib */,
+				48C4899015DAF0E500B301EC /* libcn */,
+				48BEE6BC15800C1800A6A1E7 /* include */,
+				4825E189158FD5AB0059CCF8 /* doc */,
+				48AC91F81581554800BA9060 /* CCRegression */,
+				486C539115DDBD2800C8DE50 /* cn_tool */,
+				48BEE6B61580085A00A6A1E7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		48BEE6B61580085A00A6A1E7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				48BEE6B51580085A00A6A1E7 /* libcommonCrypto.dylib */,
+				48AC91F61581554800BA9060 /* CCRegression */,
+				486C539915DDBD5700C8DE50 /* cn */,
+				485CB93415E834B600EC6390 /* CommonCrypto.empty.a */,
+				485CB93D15E834CA00EC6390 /* libCommonNumerics.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		48BEE6BC15800C1800A6A1E7 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				48E5035515DDAC1D00045A4B /* CommonBaseXX.h */,
+				48C489D615DAF10400B301EC /* CommonCRC.h */,
+				48C489D715DAF10400B301EC /* CommonNumerics.h */,
+				48BEE6BD15800C1800A6A1E7 /* aes.h */,
+				48BEE6BE15800C1800A6A1E7 /* CommonBigNum.h */,
+				48BEE6BF15800C1800A6A1E7 /* CommonCMACSPI.h */,
+				48BEE6C015800C1800A6A1E7 /* CommonCrypto.h */,
+				48BEE6C115800C1800A6A1E7 /* CommonCryptoPriv.h */,
+				48BEE6C215800C1800A6A1E7 /* CommonCryptor.h */,
+				48BEE6C315800C1800A6A1E7 /* CommonCryptorSPI.h */,
+				48BEE6C415800C1800A6A1E7 /* CommonDH.h */,
+				48BEE6C515800C1800A6A1E7 /* CommonDigest.h */,
+				48BEE6C615800C1800A6A1E7 /* CommonDigestSPI.h */,
+				48BEE6C715800C1800A6A1E7 /* CommonECCryptor.h */,
+				48BEE6C815800C1800A6A1E7 /* CommonHMAC.h */,
+				48BEE6C915800C1800A6A1E7 /* CommonHMacSPI.h */,
+				48BEE6CA15800C1800A6A1E7 /* CommonKeyDerivation.h */,
+				48BEE6CB15800C1800A6A1E7 /* CommonRandomSPI.h */,
+				48BEE6CC15800C1800A6A1E7 /* CommonRSACryptor.h */,
+				48BEE6CD15800C1800A6A1E7 /* CommonSymmetricKeywrap.h */,
+				48BEE6CE15800C1800A6A1E7 /* lionCompat.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		48BEE6E115800C2600A6A1E7 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				482B9DB415869BF500F49463 /* ccGlobals.h */,
+				48BEE6E415800C2600A6A1E7 /* ccdebug.c */,
+				48BEE6E515800C2600A6A1E7 /* ccdebug.h */,
+				48BEE6E615800C2600A6A1E7 /* ccErrors.h */,
+				48BEE6E715800C2600A6A1E7 /* ccMemory.h */,
+				48BEE6E815800C2600A6A1E7 /* CommonBigNum.c */,
+				48BEE6E915800C2600A6A1E7 /* CommonBigNumPriv.h */,
+				48BEE6EA15800C2600A6A1E7 /* CommonCMAC.c */,
+				48BEE6EB15800C2600A6A1E7 /* CommonCryptoAESShoefly.c */,
+				48BEE6EC15800C2600A6A1E7 /* CommonCryptoCASTShoefly.c */,
+				48BEE6ED15800C2600A6A1E7 /* CommonCryptor.c */,
+				4836297715893DE20064232C /* CommonCryptorDES.c */,
+				4836297415893D0C0064232C /* CommonCryptorRC4.c */,
+				48BEE6F315800C2600A6A1E7 /* CommonCryptorGCM.c */,
+				48BEE6EE15800C2600A6A1E7 /* CommonCryptorPriv.h */,
+				48BEE6EF15800C2600A6A1E7 /* CommonDH.c */,
+				48BEE6F015800C2600A6A1E7 /* CommonDigest.c */,
+				48BEE6F115800C2600A6A1E7 /* CommonDigestPriv.h */,
+				48BEE6F215800C2600A6A1E7 /* CommonECCryptor.c */,
+				48BEE6F415800C2600A6A1E7 /* CommonHMAC.c */,
+				48BEE6F515800C2600A6A1E7 /* CommonKeyDerivation.c */,
+				48BEE6F615800C2600A6A1E7 /* CommonRandom.c */,
+				482B9DB71586A8E700F49463 /* CommonRandomPriv.h */,
+				48BEE6F715800C2600A6A1E7 /* CommonRSACryptor.c */,
+				48BEE6F815800C2600A6A1E7 /* CommonSymmetricKeywrap.c */,
+				48BEE6F915800C2600A6A1E7 /* corecryptoSymmetricBridge.c */,
+				48BEE6FA15800C2600A6A1E7 /* corecryptoSymmetricBridge.h */,
+				485CB94115E8350E00EC6390 /* dummy.c */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		48C4899015DAF0E500B301EC /* libcn */ = {
+			isa = PBXGroup;
+			children = (
+				48E5034D15DDAC0900045A4B /* basexx.h */,
+				48E5034E15DDAC0900045A4B /* CommonBaseXX.c */,
+				48E5034F15DDAC0900045A4B /* CommonBuffering.c */,
+				48E5035015DDAC0900045A4B /* CommonBufferingPriv.h */,
+				48C4899115DAF0E500B301EC /* adler32.c */,
+				48C4899315DAF0E500B301EC /* ccMemory.h */,
+				48C4899415DAF0E500B301EC /* cn_globals.h */,
+				48C4899515DAF0E500B301EC /* CommonCRC.c */,
+				48C4899615DAF0E500B301EC /* crc.h */,
+				48C4899715DAF0E500B301EC /* crc16-a.c */,
+				48C4899815DAF0E500B301EC /* crc16-b.c */,
+				48C4899915DAF0E500B301EC /* crc16-ccitt-false.c */,
+				48C4899A15DAF0E500B301EC /* crc16-ccitt-true.c */,
+				48C4899B15DAF0E500B301EC /* crc16-dect-r.c */,
+				48C4899C15DAF0E500B301EC /* crc16-dect-x.c */,
+				48C4899D15DAF0E500B301EC /* crc16-icode.c */,
+				48C4899E15DAF0E500B301EC /* crc16-usb.c */,
+				48C4899F15DAF0E500B301EC /* crc16-verifone.c */,
+				48C489A015DAF0E500B301EC /* crc16-xmodem.c */,
+				48C489A115DAF0E500B301EC /* crc16.c */,
+				48C489A215DAF0E500B301EC /* crc32-bzip2.c */,
+				48C489A315DAF0E500B301EC /* crc32-castagnoli.c */,
+				48C489A415DAF0E500B301EC /* crc32-mpeg-2.c */,
+				48C489A515DAF0E500B301EC /* crc32-posix.c */,
+				48C489A615DAF0E500B301EC /* crc32-xfer.c */,
+				48C489A715DAF0E500B301EC /* crc32.c */,
+				48C489A815DAF0E500B301EC /* crc64-ecma-182.c */,
+				48C489A915DAF0E500B301EC /* crc8-icode.c */,
+				48C489AA15DAF0E500B301EC /* crc8-itu.c */,
+				48C489AB15DAF0E500B301EC /* crc8-rohc.c */,
+				48C489AC15DAF0E500B301EC /* crc8-wcdma.c */,
+				48C489AD15DAF0E500B301EC /* crc8.c */,
+				48C489AE15DAF0E500B301EC /* gen_std_crc_table.c */,
+				48C489AF15DAF0E500B301EC /* normal_crc.c */,
+				48C489B015DAF0E500B301EC /* reflect.c */,
+				48C489B115DAF0E500B301EC /* reverse_crc.c */,
+				48C489B215DAF0E500B301EC /* reverse_poly.c */,
+			);
+			path = libcn;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		485CB93215E834B600EC6390 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				485CB95715E835B900EC6390 /* CommonSymmetricKeywrap.h in Headers */,
+				485CB95415E835B900EC6390 /* CommonKeyDerivation.h in Headers */,
+				485CB95215E835B900EC6390 /* CommonHMAC.h in Headers */,
+				485CB94F15E835B900EC6390 /* CommonDigest.h in Headers */,
+				485CB94C15E835B900EC6390 /* CommonCryptor.h in Headers */,
+				485CB94A15E835B900EC6390 /* CommonCrypto.h in Headers */,
+				485CB94815E835B900EC6390 /* CommonBigNum.h in Headers */,
+				485CB94915E835B900EC6390 /* CommonCMACSPI.h in Headers */,
+				485CB94B15E835B900EC6390 /* CommonCryptoPriv.h in Headers */,
+				485CB94D15E835B900EC6390 /* CommonCryptorSPI.h in Headers */,
+				485CB94E15E835B900EC6390 /* CommonDH.h in Headers */,
+				485CB95015E835B900EC6390 /* CommonDigestSPI.h in Headers */,
+				485CB95115E835B900EC6390 /* CommonECCryptor.h in Headers */,
+				485CB95315E835B900EC6390 /* CommonHMacSPI.h in Headers */,
+				485CB95515E835B900EC6390 /* CommonRandomSPI.h in Headers */,
+				485CB95615E835B900EC6390 /* CommonRSACryptor.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		485CB93B15E834CA00EC6390 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				485CB94415E8359E00EC6390 /* CommonBaseXX.h in Headers */,
+				485CB94515E8359E00EC6390 /* CommonCRC.h in Headers */,
+				485CB94615E8359E00EC6390 /* CommonNumerics.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		48BEE6B31580085A00A6A1E7 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48BEE6D315800C1800A6A1E7 /* CommonCryptoPriv.h in Headers */,
+				48BEE6DB15800C1800A6A1E7 /* CommonHMacSPI.h in Headers */,
+				48BEE6D015800C1800A6A1E7 /* CommonBigNum.h in Headers */,
+				48BEE6D115800C1800A6A1E7 /* CommonCMACSPI.h in Headers */,
+				48BEE6D615800C1800A6A1E7 /* CommonDH.h in Headers */,
+				48BEE6D915800C1800A6A1E7 /* CommonECCryptor.h in Headers */,
+				48BEE6DE15800C1800A6A1E7 /* CommonRSACryptor.h in Headers */,
+				48BEE6D515800C1800A6A1E7 /* CommonCryptorSPI.h in Headers */,
+				48BEE6D815800C1800A6A1E7 /* CommonDigestSPI.h in Headers */,
+				48BEE6DD15800C1800A6A1E7 /* CommonRandomSPI.h in Headers */,
+				48BEE6D215800C1800A6A1E7 /* CommonCrypto.h in Headers */,
+				48BEE6DA15800C1800A6A1E7 /* CommonHMAC.h in Headers */,
+				48BEE6D715800C1800A6A1E7 /* CommonDigest.h in Headers */,
+				48BEE6DF15800C1800A6A1E7 /* CommonSymmetricKeywrap.h in Headers */,
+				48BEE6DC15800C1800A6A1E7 /* CommonKeyDerivation.h in Headers */,
+				48BEE6D415800C1800A6A1E7 /* CommonCryptor.h in Headers */,
+				48C489D815DAF10400B301EC /* CommonCRC.h in Headers */,
+				48C489D915DAF10400B301EC /* CommonNumerics.h in Headers */,
+				48BEE6FE15800C2600A6A1E7 /* ccdebug.h in Headers */,
+				48BEE6FF15800C2600A6A1E7 /* ccErrors.h in Headers */,
+				48BEE70015800C2600A6A1E7 /* ccMemory.h in Headers */,
+				48BEE70215800C2600A6A1E7 /* CommonBigNumPriv.h in Headers */,
+				48BEE70715800C2600A6A1E7 /* CommonCryptorPriv.h in Headers */,
+				48BEE70A15800C2600A6A1E7 /* CommonDigestPriv.h in Headers */,
+				48BEE71315800C2600A6A1E7 /* corecryptoSymmetricBridge.h in Headers */,
+				482B9DB515869BF500F49463 /* ccGlobals.h in Headers */,
+				482B9DB81586A8E700F49463 /* CommonRandomPriv.h in Headers */,
+				48C489B515DAF0E500B301EC /* ccMemory.h in Headers */,
+				48C489B615DAF0E500B301EC /* cn_globals.h in Headers */,
+				48C489B815DAF0E500B301EC /* crc.h in Headers */,
+				48E5035115DDAC0900045A4B /* basexx.h in Headers */,
+				48E5035415DDAC0900045A4B /* CommonBufferingPriv.h in Headers */,
+				48E5035615DDAC1D00045A4B /* CommonBaseXX.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		485CB93315E834B600EC6390 /* CommonCrypto_Headers */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 485CB93715E834B600EC6390 /* Build configuration list for PBXNativeTarget "CommonCrypto_Headers" */;
+			buildPhases = (
+				485CB93015E834B600EC6390 /* Sources */,
+				485CB93115E834B600EC6390 /* Frameworks */,
+				485CB93215E834B600EC6390 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CommonCrypto_Headers;
+			productName = CommonCrypto_Headers;
+			productReference = 485CB93415E834B600EC6390 /* CommonCrypto.empty.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		485CB93C15E834CA00EC6390 /* CommonNumerics_Headers */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 485CB93E15E834CA00EC6390 /* Build configuration list for PBXNativeTarget "CommonNumerics_Headers" */;
+			buildPhases = (
+				485CB93B15E834CA00EC6390 /* Headers */,
+				485CB93915E834CA00EC6390 /* Sources */,
+				485CB93A15E834CA00EC6390 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CommonNumerics_Headers;
+			productName = CommonNumerics_Headers;
+			productReference = 485CB93D15E834CA00EC6390 /* libCommonNumerics.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		486C539815DDBD5700C8DE50 /* cn */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 486C53A015DDBD5700C8DE50 /* Build configuration list for PBXNativeTarget "cn" */;
+			buildPhases = (
+				486C539515DDBD5700C8DE50 /* Sources */,
+				486C539615DDBD5700C8DE50 /* Frameworks */,
+				486C539715DDBD5700C8DE50 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				48EEF03C15E2E0B300429FF7 /* PBXTargetDependency */,
+			);
+			name = cn;
+			productName = cn;
+			productReference = 486C539915DDBD5700C8DE50 /* cn */;
+			productType = "com.apple.product-type.tool";
+		};
+		48AC91F51581554800BA9060 /* CCRegression */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 48AC91FD1581554800BA9060 /* Build configuration list for PBXNativeTarget "CCRegression" */;
+			buildPhases = (
+				48AC91F21581554800BA9060 /* Sources */,
+				48AC91F31581554800BA9060 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CCRegression;
+			productName = CCRegression;
+			productReference = 48AC91F61581554800BA9060 /* CCRegression */;
+			productType = "com.apple.product-type.tool";
+		};
+		48BEE6B41580085A00A6A1E7 /* CommonCrypto */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 48BEE6B91580085A00A6A1E7 /* Build configuration list for PBXNativeTarget "CommonCrypto" */;
+			buildPhases = (
+				48BEE6B11580085A00A6A1E7 /* Sources */,
+				48BEE6B21580085A00A6A1E7 /* Frameworks */,
+				48BEE6B31580085A00A6A1E7 /* Headers */,
+			);
+			buildRules = (
+				48AC91F11581514F00BA9060 /* PBXBuildRule */,
+			);
+			dependencies = (
+				485CB95A15E8363D00EC6390 /* PBXTargetDependency */,
+				485CB95C15E8363D00EC6390 /* PBXTargetDependency */,
+			);
+			name = CommonCrypto;
+			productName = CommonCrypto;
+			productReference = 48BEE6B51580085A00A6A1E7 /* libcommonCrypto.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		48BEE6AC1580085A00A6A1E7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Platform Security";
+			};
+			buildConfigurationList = 48BEE6AF1580085A00A6A1E7 /* Build configuration list for PBXProject "CommonCrypto" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 48BEE6AA1580085A00A6A1E7;
+			productRefGroup = 48BEE6B61580085A00A6A1E7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				48BEE6B41580085A00A6A1E7 /* CommonCrypto */,
+				485CB93315E834B600EC6390 /* CommonCrypto_Headers */,
+				485CB93C15E834CA00EC6390 /* CommonNumerics_Headers */,
+				48AC91F51581554800BA9060 /* CCRegression */,
+				4825E170158FA24A0059CCF8 /* libCommonCryptoMacOSX */,
+				4825E175158FA27C0059CCF8 /* commonCryptoMacIOS */,
+				4825E179158FA35C0059CCF8 /* CommonCrypto_Sim */,
+				4825E184158FD5280059CCF8 /* OpenSource Docs */,
+				4825E1BF158FD6100059CCF8 /* Man Pages */,
+				486C539815DDBD5700C8DE50 /* cn */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		485CB93015E834B600EC6390 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				485CB94215E8350E00EC6390 /* dummy.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		485CB93915E834CA00EC6390 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				485CB94315E8350E00EC6390 /* dummy.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		486C539515DDBD5700C8DE50 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48EEF03F15E2E0C600429FF7 /* main.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		48AC91F21581554800BA9060 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				482B9DFF1586B50F00F49463 /* CCCryptorTestFuncs.c in Sources */,
+				482B9E011586B50F00F49463 /* CommonBigDigest.c in Sources */,
+				482B9E021586B50F00F49463 /* CommonBigNum.c in Sources */,
+				482B9E031586B50F00F49463 /* CommonCMac.c in Sources */,
+				482B9E041586B50F00F49463 /* CommonCryptoCTSPadding.c in Sources */,
+				482B9E051586B50F00F49463 /* CommonCryptoReset.c in Sources */,
+				482B9E061586B50F00F49463 /* CommonCryptoSymCBC.c in Sources */,
+				482B9E071586B50F00F49463 /* CommonCryptoSymCFB.c in Sources */,
+				482B9E081586B50F00F49463 /* CommonCryptoSymCTR.c in Sources */,
+				482B9E091586B50F00F49463 /* CommonCryptoSymGCM.c in Sources */,
+				482B9E0A1586B50F00F49463 /* CommonCryptoSymmetricWrap.c in Sources */,
+				482B9E0B1586B50F00F49463 /* CommonCryptoSymOFB.c in Sources */,
+				482B9E0C1586B50F00F49463 /* CommonCryptoSymOffset.c in Sources */,
+				482B9E0D1586B50F00F49463 /* CommonCryptoSymRC2.c in Sources */,
+				482B9E0E1586B50F00F49463 /* CommonCryptoSymRegression.c in Sources */,
+				482B9E0F1586B50F00F49463 /* CommonCryptoSymXTS.c in Sources */,
+				482B9E101586B50F00F49463 /* CommonCryptoSymZeroLength.c in Sources */,
+				482B9E111586B50F00F49463 /* CommonDHtest.c in Sources */,
+				482B9E121586B50F00F49463 /* CommonDigest.c in Sources */,
+				482B9E131586B50F00F49463 /* CommonEC.c in Sources */,
+				482B9E141586B50F00F49463 /* CommonHMacClone.c in Sources */,
+				482B9E151586B50F00F49463 /* CommonRandom.c in Sources */,
+				482B9E161586B50F00F49463 /* CommonRSA.c in Sources */,
+				482B9E171586B50F00F49463 /* CryptorPadFailure.c in Sources */,
+				482B9E181586B50F00F49463 /* main.c in Sources */,
+				482B9E291586B52200F49463 /* testenv.c in Sources */,
+				482B9E2A1586B52200F49463 /* testlist.c in Sources */,
+				482B9E2B1586B52200F49463 /* testmore.c in Sources */,
+				482B9E2C1586B52200F49463 /* testbyteBuffer.c in Sources */,
+				4873482515A22C0A00E6EF15 /* CommonCryptoOutputLength.c in Sources */,
+				48ED815D15D308A900E40487 /* CommonCryptorWithData.c in Sources */,
+				485029BA15D5C2710053166A /* CommonCryptoBlowfish.c in Sources */,
+				484C048B15DAF870002E8891 /* CommonCRC.c in Sources */,
+				48E5035A15DDBABF00045A4B /* CommonBaseEncoding.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		48BEE6B11580085A00A6A1E7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48EEF09515E2EAA600429FF7 /* adler32.c in Sources */,
+				48EEF07515E2E65B00429FF7 /* crc16-a.c in Sources */,
+				48EEF07615E2E65B00429FF7 /* crc16-b.c in Sources */,
+				48EEF07715E2E65B00429FF7 /* crc16-ccitt-false.c in Sources */,
+				48EEF07815E2E65B00429FF7 /* crc16-ccitt-true.c in Sources */,
+				48EEF07915E2E65B00429FF7 /* crc16-dect-r.c in Sources */,
+				48EEF07A15E2E65B00429FF7 /* crc16-dect-x.c in Sources */,
+				48EEF07B15E2E65B00429FF7 /* crc16-icode.c in Sources */,
+				48EEF07C15E2E65B00429FF7 /* crc16-usb.c in Sources */,
+				48EEF07D15E2E65B00429FF7 /* crc16-verifone.c in Sources */,
+				48EEF07E15E2E65B00429FF7 /* crc16-xmodem.c in Sources */,
+				48EEF07F15E2E65B00429FF7 /* crc16.c in Sources */,
+				48EEF08015E2E65B00429FF7 /* crc32-bzip2.c in Sources */,
+				48EEF08115E2E65B00429FF7 /* crc32-castagnoli.c in Sources */,
+				48EEF08215E2E65B00429FF7 /* crc32-mpeg-2.c in Sources */,
+				48EEF08315E2E65B00429FF7 /* crc32-posix.c in Sources */,
+				48EEF08415E2E65B00429FF7 /* crc32-xfer.c in Sources */,
+				48EEF08515E2E65B00429FF7 /* crc32.c in Sources */,
+				48EEF08615E2E65B00429FF7 /* crc64-ecma-182.c in Sources */,
+				48EEF08715E2E65B00429FF7 /* crc8-icode.c in Sources */,
+				48EEF08815E2E65B00429FF7 /* crc8-itu.c in Sources */,
+				48EEF08915E2E65B00429FF7 /* crc8-rohc.c in Sources */,
+				48EEF08A15E2E65B00429FF7 /* crc8-wcdma.c in Sources */,
+				48EEF08B15E2E65B00429FF7 /* crc8.c in Sources */,
+				48EEF08C15E2E65B00429FF7 /* gen_std_crc_table.c in Sources */,
+				48EEF08D15E2E65B00429FF7 /* normal_crc.c in Sources */,
+				48EEF08E15E2E65B00429FF7 /* reflect.c in Sources */,
+				48EEF08F15E2E65B00429FF7 /* reverse_crc.c in Sources */,
+				48EEF09015E2E65B00429FF7 /* reverse_poly.c in Sources */,
+				48BEE6FD15800C2600A6A1E7 /* ccdebug.c in Sources */,
+				48BEE70115800C2600A6A1E7 /* CommonBigNum.c in Sources */,
+				48BEE70315800C2600A6A1E7 /* CommonCMAC.c in Sources */,
+				48BEE70615800C2600A6A1E7 /* CommonCryptor.c in Sources */,
+				48BEE70815800C2600A6A1E7 /* CommonDH.c in Sources */,
+				48BEE70915800C2600A6A1E7 /* CommonDigest.c in Sources */,
+				48BEE70B15800C2600A6A1E7 /* CommonECCryptor.c in Sources */,
+				48BEE70C15800C2600A6A1E7 /* CommonCryptorGCM.c in Sources */,
+				48BEE70D15800C2600A6A1E7 /* CommonHMAC.c in Sources */,
+				48BEE70E15800C2600A6A1E7 /* CommonKeyDerivation.c in Sources */,
+				48BEE70F15800C2600A6A1E7 /* CommonRandom.c in Sources */,
+				48BEE71015800C2600A6A1E7 /* CommonRSACryptor.c in Sources */,
+				48BEE71115800C2600A6A1E7 /* CommonSymmetricKeywrap.c in Sources */,
+				48BEE71215800C2600A6A1E7 /* corecryptoSymmetricBridge.c in Sources */,
+				48AC91E61581508C00BA9060 /* exports.exp-in in Sources */,
+				4836297515893D0C0064232C /* CommonCryptorRC4.c in Sources */,
+				4836297815893DE20064232C /* CommonCryptorDES.c in Sources */,
+				48C489B715DAF0E500B301EC /* CommonCRC.c in Sources */,
+				48E5035215DDAC0900045A4B /* CommonBaseXX.c in Sources */,
+				48E5035315DDAC0900045A4B /* CommonBuffering.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4825E17E158FA3770059CCF8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 48BEE6B41580085A00A6A1E7 /* CommonCrypto */;
+			targetProxy = 4825E17D158FA3770059CCF8 /* PBXContainerItemProxy */;
+		};
+		4825E180158FA37F0059CCF8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 48BEE6B41580085A00A6A1E7 /* CommonCrypto */;
+			targetProxy = 4825E17F158FA37F0059CCF8 /* PBXContainerItemProxy */;
+		};
+		4825E182158FA3820059CCF8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 48BEE6B41580085A00A6A1E7 /* CommonCrypto */;
+			targetProxy = 4825E181158FA3820059CCF8 /* PBXContainerItemProxy */;
+		};
+		485906C6167170DB00976E15 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4825E1BF158FD6100059CCF8 /* Man Pages */;
+			targetProxy = 485906C5167170DB00976E15 /* PBXContainerItemProxy */;
+		};
+		485CB95A15E8363D00EC6390 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 485CB93315E834B600EC6390 /* CommonCrypto_Headers */;
+			targetProxy = 485CB95915E8363D00EC6390 /* PBXContainerItemProxy */;
+		};
+		485CB95C15E8363D00EC6390 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 485CB93C15E834CA00EC6390 /* CommonNumerics_Headers */;
+			targetProxy = 485CB95B15E8363D00EC6390 /* PBXContainerItemProxy */;
+		};
+		48B4206315E2D8FE00871A6E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 486C539815DDBD5700C8DE50 /* cn */;
+			targetProxy = 48B4206215E2D8FE00871A6E /* PBXContainerItemProxy */;
+		};
+		48B4206515E2D90400871A6E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 486C539815DDBD5700C8DE50 /* cn */;
+			targetProxy = 48B4206415E2D90400871A6E /* PBXContainerItemProxy */;
+		};
+		48EEF03C15E2E0B300429FF7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 48BEE6B41580085A00A6A1E7 /* CommonCrypto */;
+			targetProxy = 48EEF03B15E2E0B300429FF7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		4825E171158FA24A0059CCF8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = commonCrypto;
+			};
+			name = Debug;
+		};
+		4825E172158FA24A0059CCF8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = commonCrypto;
+			};
+			name = Release;
+		};
+		4825E177158FA27C0059CCF8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = commonCrypto;
+			};
+			name = Debug;
+		};
+		4825E178158FA27C0059CCF8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = commonCrypto;
+			};
+			name = Release;
+		};
+		4825E17B158FA35C0059CCF8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = commonCrypto_sim;
+			};
+			name = Debug;
+		};
+		4825E17C158FA35C0059CCF8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = commonCrypto_sim;
+			};
+			name = Release;
+		};
+		4825E186158FD5280059CCF8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		4825E187158FD5280059CCF8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		4825E1C1158FD6100059CCF8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		4825E1C2158FD6100059CCF8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		485CB93515E834B600EC6390 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LIBRARY = "libc++";
+				EXECUTABLE_EXTENSION = empty.a;
+				EXECUTABLE_PREFIX = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRIVATE_HEADERS_FOLDER_PATH = /usr/local/include/CommonCrypto;
+				"PRIVATE_HEADERS_FOLDER_PATH[sdk=iphonesimulator*]" = "$(SDKROOT)/usr/local/include/CommonCrypto";
+				PRODUCT_NAME = CommonCrypto;
+				PUBLIC_HEADERS_FOLDER_PATH = /usr/include/CommonCrypto;
+				"PUBLIC_HEADERS_FOLDER_PATH[sdk=iphonesimulator*]" = "$(SDKROOT)/usr/include/CommonCrypto";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		485CB93615E834B600EC6390 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LIBRARY = "libc++";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				EXECUTABLE_EXTENSION = empty.a;
+				EXECUTABLE_PREFIX = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRIVATE_HEADERS_FOLDER_PATH = /usr/local/include/CommonCrypto;
+				"PRIVATE_HEADERS_FOLDER_PATH[sdk=iphonesimulator*]" = "$(SDKROOT)/usr/local/include/CommonCrypto";
+				PRODUCT_NAME = CommonCrypto;
+				PUBLIC_HEADERS_FOLDER_PATH = /usr/include/CommonCrypto;
+				"PUBLIC_HEADERS_FOLDER_PATH[sdk=iphonesimulator*]" = "$(SDKROOT)/usr/include/CommonCrypto";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		485CB93F15E834CA00EC6390 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LIBRARY = "libc++";
+				EXECUTABLE_PREFIX = lib;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRIVATE_HEADERS_FOLDER_PATH = /usr/local/include/CommonNumerics;
+				"PRIVATE_HEADERS_FOLDER_PATH[sdk=iphonesimulator*]" = "$(SDKROOT)/usr/local/include/CommonNumerics";
+				PRODUCT_NAME = CommonNumerics;
+				PUBLIC_HEADERS_FOLDER_PATH = /usr/include/CommonNumerics;
+				"PUBLIC_HEADERS_FOLDER_PATH[sdk=iphonesimulator*]" = "$(SDKROOT)/usr/include/CommonNumerics";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		485CB94015E834CA00EC6390 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LIBRARY = "libc++";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				EXECUTABLE_PREFIX = lib;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRIVATE_HEADERS_FOLDER_PATH = /usr/local/include/CommonNumerics;
+				"PRIVATE_HEADERS_FOLDER_PATH[sdk=iphonesimulator*]" = "$(SDKROOT)/usr/local/include/CommonNumerics";
+				PRODUCT_NAME = CommonNumerics;
+				PUBLIC_HEADERS_FOLDER_PATH = /usr/include/CommonNumerics;
+				"PUBLIC_HEADERS_FOLDER_PATH[sdk=iphonesimulator*]" = "$(SDKROOT)/usr/include/CommonNumerics";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		486C53A115DDBD5700C8DE50 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "$BUILT_PRODUCTS_DIR/usr/include/** $BUILT_PRODUCTS_DIR/usr/local/include/**";
+			};
+			name = Debug;
+		};
+		486C53A215DDBD5700C8DE50 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "$BUILT_PRODUCTS_DIR/usr/include/** $BUILT_PRODUCTS_DIR/usr/local/include/**";
+			};
+			name = Release;
+		};
+		48AC91FE1581554800BA9060 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "$BUILT_PRODUCTS_DIR/usr/local/include/** $BUILT_PRODUCTS_DIR/usr/include/**";
+			};
+			name = Debug;
+		};
+		48AC91FF1581554800BA9060 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "$BUILT_PRODUCTS_DIR/usr/local/include/** $BUILT_PRODUCTS_DIR/usr/include/**";
+			};
+			name = Release;
+		};
+		48BEE6B71580085A00A6A1E7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				"ARCHS[sdk=iphoneos*]" = (
+					armv7,
+					armv7s,
+					arm64,
+				);
+				"ARCHS[sdk=iphonesimulator*]" = "$(ARCHS_STANDARD_32_64_BIT)";
+				"ARCHS[sdk=macosx*]" = "$(ARCHS_STANDARD_32_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = NO;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INSTALL_GROUP = wheel;
+				INSTALL_OWNER = root;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "";
+				RUN_CLANG_STATIC_ANALYZER = YES;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator";
+			};
+			name = Debug;
+		};
+		48BEE6B81580085A00A6A1E7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				"ARCHS[sdk=iphoneos*]" = (
+					armv7,
+					armv7s,
+					arm64,
+				);
+				"ARCHS[sdk=iphonesimulator*]" = "$(ARCHS_STANDARD_32_64_BIT)";
+				"ARCHS[sdk=macosx*]" = "$(ARCHS_STANDARD_32_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = NDEBUG;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = NO;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INSTALL_GROUP = wheel;
+				INSTALL_OWNER = root;
+				PROVISIONING_PROFILE = "";
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator";
+			};
+			name = Release;
+		};
+		48BEE6BA1580085A00A6A1E7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DYLIB_CURRENT_VERSION = "$(RC_ProjectSourceVersion)";
+				EXECUTABLE_PREFIX = lib;
+				EXPORTED_SYMBOLS_FILE = "$(BUILT_PRODUCTS_DIR)/commonCrypto_dylib.$(CURRENT_ARCH).exp";
+				INSTALL_PATH = /usr/lib/system;
+				"INSTALL_PATH[sdk=iphonesimulator*]" = "$(SDKROOT)/usr/lib/system";
+				LD_DYLIB_INSTALL_NAME = "/usr/lib/system/$(EXECUTABLE_PATH)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/lib/system,
+				);
+				LINK_WITH_STANDARD_LIBRARIES = NO;
+				OTHER_LDFLAGS = (
+					"-umbrella",
+					System,
+					"-L/usr/lib/system",
+					"-ldyld",
+					"-lcompiler_rt",
+					"-lsystem_kernel",
+					"-lsystem_malloc",
+					"-lsystem_c",
+					"-lsystem_blocks",
+					"-ldispatch",
+					"-lsystem_asl",
+					"-lcorecrypto",
+					"-lsystem_platform",
+				);
+				"OTHER_LDFLAGS[sdk=iphonesimulator*]" = (
+					"-umbrella",
+					System,
+					"-L/usr/lib/system",
+					"-ldyld_sim",
+					"-lsystem_sim_c",
+					"-lcompiler_rt_sim",
+					"-lmacho_sim",
+					"-lsystem_sim_blocks",
+					"-ldispatch",
+					"-lcorecrypto_sim",
+					"-Wl,-upward-lSystem",
+				);
+				PRIVATE_HEADERS_FOLDER_PATH = /usr/local/include/CommonCrypto;
+				PRODUCT_NAME = "commonCrypto$(SIM_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = /usr/include/CommonCrypto;
+				"PUBLIC_HEADERS_FOLDER_PATH[sdk=iphonesimulator*]" = "$(SDKROOT)/usr/include/CommonCrypto";
+				SIM_NAME = "";
+				"SIM_NAME[sdk=iphonesimulator*]" = _sim;
+			};
+			name = Debug;
+		};
+		48BEE6BB1580085A00A6A1E7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DYLIB_CURRENT_VERSION = "$(RC_ProjectSourceVersion)";
+				EXECUTABLE_PREFIX = lib;
+				EXPORTED_SYMBOLS_FILE = "$(BUILT_PRODUCTS_DIR)/commonCrypto_dylib.$(CURRENT_ARCH).exp";
+				INSTALL_PATH = /usr/lib/system;
+				"INSTALL_PATH[sdk=iphonesimulator*]" = "$(SDKROOT)/usr/lib/system";
+				LD_DYLIB_INSTALL_NAME = "/usr/lib/system/$(EXECUTABLE_PATH)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/lib/system,
+				);
+				LINK_WITH_STANDARD_LIBRARIES = NO;
+				OTHER_LDFLAGS = (
+					"-umbrella",
+					System,
+					"-L/usr/lib/system",
+					"-ldyld",
+					"-lcompiler_rt",
+					"-lsystem_kernel",
+					"-lsystem_malloc",
+					"-lsystem_c",
+					"-lsystem_blocks",
+					"-ldispatch",
+					"-lsystem_asl",
+					"-lcorecrypto",
+					"-lsystem_platform",
+				);
+				"OTHER_LDFLAGS[sdk=iphonesimulator*]" = (
+					"-umbrella",
+					System,
+					"-L/usr/lib/system",
+					"-ldyld_sim",
+					"-lsystem_sim_c",
+					"-lcompiler_rt_sim",
+					"-lmacho_sim",
+					"-lsystem_sim_blocks",
+					"-ldispatch",
+					"-lcorecrypto_sim",
+					"-Wl,-upward-lSystem",
+				);
+				PRIVATE_HEADERS_FOLDER_PATH = /usr/local/include/CommonCrypto;
+				PRODUCT_NAME = "commonCrypto$(SIM_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = /usr/include/CommonCrypto;
+				"PUBLIC_HEADERS_FOLDER_PATH[sdk=iphonesimulator*]" = "$(SDKROOT)/usr/include/CommonCrypto";
+				SIM_NAME = "";
+				"SIM_NAME[sdk=iphonesimulator*]" = _sim;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4825E173158FA24A0059CCF8 /* Build configuration list for PBXAggregateTarget "libCommonCryptoMacOSX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4825E171158FA24A0059CCF8 /* Debug */,
+				4825E172158FA24A0059CCF8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4825E176158FA27C0059CCF8 /* Build configuration list for PBXAggregateTarget "commonCryptoMacIOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4825E177158FA27C0059CCF8 /* Debug */,
+				4825E178158FA27C0059CCF8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4825E17A158FA35C0059CCF8 /* Build configuration list for PBXAggregateTarget "CommonCrypto_Sim" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4825E17B158FA35C0059CCF8 /* Debug */,
+				4825E17C158FA35C0059CCF8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4825E185158FD5280059CCF8 /* Build configuration list for PBXAggregateTarget "OpenSource Docs" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4825E186158FD5280059CCF8 /* Debug */,
+				4825E187158FD5280059CCF8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4825E1C0158FD6100059CCF8 /* Build configuration list for PBXAggregateTarget "Man Pages" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4825E1C1158FD6100059CCF8 /* Debug */,
+				4825E1C2158FD6100059CCF8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		485CB93715E834B600EC6390 /* Build configuration list for PBXNativeTarget "CommonCrypto_Headers" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				485CB93515E834B600EC6390 /* Debug */,
+				485CB93615E834B600EC6390 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		485CB93E15E834CA00EC6390 /* Build configuration list for PBXNativeTarget "CommonNumerics_Headers" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				485CB93F15E834CA00EC6390 /* Debug */,
+				485CB94015E834CA00EC6390 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		486C53A015DDBD5700C8DE50 /* Build configuration list for PBXNativeTarget "cn" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				486C53A115DDBD5700C8DE50 /* Debug */,
+				486C53A215DDBD5700C8DE50 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		48AC91FD1581554800BA9060 /* Build configuration list for PBXNativeTarget "CCRegression" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				48AC91FE1581554800BA9060 /* Debug */,
+				48AC91FF1581554800BA9060 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		48BEE6AF1580085A00A6A1E7 /* Build configuration list for PBXProject "CommonCrypto" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				48BEE6B71580085A00A6A1E7 /* Debug */,
+				48BEE6B81580085A00A6A1E7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		48BEE6B91580085A00A6A1E7 /* Build configuration list for PBXNativeTarget "CommonCrypto" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				48BEE6BA1580085A00A6A1E7 /* Debug */,
+				48BEE6BB1580085A00A6A1E7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 48BEE6AC1580085A00A6A1E7 /* Project object */;
+}
