@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AppleFullScreenEnabled</key>
+	<true/>
+	<key>MBCAlternateVoice</key>
+	<string>com.apple.speech.synthesis.voice.Vicki</string>
+	<key>MBCBoardAngle</key>
+	<integer>60</integer>
+	<key>MBCBoardSpin</key>
+	<integer>180</integer>
+	<key>MBCBoardStyle</key>
+	<string>Wood</string>
+	<key>MBCEnableVariations</key>
+	<false/>
+	<key>MBCFloatingBoard</key>
+	<false/>
+	<key>MBCListenForMoves</key>
+	<true/>
+	<key>MBCPieceStyle</key>
+	<string>Wood</string>
+	<key>MBCSearchTime</key>
+	<integer>1</integer>
+	<key>MBCShowMoveInTitle</key>
+	<false/>
+	<key>MBCSpeakHumanMoves</key>
+	<false/>
+	<key>MBCSpeakMoves</key>
+	<true/>
+	<key>MBCNewGamePlayers</key>
+	<integer>1</integer>
+	<key>MBCNewGameVariant</key>
+	<integer>0</integer>
+	<key>MBCNewGameSides</key>
+	<integer>2</integer>
+	<key>MBCShowGameLog</key>
+	<false/>
+</dict>
+</plist>
