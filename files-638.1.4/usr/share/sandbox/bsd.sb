@@ -1,0 +1,30 @@
+;; OriginatingProject: files
+;;
+;; common rules for various BSD daemons
+;; Copyright (c) 2007-2011 Apple Inc. All Rights reserved.
+;;
+;; WARNING: The sandbox rules in this file currently constitute
+;; Apple System Private Interface and are subject to change at any time and
+;; without notice. The contents of this file are also auto-generated and not
+;; user editable; it may be overwritten at any time.
+;;
+(version 1)
+
+(debug deny)
+
+(import "system.sb")
+
+;; allow processes to traverse symlinks
+(allow file-read-metadata)
+
+(allow file-read-data file-write-data
+  (regex
+    ; Allow files accessed by system dylibs and frameworks
+    #"/\.CFUserTextEncoding$"
+    #"^/usr/share/nls/"
+    #"^TO-BE-REPLACED-WITH-TZDIR/"
+  ))
+
+(allow ipc-posix-shm (ipc-posix-name "apple.shm.notification_center")) ; Libnotify
+
+(allow signal (target self))

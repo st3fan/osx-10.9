@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>generateduid</key>
+	<array>
+		<string>ABCDEFAB-CDEF-ABCD-EFAB-CDEF0000005E</string>
+	</array>
+	<key>gid</key>
+	<array>
+		<string>94</string>
+	</array>
+	<key>groupmembers</key>
+	<array>
+		<string>FFFFEEEE-DDDD-CCCC-BBBB-AAAA000000DC</string>
+	</array>
+	<key>name</key>
+	<array>
+		<string>_teamsserver</string>
+		<string>teamsserver</string>
+	</array>
+	<key>passwd</key>
+	<array>
+		<string>*</string>
+	</array>
+	<key>realname</key>
+	<array>
+		<string>Teams Server</string>
+	</array>
+	<key>users</key>
+	<array>
+		<string>_devicemgr</string>
+	</array>
+</dict>
+</plist>
