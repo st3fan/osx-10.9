@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>OpenSourceImportDate</key>
+	<string>2013-06-27</string>
+	<key>OpenSourceLicense</key>
+	<string>ruby</string>
+	<key>OpenSourceLicenseFile</key>
+	<string>ruby.txt</string>
+	<key>OpenSourceModifications</key>
+	<array>
+		<string>disable -static in rbconfig</string>
+		<string>make [md5|sha1].bundle using CommonCrypto instead of OpenSSL</string>
+		<string>Use SDKROOT / xcrun to find set RbConfig::CONFIG["includedir"]</string>
+	</array>
+	<key>OpenSourceProject</key>
+	<string>ruby</string>
+	<key>OpenSourceSHA256</key>
+	<string>08e3d4b85b8a1118a8e81261f59dd8b4ddcfd70b6ae554e0ec5ceb99c3185e8a</string>
+	<key>OpenSourceURL</key>
+	<string>ftp://ftp.ruby-lang.org/pub/ruby/2.0/ruby-2.0.0-p247.tar.bz2</string>
+	<key>OpenSourceVersion</key>
+	<string>2.0.0-p247</string>
+	<key>OpenSourceWebsiteURL</key>
+	<string>http://www.ruby-lang.org/</string>
+</dict>
+</plist>
