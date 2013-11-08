@@ -1,0 +1,274 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 42;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		4CFDFBE606309ADE00519F96 /* security_certificates */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = C27AD4470987FCE9001272E0 /* Build configuration list for PBXAggregateTarget "security_certificates" */;
+			buildPhases = (
+				05C9093B0A27881500DC9A30 /* CopyFiles */,
+				523A83030C34409000537400 /* CopyFiles */,
+			);
+			dependencies = (
+				4C4BE3B806309CE8002EF4B3 /* PBXTargetDependency */,
+			);
+			name = security_certificates;
+			productName = "copy certs";
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		05C0680F0A278B1800437B30 /* SystemTrustSettings.plist in CopyFiles */ = {isa = PBXBuildFile; fileRef = 05C909360A2787FF00DC9A30 /* SystemTrustSettings.plist */; };
+		05C9093C0A27882B00DC9A30 /* SystemCACertificates.keychain in CopyFiles */ = {isa = PBXBuildFile; fileRef = 05C909340A2787FF00DC9A30 /* SystemCACertificates.keychain */; };
+		05C9093D0A27882B00DC9A30 /* SystemRootCertificates.keychain in CopyFiles */ = {isa = PBXBuildFile; fileRef = 05C909350A2787FF00DC9A30 /* SystemRootCertificates.keychain */; };
+		523A83090C3440D600537400 /* X509Anchors in CopyFiles */ = {isa = PBXBuildFile; fileRef = 523A83080C3440BE00537400 /* X509Anchors */; };
+		BE9915290E787C3800D0EF7C /* EVRoots.plist in CopyFiles */ = {isa = PBXBuildFile; fileRef = BE9915280E787C2300D0EF7C /* EVRoots.plist */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4C4BE3B706309CE8002EF4B3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4CA1FEC5052A432800F22E42 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4C28D11F06309BEB002A21D3;
+			remoteInfo = crlcache;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		05C9093B0A27881500DC9A30 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 8;
+			dstPath = /System/Library/Keychains;
+			dstSubfolderSpec = 0;
+			files = (
+				05C9093C0A27882B00DC9A30 /* SystemCACertificates.keychain in CopyFiles */,
+				05C9093D0A27882B00DC9A30 /* SystemRootCertificates.keychain in CopyFiles */,
+				05C0680F0A278B1800437B30 /* SystemTrustSettings.plist in CopyFiles */,
+				BE9915290E787C3800D0EF7C /* EVRoots.plist in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		523A83030C34409000537400 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 8;
+			comments = "temporary location for obsolete X509Anchors file prior to copying it";
+			dstPath = "$(SYSTEM_LIBRARY_DIR)/Keychains";
+			dstSubfolderSpec = 0;
+			files = (
+				523A83090C3440D600537400 /* X509Anchors in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		05C909340A2787FF00DC9A30 /* SystemCACertificates.keychain */ = {isa = PBXFileReference; lastKnownFileType = file; path = SystemCACertificates.keychain; sourceTree = "<group>"; };
+		05C909350A2787FF00DC9A30 /* SystemRootCertificates.keychain */ = {isa = PBXFileReference; lastKnownFileType = file; path = SystemRootCertificates.keychain; sourceTree = "<group>"; };
+		05C909360A2787FF00DC9A30 /* SystemTrustSettings.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.xml; path = SystemTrustSettings.plist; sourceTree = "<group>"; };
+		523A83080C3440BE00537400 /* X509Anchors */ = {isa = PBXFileReference; lastKnownFileType = file; path = X509Anchors; sourceTree = "<group>"; };
+		BE9915280E787C2300D0EF7C /* EVRoots.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EVRoots.plist; sourceTree = "<group>"; };
+		C2F9CFA607BB0495000111FE /* X509Anchors */ = {isa = PBXFileReference; lastKnownFileType = file; path = X509Anchors; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		05C909330A2787BA00DC9A30 /* BuiltKeychains */ = {
+			isa = PBXGroup;
+			children = (
+				05C909340A2787FF00DC9A30 /* SystemCACertificates.keychain */,
+				05C909350A2787FF00DC9A30 /* SystemRootCertificates.keychain */,
+				05C909360A2787FF00DC9A30 /* SystemTrustSettings.plist */,
+				523A83080C3440BE00537400 /* X509Anchors */,
+				BE9915280E787C2300D0EF7C /* EVRoots.plist */,
+			);
+			path = BuiltKeychains;
+			sourceTree = "<group>";
+		};
+		4CA1FEC1052A432800F22E42 = {
+			isa = PBXGroup;
+			children = (
+				C2F9CF9E07BB041E000111FE /* internals */,
+				05C909330A2787BA00DC9A30 /* BuiltKeychains */,
+			);
+			sourceTree = "<group>";
+		};
+		C2F9CF9E07BB041E000111FE /* internals */ = {
+			isa = PBXGroup;
+			children = (
+				C2F9CFA607BB0495000111FE /* X509Anchors */,
+			);
+			path = internals;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXLegacyTarget section */
+		4C28D11F06309BEB002A21D3 /* crlcache */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "$(ACTION)";
+			buildConfigurationList = C27AD4430987FCE9001272E0 /* Build configuration list for PBXLegacyTarget "crlcache" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/bin/make;
+			buildWorkingDirectory = "";
+			dependencies = (
+			);
+			name = crlcache;
+			passBuildSettingsInEnvironment = 1;
+			productName = security_certificates;
+		};
+/* End PBXLegacyTarget section */
+
+/* Begin PBXProject section */
+		4CA1FEC5052A432800F22E42 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C27AD44B0987FCE9001272E0 /* Build configuration list for PBXProject "security_certificates" */;
+			compatibilityVersion = "Xcode 2.4";
+			hasScannedForEncodings = 1;
+			mainGroup = 4CA1FEC1052A432800F22E42;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4CFDFBE606309ADE00519F96 /* security_certificates */,
+				4C28D11F06309BEB002A21D3 /* crlcache */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXTargetDependency section */
+		4C4BE3B806309CE8002EF4B3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4C28D11F06309BEB002A21D3 /* crlcache */;
+			targetProxy = 4C4BE3B706309CE8002EF4B3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		C27AD4440987FCE9001272E0 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 55036;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				PRODUCT_NAME = security_certificates;
+				ZERO_LINK = YES;
+			};
+			name = Development;
+		};
+		C27AD4450987FCE9001272E0 /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				CURRENT_PROJECT_VERSION = 55036;
+				PRODUCT_NAME = security_certificates;
+				ZERO_LINK = NO;
+			};
+			name = Deployment;
+		};
+		C27AD4460987FCE9001272E0 /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 55036;
+				PRODUCT_NAME = security_certificates;
+			};
+			name = Default;
+		};
+		C27AD4480987FCE9001272E0 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 55036;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				PRODUCT_NAME = "copy certs";
+				ZERO_LINK = YES;
+			};
+			name = Development;
+		};
+		C27AD4490987FCE9001272E0 /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				CURRENT_PROJECT_VERSION = 55036;
+				PRODUCT_NAME = "copy certs";
+				ZERO_LINK = NO;
+			};
+			name = Deployment;
+		};
+		C27AD44A0987FCE9001272E0 /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 55036;
+				PRODUCT_NAME = "copy certs";
+			};
+			name = Default;
+		};
+		C27AD44C0987FCE9001272E0 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)";
+				CONFIGURATION_TEMP_DIR = "$(PROJECT_TEMP_DIR)";
+			};
+			name = Development;
+		};
+		C27AD44D0987FCE9001272E0 /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)";
+				CONFIGURATION_TEMP_DIR = "$(PROJECT_TEMP_DIR)";
+			};
+			name = Deployment;
+		};
+		C27AD44E0987FCE9001272E0 /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)";
+				CONFIGURATION_TEMP_DIR = "$(PROJECT_TEMP_DIR)";
+			};
+			name = Default;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C27AD4430987FCE9001272E0 /* Build configuration list for PBXLegacyTarget "crlcache" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C27AD4440987FCE9001272E0 /* Development */,
+				C27AD4450987FCE9001272E0 /* Deployment */,
+				C27AD4460987FCE9001272E0 /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Default;
+		};
+		C27AD4470987FCE9001272E0 /* Build configuration list for PBXAggregateTarget "security_certificates" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C27AD4480987FCE9001272E0 /* Development */,
+				C27AD4490987FCE9001272E0 /* Deployment */,
+				C27AD44A0987FCE9001272E0 /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Default;
+		};
+		C27AD44B0987FCE9001272E0 /* Build configuration list for PBXProject "security_certificates" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C27AD44C0987FCE9001272E0 /* Development */,
+				C27AD44D0987FCE9001272E0 /* Deployment */,
+				C27AD44E0987FCE9001272E0 /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Default;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4CA1FEC5052A432800F22E42 /* Project object */;
+}
