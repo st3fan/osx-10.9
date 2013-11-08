@@ -1,0 +1,417 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 42;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		0CD4362B0B70AB460006D11B /* modemccl */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 0CD436340B70AB700006D11B /* Build configuration list for PBXAggregateTarget "modemccl" */;
+			buildPhases = (
+			);
+			dependencies = (
+				0CD4362D0B70AB500006D11B /* PBXTargetDependency */,
+				0CD4362F0B70AB520006D11B /* PBXTargetDependency */,
+			);
+			name = modemccl;
+			productName = modemccl;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		023A1E4609EC17BB0045D359 /* CCLArgFunctions.c in Sources */ = {isa = PBXBuildFile; fileRef = 023A1E4309EC17BB0045D359 /* CCLArgFunctions.c */; };
+		02D038EC0A1E3FB400EC6CB7 /* CCLEngine.c in Sources */ = {isa = PBXBuildFile; fileRef = 23237A7C05ED237F005C54E8 /* CCLEngine.c */; };
+		02E8C64A0A47267D00F29FB7 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02E8C6490A47267D00F29FB7 /* IOKit.framework */; };
+		0C06D5C90B8F94E900AEB35E /* cclparser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C06D5C80B8F94E900AEB35E /* cclparser.m */; };
+		0C664DCC0B8A2164009D39DE /* cclkeys.h in Headers */ = {isa = PBXBuildFile; fileRef = 0C47D1840B648F9F0072BE14 /* cclkeys.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		0C664F460B8A7FEA009D39DE /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23237C3205ED2E71005C54E8 /* SystemConfiguration.framework */; };
+		0CA08B260B6E789C0041EB29 /* cclparser.h in Headers */ = {isa = PBXBuildFile; fileRef = 0CA08B1C0B6E78520041EB29 /* cclparser.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		23237BEB05ED2E4D005C54E8 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23237BEA05ED2E4D005C54E8 /* CoreFoundation.framework */; };
+		23237C3305ED2E71005C54E8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23237C3205ED2E71005C54E8 /* SystemConfiguration.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXBuildRule section */
+		02744F3B0A55B446004BBC7F /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.gcc;
+			fileType = sourcecode.c;
+			isEditable = 1;
+			outputFiles = (
+			);
+		};
+/* End PBXBuildRule section */
+
+/* Begin PBXContainerItemProxy section */
+		0CD4362C0B70AB500006D11B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 23237A0905ED2216005C54E8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 23237B0B05ED2CB3005C54E8;
+			remoteInfo = "CCLEngine (Tool)";
+		};
+		0CD4362E0B70AB520006D11B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 23237A0905ED2216005C54E8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0CA08B200B6E786A0041EB29;
+			remoteInfo = ccl;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		023A1E4109EC17BB0045D359 /* CCLArgFunctions.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CCLArgFunctions.h; path = CCLEngine/CCLArgFunctions.h; sourceTree = "<group>"; };
+		023A1E4309EC17BB0045D359 /* CCLArgFunctions.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 30; name = CCLArgFunctions.c; path = CCLEngine/CCLArgFunctions.c; sourceTree = "<group>"; };
+		02E8C6490A47267D00F29FB7 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
+		0C06D5C80B8F94E900AEB35E /* cclparser.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = cclparser.m; sourceTree = "<group>"; };
+		0C47D1840B648F9F0072BE14 /* cclkeys.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = cclkeys.h; sourceTree = "<group>"; };
+		0CA08B1C0B6E78520041EB29 /* cclparser.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = cclparser.h; sourceTree = "<group>"; };
+		0CA08B210B6E786A0041EB29 /* libccl.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libccl.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		23237A7C05ED237F005C54E8 /* CCLEngine.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; name = CCLEngine.c; path = CCLEngine/CCLEngine.c; sourceTree = "<group>"; };
+		23237A7D05ED237F005C54E8 /* CCLEngine.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = CCLEngine.h; path = CCLEngine/CCLEngine.h; sourceTree = "<group>"; };
+		23237B1105ED2CB3005C54E8 /* CCLEngine */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CCLEngine; sourceTree = BUILT_PRODUCTS_DIR; };
+		23237B2605ED2DB4005C54E8 /* CCLEngine_defs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCLEngine_defs.h; path = CCLEngine/CCLEngine_defs.h; sourceTree = "<group>"; };
+		23237BEA05ED2E4D005C54E8 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = /System/Library/Frameworks/CoreFoundation.framework; sourceTree = "<absolute>"; };
+		23237C3205ED2E71005C54E8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = /System/Library/Frameworks/SystemConfiguration.framework; sourceTree = "<absolute>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0CA08B1F0B6E786A0041EB29 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0C664F460B8A7FEA009D39DE /* SystemConfiguration.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		23237B0E05ED2CB3005C54E8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				23237BEB05ED2E4D005C54E8 /* CoreFoundation.framework in Frameworks */,
+				23237C3305ED2E71005C54E8 /* SystemConfiguration.framework in Frameworks */,
+				02E8C64A0A47267D00F29FB7 /* IOKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0C664DF00B8A7FCE009D39DE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				23237BEA05ED2E4D005C54E8 /* CoreFoundation.framework */,
+				23237C3205ED2E71005C54E8 /* SystemConfiguration.framework */,
+				02E8C6490A47267D00F29FB7 /* IOKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0CA08B120B6E78200041EB29 /* CCLParser */ = {
+			isa = PBXGroup;
+			children = (
+				0C06D5C80B8F94E900AEB35E /* cclparser.m */,
+				0CA08B1C0B6E78520041EB29 /* cclparser.h */,
+			);
+			name = CCLParser;
+			sourceTree = "<group>";
+		};
+		23237A0505ED2216005C54E8 = {
+			isa = PBXGroup;
+			children = (
+				0C47D1840B648F9F0072BE14 /* cclkeys.h */,
+				0CA08B120B6E78200041EB29 /* CCLParser */,
+				23237A1205ED230B005C54E8 /* CCLEngine */,
+				0C664DF00B8A7FCE009D39DE /* Frameworks */,
+				23237AF305ED24E3005C54E8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		23237A1205ED230B005C54E8 /* CCLEngine */ = {
+			isa = PBXGroup;
+			children = (
+				23237A7D05ED237F005C54E8 /* CCLEngine.h */,
+				23237A7C05ED237F005C54E8 /* CCLEngine.c */,
+				23237B2605ED2DB4005C54E8 /* CCLEngine_defs.h */,
+				023A1E4109EC17BB0045D359 /* CCLArgFunctions.h */,
+				023A1E4309EC17BB0045D359 /* CCLArgFunctions.c */,
+			);
+			name = CCLEngine;
+			sourceTree = "<group>";
+		};
+		23237AF305ED24E3005C54E8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				23237B1105ED2CB3005C54E8 /* CCLEngine */,
+				0CA08B210B6E786A0041EB29 /* libccl.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		0CA08B1D0B6E786A0041EB29 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0CA08B260B6E789C0041EB29 /* cclparser.h in Headers */,
+				0C664DCC0B8A2164009D39DE /* cclkeys.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		23237B0C05ED2CB3005C54E8 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		0CA08B200B6E786A0041EB29 /* ccl */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0CA08B220B6E78890041EB29 /* Build configuration list for PBXNativeTarget "ccl" */;
+			buildPhases = (
+				0CA08B1D0B6E786A0041EB29 /* Headers */,
+				0CA08B1E0B6E786A0041EB29 /* Sources */,
+				0CA08B1F0B6E786A0041EB29 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ccl;
+			productName = ccl;
+			productReference = 0CA08B210B6E786A0041EB29 /* libccl.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		23237B0B05ED2CB3005C54E8 /* CCLEngine (Tool) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0284171C09E580260060E31A /* Build configuration list for PBXNativeTarget "CCLEngine (Tool)" */;
+			buildPhases = (
+				23237B0C05ED2CB3005C54E8 /* Headers */,
+				23237B0D05ED2CB3005C54E8 /* Sources */,
+				23237B0E05ED2CB3005C54E8 /* Frameworks */,
+			);
+			buildRules = (
+				02744F3B0A55B446004BBC7F /* PBXBuildRule */,
+			);
+			dependencies = (
+			);
+			name = "CCLEngine (Tool)";
+			productInstallPath = /usr/local/bin;
+			productName = CCLEngine;
+			productReference = 23237B1105ED2CB3005C54E8 /* CCLEngine */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		23237A0905ED2216005C54E8 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 0284172009E580260060E31A /* Build configuration list for PBXProject "modemccl" */;
+			compatibilityVersion = "Xcode 2.4";
+			hasScannedForEncodings = 1;
+			mainGroup = 23237A0505ED2216005C54E8;
+			productRefGroup = 23237AF305ED24E3005C54E8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0CD4362B0B70AB460006D11B /* modemccl */,
+				23237B0B05ED2CB3005C54E8 /* CCLEngine (Tool) */,
+				0CA08B200B6E786A0041EB29 /* ccl */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0CA08B1E0B6E786A0041EB29 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0C06D5C90B8F94E900AEB35E /* cclparser.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		23237B0D05ED2CB3005C54E8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				023A1E4609EC17BB0045D359 /* CCLArgFunctions.c in Sources */,
+				02D038EC0A1E3FB400EC6CB7 /* CCLEngine.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0CD4362D0B70AB500006D11B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 23237B0B05ED2CB3005C54E8 /* CCLEngine (Tool) */;
+			targetProxy = 0CD4362C0B70AB500006D11B /* PBXContainerItemProxy */;
+		};
+		0CD4362F0B70AB520006D11B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0CA08B200B6E786A0041EB29 /* ccl */;
+			targetProxy = 0CD4362E0B70AB520006D11B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0284171D09E580260060E31A /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_ENABLE_OBJC_GC = NO;
+				INSTALL_PATH = /System/Library/Extensions/PPPSerial.ppp/Contents/PlugIns;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = CCLEngine;
+				REZ_EXECUTABLE = YES;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = Development;
+		};
+		0284171F09E580260060E31A /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_ENABLE_OBJC_GC = NO;
+				INSTALL_PATH = /System/Library/Extensions/PPPSerial.ppp/Contents/PlugIns;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = CCLEngine;
+				REZ_EXECUTABLE = YES;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = Default;
+		};
+		0284172109E580260060E31A /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					i386,
+					x86_64,
+				);
+				GCC_ENABLE_CPP_EXCEPTIONS = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = NO;
+				GCC_ENABLE_OBJC_GC = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				PRIVATE_HEADERS_FOLDER_PATH = /usr/local/include;
+			};
+			name = Development;
+		};
+		0284172309E580260060E31A /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					i386,
+					x86_64,
+				);
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_GC = YES;
+				PRIVATE_HEADERS_FOLDER_PATH = /usr/local/include;
+			};
+			name = Default;
+		};
+		0CA08B230B6E78890041EB29 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INSTALL_PATH = /usr/local/lib;
+				PREBINDING = NO;
+				PRODUCT_NAME = ccl;
+				ZERO_LINK = YES;
+			};
+			name = Development;
+		};
+		0CA08B250B6E78890041EB29 /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/lib;
+				PREBINDING = NO;
+				PRODUCT_NAME = ccl;
+				ZERO_LINK = YES;
+			};
+			name = Default;
+		};
+		0CD436350B70AB700006D11B /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				PRODUCT_NAME = modemccl;
+			};
+			name = Development;
+		};
+		0CD436370B70AB700006D11B /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = modemccl;
+			};
+			name = Default;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0284171C09E580260060E31A /* Build configuration list for PBXNativeTarget "CCLEngine (Tool)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0284171D09E580260060E31A /* Development */,
+				0284171F09E580260060E31A /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Default;
+		};
+		0284172009E580260060E31A /* Build configuration list for PBXProject "modemccl" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0284172109E580260060E31A /* Development */,
+				0284172309E580260060E31A /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Default;
+		};
+		0CA08B220B6E78890041EB29 /* Build configuration list for PBXNativeTarget "ccl" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0CA08B230B6E78890041EB29 /* Development */,
+				0CA08B250B6E78890041EB29 /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Default;
+		};
+		0CD436340B70AB700006D11B /* Build configuration list for PBXAggregateTarget "modemccl" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0CD436350B70AB700006D11B /* Development */,
+				0CD436370B70AB700006D11B /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Default;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 23237A0905ED2216005C54E8 /* Project object */;
+}
