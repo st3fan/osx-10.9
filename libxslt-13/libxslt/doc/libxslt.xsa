@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE xsa PUBLIC "-//LM Garshol//DTD XML Software Autoupdate 1.0//EN//XML" "http://www.garshol.priv.no/download/xsa/xsa.dtd">
+<xsa>
+  <vendor>
+    <name>Daniel Veillard</name>
+    <email>daniel@veillard.com</email>
+    <url>http://veillard.com/</url>
+  </vendor>
+  <product id="libxslt">
+    <name>libxslt</name>
+    <version>1.1.26</version>
+    <last-release> Sep 24 2009</last-release>
+    <info-url>http://xmlsoft.org/XSLT/</info-url>
+    <changes>   -  Improvement:
+    Add xsltProcessOneNode to exported symbols for lxml (Daniel Veillard)
+  
+   -  Bug fixes:
+    Fix an idness generation problem (Daniel Veillard),
+    595612 Try to fix some locking problems (Daniel Veillard),
+    Fix a crash on misformed imported stylesheets (Daniel Veillard)
+  
+
+</changes>
+  </product>
+</xsa>
