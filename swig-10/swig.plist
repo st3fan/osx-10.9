@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>OpenSourceProject</key>
+	<string>swig</string>
+	<key>OpenSourceVersion</key>
+	<string>1.3.40</string>
+	<key>OpenSourceWebsiteURL</key>
+	<string>http://www.swig.org/</string>
+	<key>OpenSourceURL</key>
+	<string>http://download.sourceforge.net/swig/swig-1.3.40.tar.gz</string>
+	<key>OpenSourceSHA1</key>
+	<string>7e7a426579f2d2d967b731abf062b33aa894fb4e</string>
+	<key>OpenSourceImportDate</key>
+	<string>2010-12-01</string>
+	<key>OpenSourceLicense</key>
+	<string>MIT</string>
+	<key>OpenSourceLicenseFile</key>
+	<string>swig.txt</string>
+</dict>
+</plist>
