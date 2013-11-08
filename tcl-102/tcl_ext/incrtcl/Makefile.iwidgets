@@ -1,0 +1,28 @@
+##
+# Makefile for iwidgets
+##
+# Daniel A. Steffen <das@users.sourceforge.net>
+##
+
+# Project info
+Project               = iwidgets
+
+# Fetch info
+Release               = 4.0.2
+TEApotVersion         = 0.0.0.2008.08.22.18.15.00
+TEApotProject         = Iwidgets
+
+Extra_Configure_Flags = $(TEA_Configure_Flags)
+Extra_Environment     = $(TEA_Environment)
+
+GnuAfterInstall       = fix-link fix-perms -f Makefile.$(Project)
+
+# include TEA Tcl extension build support
+include ../TEA.make
+
+Install_Target        = install-libraries install-doc
+
+fix-link:
+	cd $(DSTROOT)/$(TclExtLibDir) && $(LN) -fsh $(Project)?* $(Project)
+
+.PHONY: fix-link
