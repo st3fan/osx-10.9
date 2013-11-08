@@ -1,0 +1,26 @@
+;;; Copyright (c) 2012 Apple Inc. All rights reserved.
+;;; Sandbox profile for webdav_agent.
+
+(version 1)
+(deny default)
+(import "system.sb")
+(import "gss-acceptor.sb")
+
+(allow network-outbound)
+  
+(allow system-socket)
+
+(allow mach-register
+	(global-name-regex #"^com\.apple\.webdavfs\.msgport..*"))
+
+(allow file-read-metadata
+	(literal "/private/tmp"))
+
+(allow mach-lookup 
+	(global-name-regex #"^com\.apple\.webdavfs\.msgport..*"))
+
+(allow file*
+	(regex #"^/private/tmp/.webdavUDS\..+"))
+
+(allow file* 
+	(regex #"^/private/tmp/\.webdavcache\..+"))
