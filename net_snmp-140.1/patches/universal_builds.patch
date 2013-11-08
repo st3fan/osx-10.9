@@ -1,0 +1,38 @@
+--- net-snmp-5.4.1/apps/Makefile.in	2007-06-29 15:18:27.000000000 -0700
++++ net-snmp/apps/Makefile.in	2007-07-03 01:26:53.000000000 -0700
+@@ -70,6 +70,13 @@
+ CPPFLAGS	= $(TOP_INCLUDES) -I. $(AGENT_INCLUDES) $(HELPER_INCLUDES) \
+ 		  $(MIBGROUP_INCLUDES)  $(SNMPLIB_INCLUDES) @CPPFLAGS@
+ 
++ifeq ($(shell uname -s),Darwin)
++FRAMEWORKS      = -framework IOKit -framework CoreFoundation -framework CoreServices -framework ApplicationServices -framework DiskArbitration
++LIBS	       += $(FRAMEWORKS)
++#LIB_LD_LIBS    += $(FRAMEWORKS)
++TRAPLIBS       += $(FRAMEWORKS)
++endif
++
+ OSUFFIX		= lo
+ TRAPD_OBJECTS   = snmptrapd.$(OSUFFIX) @other_trapd_objects@
+ LIBTRAPD_OBJS   = snmptrapd_handlers.o  snmptrapd_log.o \
+
+diff -Naur net-snmp-5.6.orig/agent/Makefile.in net-snmp-5.6.working/agent/Makefile.in
+--- net-snmp-5.6.orig/agent/Makefile.in	2010-06-08 14:05:11.000000000 -0700
++++ net-snmp-5.6.working/agent/Makefile.in	2011-01-29 14:58:40.000000000 -0800
+@@ -119,10 +119,15 @@
+ PERLLDOPTS_FOR_LIBS = @PERLLDOPTS_FOR_LIBS@
+ LIBS		= $(USELIBS) @AGENTLIBS@ $(PERLLDOPTS_FOR_APPS)
+ OUR_AGENT_LIBS	= $(AGENTLIB) $(MIBLIB) $(LIBS) @DLLIBS@
++
++FRAMEWORKS      = -framework IOKit -framework CoreFoundation -framework CoreServices -framework ApplicationServices -framework DiskArbitration
++OUR_AGENT_LIBS += $(FRAMEWORKS)
++#LIB_LD_LIBS    = $(USELIBS) $(HELPERLIB)
++LIB_LD_LIBS    += $(FRAMEWORKS)
++
+ CPPFLAGS	= $(TOP_INCLUDES) -I. $(AGENT_INCLUDES) $(MIBGROUP_INCLUDES) \
+ 		  $(SNMPLIB_INCLUDES) @CPPFLAGS@ 
+ 
+-
+ #
+ # Objects
+ #
+

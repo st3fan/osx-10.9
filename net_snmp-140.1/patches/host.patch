@@ -1,0 +1,24 @@
+diff -I '\$Id: ' -u -r -b -w -p -d --new-file --exclude-from=/Users/rstory/.rcfiles/diff-ignore SVN/agent/mibgroup/host/data_access/Makefile.test APPLE/agent/mibgroup/host/data_access/Makefile.test
+--- SVN/agent/mibgroup/host/data_access/Makefile.test
++++ APPLE/agent/mibgroup/host/data_access/Makefile.test
+@@ -0,0 +1,20 @@
++SNMPLIBS = $(HOME)/snmp/build/5.4.x/snmplib/.libs/libnetsnmp.a -lcrypto
++#SNMPLIBS = `net-snmp-config --libs`
++
++HEADERS	= -F/System/Library/PrivateFrameworks/ -F/System/Library/Frameworks/
++CFLAGS	= -g -O0 -I$(HOME)/snmp/build/main/include -I$(HOME)/snmp/main/include -DTEST $(HEADERS)
++CC	= gcc
++
++SWINSTLIBS	=  -framework CoreServices -framework CoreFoundation -framework Install
++#LIBS	=  /System/Library/Frameworks/CoreServices.framework/CoreServices  /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation /System/Library/Frameworks/IOKit.framework/IOKit
++
++SWRUNLIBS	=  -framework CoreFoundation -framework ApplicationServices
++
++all: swinst swrun
++
++
++swinst: swinst_darwin.o swinst.o
++	$(CC) $(CFLAGS) swinst_darwin.o swinst.o $(SWINSTLIBS) -o swinst $(SNMPLIBS)
++
++swrun: swrun_darwin.o swrun.o
++	$(CC) $(CFLAGS) swrun_darwin.o swrun.o $(SWRUNLIBS) -o swrun $(SNMPLIBS)

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>OpenSourceImportDate</key>
+	<string>2011-01-05</string>
+	<key>OpenSourceLicense</key>
+	<string>other</string>
+	<key>OpenSourceLicenseFile</key>
+	<string>net-snmp.txt</string>
+	<key>OpenSourceModifications</key>
+	<array>
+		<string>Support for building on Inca and Leopard</string>
+		<string>Mac OS X-specific bug fixes</string>
+		<string>Mac OS X support for hrDevice.hrPartitionTable and hrDevice.hrDiskStorageTable</string>
+		<string>Mac OS X support for hrSWInstalledTable</string>
+		<string>Mac OS X support for hrSWRunPerfCPU</string>
+	</array>
+	<key>OpenSourceProject</key>
+	<string>net-snmp</string>
+	<key>OpenSourceSHA1</key>
+	<string></string>
+	<key>OpenSourceURL</key>
+	<string>http://easynews.dl.sourceforge.net/sourceforge/net-snmp/net-snmp-5.6.tar.gz</string>
+	<key>OpenSourceVersion</key>
+	<string>5.6</string>
+	<key>OpenSourceWebsiteURL</key>
+	<string>http://www.net-snmp.org/</string>
+</dict>
+</plist>
