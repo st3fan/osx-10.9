@@ -1,0 +1,25 @@
+<dict>
+        <key>OpenSourceProject</key>
+        <string>xattr</string>
+        <key>OpenSourceVersion</key>
+        <string>0.6.4</string>
+        <key>OpenSourceWebsiteURL</key>
+        <string>http://pypi.python.org/pypi/xattr/</string>
+        <key>OpenSourceURL</key>
+        <string>http://pypi.python.org/packages/source/x/xattr/xattr-0.6.4.tar.gz</string>
+        <key>OpenSourceImportDate</key>
+        <string>2012-11-11</string>
+        <key>OpenSourceLicense</key>
+        <string>PSFL</string>
+        <key>OpenSourceLicenseFile</key>
+        <string>python_modules.txt</string>
+	<key>OpenSourceModifications</key>
+	<array>
+		<string>improve error handling</string>
+		<string>replaced xattr script with improved version</string>
+		<string>hex output for binary with -l</string>
+		<string>hex input for -w with -x flag</string>
+	</array>	
+        <key>OpenSourceMD5</key>
+        <string>1bef31afb7038800f8d5cfa2f4562b37</string>
+</dict>

@@ -1,0 +1,190 @@
+--- xattr/__init__.py.orig	2011-08-16 22:57:36.000000000 -0700
++++ xattr/__init__.py	2011-11-14 16:56:53.000000000 -0800
+@@ -118,19 +118,13 @@
+         return len(self.list())
+ 
+     def __delitem__(self, item):
+-        try:
+-            self.remove(item)
+-        except IOError:
+-            raise KeyError(item)
++        self.remove(item)
+ 
+     def __setitem__(self, item, value):
+         self.set(item, value)
+ 
+     def __getitem__(self, item):
+-        try:
+-            return self.get(item)
+-        except IOError:
+-            raise KeyError(item)
++        return self.get(item)
+ 
+     def iterkeys(self):
+         return iter(self.list())
+@@ -140,7 +134,7 @@
+     def has_key(self, item):
+         try:
+             self.get(item)
+-        except IOError:
++        except:
+             return False
+         else:
+             return True
+@@ -161,11 +155,8 @@
+         return dict(self.iteritems())
+ 
+     def setdefault(self, k, d=''):
+-        try:
+-            d = self.get(k)
+-        except IOError:
+-            self[k] = d
+-        return d
++        d = self.get(k)
++        self[k] = d
+ 
+     def keys(self):
+         return self.list()
+--- xattr/_xattr.c.orig	2011-08-16 22:54:30.000000000 -0700
++++ xattr/_xattr.c	2011-11-14 16:57:54.000000000 -0800
+@@ -543,19 +543,27 @@
+ #define xattr_flistxattr flistxattr
+ #endif
+ 
+-static PyObject *xattr_error(void);
+-static PyObject *xattr_error_with_filename(char *name);
++static PyObject *xattr_error(const char *name);
++static PyObject *xattr_error_with_filename(const char *file, const char *name);
+ 
+ static PyObject *
+-xattr_error(void)
++xattr_error(const char *name)
+ {
++    if (name && errno == ENOATTR) {
++	PyErr_SetString(PyExc_KeyError, name);
++	return NULL;
++    }
+     return PyErr_SetFromErrno(PyExc_IOError);
+ }
+ 
+ static PyObject *
+-xattr_error_with_filename(char *name)
++xattr_error_with_filename(const char *file, const char *name)
+ {
+-    return PyErr_SetFromErrnoWithFilename(PyExc_IOError, name);
++    if (name && errno == ENOATTR) {
++	PyErr_SetString(PyExc_KeyError, name);
++	return NULL;
++    }
++    return PyErr_SetFromErrnoWithFilename(PyExc_IOError, (char *)file);
+ }
+ 
+ PyDoc_STRVAR(pydoc_getxattr,
+@@ -588,7 +596,7 @@
+         res = xattr_getxattr((const char *)path, (const char *)name, NULL, 0, position, options);
+         Py_END_ALLOW_THREADS
+         if (res == -1) {    
+-            PyObject *tmp = xattr_error_with_filename(path);
++            PyObject *tmp = xattr_error_with_filename(path, name);
+             PyMem_Free(path);
+             PyMem_Free(name);
+             return tmp;
+@@ -605,7 +613,7 @@
+     res = xattr_getxattr((const char *)path, (const char *)name, (void *)PyString_AS_STRING(buffer), size, position, options);
+     Py_END_ALLOW_THREADS
+     if (res == -1) {
+-        PyObject *tmp = xattr_error_with_filename(path);
++        PyObject *tmp = xattr_error_with_filename(path, name);
+         Py_DECREF(buffer);
+         PyMem_Free(path);
+         PyMem_Free(name);
+@@ -650,7 +658,7 @@
+         Py_END_ALLOW_THREADS
+         if (res == -1) {    
+             PyMem_Free(name);
+-            return xattr_error();
++            return xattr_error(name);
+         }
+         size = res;
+     }
+@@ -665,7 +673,7 @@
+     PyMem_Free(name);
+     if (res == -1) {
+         Py_DECREF(buffer);
+-        return xattr_error();
++        return xattr_error(name);
+     }
+     if (res != size) {
+         _PyString_Resize(&buffer, (int)res);
+@@ -703,7 +711,7 @@
+     res = xattr_setxattr((const char *)path, (const char *)name, (void *)value, size, position, options);
+     Py_END_ALLOW_THREADS
+     if (res) {
+-        result = xattr_error_with_filename(path);
++        result = xattr_error_with_filename(path, name);
+     } else {
+         Py_INCREF(Py_None);
+         result = Py_None;
+@@ -743,7 +751,7 @@
+     Py_END_ALLOW_THREADS
+     PyMem_Free(name);
+     if (res) {
+-        return xattr_error();
++        return xattr_error(name);
+     }
+     Py_INCREF(Py_None);
+     return Py_None;
+@@ -774,7 +782,7 @@
+     res = xattr_removexattr((const char *)path, (const char *)name, options);
+     Py_END_ALLOW_THREADS
+     if (res) {
+-        result = xattr_error_with_filename(path);
++        result = xattr_error_with_filename(path, name);
+     } else {
+         Py_INCREF(Py_None);
+         result = Py_None;
+@@ -809,7 +817,7 @@
+     Py_END_ALLOW_THREADS
+     PyMem_Free(name);
+     if (res) {
+-        return xattr_error();
++        return xattr_error(name);
+     }
+     Py_INCREF(Py_None);
+     return Py_None;
+@@ -838,7 +846,7 @@
+     res = xattr_listxattr((const char *)path, NULL, 0, options);
+     Py_END_ALLOW_THREADS
+     if (res == -1) {    
+-        PyObject *tmp = xattr_error_with_filename(path);
++        PyObject *tmp = xattr_error_with_filename(path, NULL);
+         PyMem_Free(path);
+         return tmp;
+     }
+@@ -856,7 +864,7 @@
+     res = xattr_listxattr((const char *)path, (void *)PyString_AS_STRING(buffer), (size_t)PyString_GET_SIZE(buffer), options);
+     Py_END_ALLOW_THREADS
+     if (res == -1) {
+-        PyObject *tmp = xattr_error_with_filename(path);
++        PyObject *tmp = xattr_error_with_filename(path, NULL);
+         Py_DECREF(buffer);
+         PyMem_Free(path);
+         return tmp;
+@@ -891,7 +899,7 @@
+     res = xattr_flistxattr(fd, NULL, 0, options);
+     Py_END_ALLOW_THREADS
+     if (res == -1) {    
+-        return xattr_error();
++        return xattr_error(NULL);
+     }
+     buffer = PyString_FromStringAndSize((char *)NULL, (int)res);
+     if (buffer == NULL) {
+@@ -902,7 +910,7 @@
+     Py_END_ALLOW_THREADS
+     if (res == -1) {
+         Py_DECREF(buffer);
+-        return xattr_error();
++        return xattr_error(NULL);
+     }
+     if (res != (ssize_t)PyString_GET_SIZE(buffer)) {
+         _PyString_Resize(&buffer, (int)res);
