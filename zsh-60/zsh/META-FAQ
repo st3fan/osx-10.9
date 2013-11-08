@@ -1,0 +1,117 @@
+------------------------
+META-FAQ for the Z Shell
+------------------------
+
+The latest version of this META-FAQ can be found at any of the FTP sites
+listed below.
+
+Author
+------
+
+Zsh was originally written by Paul Falstad <pf@zsh.org>.
+Zsh is now maintained by the members of the zsh-workers mailing
+list <zsh-workers@zsh.org>.  The development is currently
+coordinated by Peter Stephenson <pws@zsh.org>.  The coordinator
+can be contacted at <coordinator@zsh.org>, but matters relating to
+the code should generally go to the mailing list.
+
+Availability
+------------
+
+Zsh is available from the following anonymous FTP sites.  These mirror
+sites are kept frequently up to date.  The sites marked with (H) may be
+mirroring ftp.cs.elte.hu instead of the primary site.
+
+      Primary site
+            ftp://ftp.zsh.org/pub/
+            http://www.zsh.org/pub/
+
+      Australia
+            ftp://ftp.zsh.org/pub/
+            http://www.zsh.org/pub/
+            http://mirror.dejanseo.com.au/pub/zsh/
+
+      Hungary
+            ftp://ftp.cs.elte.hu/pub/zsh/
+            http://www.cs.elte.hu/pub/zsh/
+
+The up-to-date source code is available via anonymous CVS and Git from
+Sourceforge.  See http://sourceforge.net/projects/zsh/ for details.
+A summary of instructions for the CVS and Git archives can be found at
+http://zsh.sourceforget.net/.
+
+
+Mailing Lists
+-------------
+
+Zsh has 3 mailing lists:
+
+      <zsh-announce@zsh.org>
+            Announcements about releases, major changes in the shell and the
+            monthly posting of the Zsh FAQ.  (moderated)
+
+      <zsh-users@zsh.org>
+            User discussions.
+
+      <zsh-workers@zsh.org>
+            Hacking, development, bug reports and patches.
+
+To subscribe or unsubscribe, send mail
+to the associated administrative address for the mailing list.
+
+      <zsh-announce-subscribe@zsh.org>
+      <zsh-users-subscribe@zsh.org>
+      <zsh-workers-subscribe@zsh.org>
+
+      <zsh-announce-unsubscribe@zsh.org>
+      <zsh-users-unsubscribe@zsh.org>
+      <zsh-workers-unsubscribe@zsh.org>
+
+YOU ONLY NEED TO JOIN ONE OF THE MAILING LISTS AS THEY ARE NESTED.
+All submissions to zsh-announce are automatically forwarded to
+zsh-users.  All submissions to zsh-users are automatically
+forwarded to zsh-workers.
+
+If you have problems subscribing/unsubscribing to any of the mailing
+lists, send mail to <listmaster@zsh.org>.  The mailing lists are
+maintained by Karsten Thygesen <karthy@kom.auc.dk>.
+
+The mailing lists are archived; the archives can be accessed via the
+administrative addresses listed above.  There is also a hypertext
+archive, maintained by Geoff Wing <gcw@zsh.org>, available at
+http://www.zsh.org/mla/.
+
+The Zsh FAQ
+-----------
+
+Zsh has a list of Frequently Asked Questions (FAQ), maintained by
+Peter Stephenson <pws@zsh.org>.  It is regularly posted to the
+newsgroup comp.unix.shell and the zsh-announce mailing list.
+The latest version can be found at any of the Zsh FTP sites, or at
+http://www.zsh.org/FAQ/.  The contact address for FAQ-related matters
+is <faqmaster@zsh.org>.
+
+The Zsh Web Page
+----------------
+
+Zsh has a web page which is located at http://www.zsh.org/.  This is
+maintained by Karsten Thygesen <karthy@zsh.org>, of SunSITE Denmark.
+The contact address for web-related matters is <webmaster@zsh.org>.
+
+The Zsh Userguide
+-----------------
+
+A userguide is currently in preparation.  It is intended to complement the
+manual, with explanations and hints on issues where the manual can be
+cabbalistic, hierographic, or downright mystifying (for example, the word
+`hierographic' does not exist).  It can be viewed in its current state at
+http://zsh.sourceforge.net/Guide/.  At the time of writing, chapters
+dealing with startup files and their contents and the new completion system
+were essentially complete.
+
+The Zsh Wiki
+------------
+
+A `wiki' website for zsh has been created at http://www.zshwiki.org/.
+This is a site which can be added to and modified directly by users without
+any special permission.  You can add your own zsh tips and configurations.

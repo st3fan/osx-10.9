@@ -1,0 +1,416 @@
+2012-12-21  Peter Stephenson  <p.w.stephenson@ntlworld.com>
+
+	* unposted: README, Config/version.mk, Etc/FAQ.yo: release
+	5.0.2.
+
+2012-12-21  Peter Stephenson  <pws@csr.com>
+
+	* 30930: Src/parse.c, Test/D03procsubst.ztst: anonymous
+	functions shouldn't be marked as simple; this prevented process
+	based features from working in their arguments.
+
+2012-12-20  Peter Stephenson  <p.w.stephenson@ntlworld.com>
+
+	* unposted: Config/version.mk: zsh 5.0.1.
+
+2012-12-18  Oliver Kiddle <opk@zsh.org>
+
+	* 30877: Etc/zsh-development-guide: document git workflow
+
+2012-12-18  Peter Stephenson  <pws@csr.com>
+
+	* 30914: mkinstalldirs: default mode for installation
+	directories is 755.
+
+2012-12-17  Phil Pennock  <pdpennock@users.sourceforge.net>
+
+	* 30901, 30906: Etc/zsh-development-guide: document git usage,
+	update patch descriptions, mention editorconfig.
+
+2012-12-16  Peter Stephenson  <p.w.stephenson@ntlworld.com>
+
+	* unposted: README, Config/version.mk, Etc/FAQ.yo,
+	Completion/Base/Utility/.distfiles,
+	Completion/Unix/Command/.distfiles,
+	Completion/Unix/Type/.distfiles, for 5.0.0-test-1.
+
+	* unposted: Src/utils.c: missing mod_export.
+
+2012-12-13  Peter Stephenson  <pws@csr.com>
+
+	* 30876: Src/exec.c, Test/A06assign.ztst, Test/C03traps.ztst:
+	obscure failures to process non-zero return values could result
+	from optimising a list to a simple command.
+
+2012-12-08  Bart Schaefer  <schaefer@zsh.org>
+
+	* users/17445: Src/math.c, Test/C01arith.ztst: fix handling of
+	leading zeroes in floating point.
+
+2012-11-20  Oliver Kiddle <opk@zsh.org>
+
+	* 30811: Completion/Linux/Command/_btrfs,
+	Completion/Unix/Command/_mount: new completion for btrfs and
+	complete btrfs and ext4 mount options and new linux mount flags
+
+2012-11-16  Vin Shelton  <acs@xemacs.org>
+
+	* users/16865: Doc/Zsh/grammar.yo: Added missing menu item for Errors.
+
+2012-11-18  Bart Schaefer  <schaefer@zsh.org>
+
+	* users/17042: Src/jobs.c: don't stomp the environment in "jobs -Z"
+	unless we've first copied it to new memory.
+
+2012-11-16  Oliver Kiddle <opk@zsh.org>
+
+	* 30802: Completion/Unix/Command/_find: add new command switches
+
+	* 30801: Completion/X/Command/_urxvt, Completion/X/Type/_xft_fonts:
+	fix font completion for newer fontconfig & update urxvt completion
+
+2012-11-15  Peter Stephenson  <p.w.stephenson@ntlworld.com>
+
+	* 30789: Doc/Zsh/grammar.yo, Doc/Zsh/options.yo, Src/hist.c,
+	Src/init.c, Src/options.c, Src/zsh.h, Test/A04redirect.zsh:  add
+	CONTINUE_ON_ERROR option for compatibility but turn it off:
+	scripts exit on an error instead of returning to the top-level
+	like interactive shells.
+
+	* 30800: Michal Halenka: Completion/Unix/Command/_arping: fix
+	option.
+
+2012-11-12  Oliver Kiddle <opk@zsh.org>
+
+	* 30795: Completion/Unix/Command/_xz,
+	Completion/Unix/Command/_bzip2: new xz completion, new bzip2 options
+
+	* 30794: Completion/Unix/Command/_irssi,
+	Completion/Unix/Command/_mutt: update for new options
+
+2012-11-11  Oliver Kiddle <opk@zsh.org>
+
+	* 30793: Completion/Unix/Command/_getent,
+	Completion/Unix/Command/_iconv, Completion/Unix/Command/_ldd:
+	account for eglibc in _pick_variant patterns
+
+2012-11-08  Bart Schaefer  <schaefer@zsh.org>
+
+	* 30786: Src/builtin.c: do not enter interactive history editing
+	or command execution if "fc" is called from a ZLE widget.
+
+2012-11-08  Peter Stephenson  <pws@csr.com>
+
+	* 30783: Src/lex.c: we don't want leading "="'s to be active when
+	tokenising strings that aren't going to be treated as command
+	line arguments.
+
+	* 30780: Doc/Zsh/builds.yo: document that set -o failures are
+	hard but setopt failures are soft.
+
+2012-11-07  Oliver Kiddle <opk@zsh.org>
+
+	* Benjamin R. Haskell: 30737: Completion/Unix/Command/_git:
+	make custom completion functions for git aliases easier
+
+	* users/17382: Completion/Unix/Type/_remote_files,
+	Completion/Unix/Command/_vim, Completion/Unix/Command/_git,
+	Completion/Unix/Type/_urls: complete URLs for vim and make
+	_remote_files more consistent with _files
+
+2012-10-25  Peter Stephenson  <p.w.stephenson@ntlworld.com>
+
+	* 30735: Src/parse.c: array assignments aren't simple because
+	they can contain process substitutions.
+
+2012-10-19  Peter Stephenson  <pws@csr.com>
+
+	* Roman Kaminski: 30738: Completion/Unix/Command/_bzr: send
+	command.
+
+	* Greg Bouzakis: 30741: Completion/Unix/Command/_systemd: add
+	suspend command.
+
+	* unposted: Doc/Zsh/expn.yo: further splitting clarifications.
+
+2012-10-18  Peter Stephenson  <pws@csr.com>
+
+	* 30740: Doc/Zsh/expn.yo: add example of process substitution
+	with anonymous function.
+
+	* c.f. users/17330: Doc/Zsh/expn.yo: fix reference to splitting
+	rule in parameter expansion rules.
+
+2012-10-11  Peter Stephenson  <p.w.stephenson@ntlworld.com>
+
+	* 30726: Doc/Zsh/builtins.yo, Src/builtin.c, Src/exec.c,
+	Src/hashtable.c, Src/init.c, Src/options.c, Src/parse.c,
+	Src/signals.c, Src/zsh.h, Src/Modules/parameter.c,
+	Test/B07emulate.ztst: extend 30722 to handle the case
+	where shell options passed to the emulate command need
+	propagating to sticky emulation.
+
+2012-10-11  Peter Stephenson  <pws@csr.com>
+
+	* 30724: Src/exec.c, Src/jobs.c: shell code optimised to use
+	execsimple() doesn't have a valid thisjob.
+
+2012-10-09  Peter Stephenson  <pws@csr.com>
+
+	* users/17318: Src/Zle/zle_utils.c: don't increment the undo
+	change number for every variable read, only the first in a row.
+
+	* users/17314: Src/Zle/zle_utils.c: ensure an undo change number
+	uniquely specifies a point in editing history by incrementing
+	the value returned by the variable.
+
+	* unposted: Src/builtin.c: fix trivial typo with "functions +T".
+
+2012-10-07  Peter Stephenson  <p.w.stephenson@ntlworld.com>
+
+	* 30722: Src/builtin.c, Src/exec.c, Src/init.c, Src/options.c,
+	Src/Modules/parameter.c, Test/B07emulate.ztst: fix some cases
+	where options or emulations were not propagated properly
+	from the emulate command.
+
+	* 30718: README, Doc/Zsh/builtins.yo, Src/builtin.c,
+	Test/C04funcdef.ztst: emulate command evaluations should apply
+	sticky emulation to autoloads, too.
+
+2012-10-07  Oliver Kiddle <opk@zsh.org>
+
+	* unposted: Completion/Unix/Command/_webbrowser,
+	Completion/Unix/Type/_pspdf: add evince, zathura, dwb
+
+	* 30714: Completion/X/Command/_xclip: complete files,-t,-f for xclip
+
+2012-10-05  Peter Stephenson  <p.w.stephenson@ntlworld.com>
+
+	* 30716: Src/options.c: IGNORECLOSEBRACES should be an emulation
+	option since it changes what syntax is valid.
+
+	* 30715: Src/init.c, Src/lex.c, Src/parse.c, Src/subst.c,
+	Src/zsh.h, Src/Zle/zle_tricky.c: use a named enum for
+	lexical tokens.
+
+2012-10-03  Peter Stephenson  <p.w.stephenson@ntlworld.com>
+
+	* users/17305: Doc/Zsh/expn.yo: fix documentation for ordering
+	of word splitting and improve (z) and (Z) documentation.
+
+	* users/17310: Doc/Zsh/params.yo, Src/lex.c, Test/A04redirect.ztst,
+	Test/D06subscript.ztst: back off users/17304 owing to problem
+	with [ command, document problem, and test the case that needs
+	to work.
+
+2012-10-02  Peter Stephenson  <pws@csr.com>
+
+	* users/17304: Src/lex.c, Test/D06subscript.ztst: angle brackets
+	aren't associated with special parsing inside square brackets.
+
+2012-09-30  Peter Stephenson  <p.w.stephenson@ntlworld.com>
+
+	* Aaron Schrab: 30712: .editorconfig: multi-editor specification
+	of editing formats.
+
+	* Aaron Schrab: 30711: Completion/Unix/Type/_bind_addresses:
+	improved IPv6 completion.
+
+	* Aaron Schrab: 30710: Completion/Unix/Command/_perldoc: updates.
+
+2012-09-29  Frank Terbeck  <ft@bewatermyfriend.org>
+
+	* Seth House: 30702: Doc/Zsh/contrib.yo,
+	Functions/VCS_Info/Backends/VCS_INFO_get_data_hg: Removed --debug
+	flag from the hg vcs_info backend
+
+	* Seth House: 30701: Misc/vcs_info-examples: Added an hg hook
+	example to restore the 40-char hash
+
+	* Baptiste Daroussin: 30703:
+	Functions/VCS_Info/Backends/VCS_INFO_detect_fossil: Fix fossil
+	detection on unix
+
+2012-09-28  Oliver Kiddle <opk@zsh.org>
+
+	* 30697: Completion/Unix/Command/_dbus: new completion definition
+
+2012-09-21  Peter Stephenson  <p.w.stephenson@ntlworld.com>
+
+	* 30692: Completion/Unix/Type/_path_files, Doc/Zsh/builtins.yo,
+	Src/builtin.c: allow autoload +X -m to work; change _path_files
+	so it works on that.
+
+2012-09-21  Peter Stephenson  <pws@csr.com>
+
+	* 30687 (typo fixed): Doc/Zsh/params.yo, Src/jobs.c: don't
+	REPORTTIME if zleactive (but time keyword is allowed).
+
+2012-09-15  Peter Stephenson  <p.w.stephenson@ntlworld.com>
+
+	* Александр Балезин: 30667: Completion/Unix/Command/_ip: add
+	addrlabl subcommand.
+
+2012-09-11  Peter Stephenson  <pws@csr.com>
+
+	* unposted: NEWS: refer to some newly added features.
+
+	* 30647, 30649: Doc/Zsh/arith.yo, Src/math.c, Src/utils.c,
+	Test/C01arith.ztst: allow underscores in numeric constants
+	within math evaluation.
+
+2012-09-09  Peter Stephenson  <p.w.stephenson@ntlworld.com>
+
+	* Jun T.: 30664: configure.ac: fix some Yodl version issues.
+
+2012-09-08  Peter Stephenson  <p.w.stephenson@ntlworld.com>
+
+	* users/17236: Src/builtin.c: r and other fc output didn't
+	unmetafy when listing to a file other than stdout.
+
+2012-09-06  Peter Stephenson  <p.w.stephenson@ntlworld.com>
+
+	* 30656: Src/math.c: treat dividing by -1 the same as
+	multiplying by it to get around SIGFPE.
+
+2012-09-05  Peter Stephenson  <pws@csr.com>
+
+	* Jun T.: 30658: Completion/Unix/Command/_uniq: more options.
+
+	* Silas Silva: users/17223: Completion/Unix/Command/_lp:
+	page-ranges option.
+
+2012-09-03  Peter Stephenson  <pws@csr.com>
+
+	* users/17213: Completion/Base/Completer/_user_expand,
+	Doc/Zsh/compsys.yo: allow REPLY to pass a description for an
+	expansion.
+
+2012-08-27  Peter Stephenson  <p.w.stephenson@ntlworld. com>
+
+	* Oliver (olipro): 30643: Completion/Linux/Command/_ipset:
+	completion update.
+
+2012-08-25  Peter Stephenson  <p.w.stephenson@ntlworld.com>
+
+	* John Stahara: 30641: Src/Zle/zle_keymap.c: bindkey -N
+	error report is misleading when copying keymap.
+
+2012-08-23  Peter Stephenson  <p.w.stephenson@ntlworld.com>
+
+	* Jun T: 30640 (plus additional comment): Src/zsh.h,
+	Src/compat.c: MacOS doesn't define __STDC_ISO_10646__ but we
+	need the replacement wcwidth() anyway.
+
+2012-08-23  Peter Stephenson  <pws@csr.com>
+
+	* Aaron Schrab: 30636: Completion/Unix/Command/_telnet:
+	telnet-ssl options.
+
+	* Aaron Schrab: 30637: Completion/Unix/Command/_telnet: -b option
+
+	* Aaron Schrab: 30638: Completion/Unix/Command/_telnet: IPv4
+	and IPv6 options.
+
+2012-08-21  Peter Stephenson  <p.w.stephenson@ntlworld.com>
+
+	* users/17211: Completion/Unix/Type/_files, Doc/Zsh/compsys.yo:
+	new recursive-files style.
+
+	* 30633: Doc/Zsh/builtins.yo, Src/builtin.c, Src/exec.c,
+	Src/hashtable.c, Src/options.c, Src/subst.c, Src/zsh.h:
+	"functions -T" traces only marked function and not called
+	functions unless also marked.
+
+2012-08-20  Peter Stephenson  <pws@csr.com>
+
+	* Stepan Koltsov: 30634: Functions/Misc/zmv: use (q-) quoting
+	for output for clarity.
+
+2012-08-17  Peter Stephenson  <pws@csr.com>
+
+	* Stepan Koltsov: 30632
+	(https://raw.github.com/stepancheg/zsh/bfa81caaac44dacfa05adb77f61526ea90346219/Completion/Unix/Command/_clay):
+	Completion/Unix/Command/_clay,
+	Completion/Unix/Command/.distfiles:
+	new completion.
+
+	* Stepan Koltsov: 30632
+	(https://github.com/stepancheg/zsh/commit/b0f1427e4983be6dfdc07ccaf86f153d5f9959b9.patch):
+	Completion/Unix/Command/_gcc: aliases and clang-specific flags.
+
+	* 30629 plus unposted formatting improvements:
+	Doc/Zsh/builtins.yo, Src/Builtins/rlimits.c: more complete
+	handling for socket buffer size limit (NetBSD) plus formatting
+	and consistency changes (kb -> kbytes everywhere in ulimit
+	output, K-bytes to kilobytes everywhere in documentation).
+
+	* 30627: configure.ac, Doc/Zsh/builtins.yo,
+	Src/Builtins/rlimits.awk, Src/Builtins/rlimits.c:
+	support RLIMIT_NTHR as on NetBSD.
+
+2012-08-16  Peter Stephenson  <pws@csr.com>
+
+	* 30619: Doc/Zsh/builtins.yo, Src/builtin.c,
+	Test/B02typeset.ztst: repeat "typeset -T" with same two first
+	arguments is not an error.
+
+	* 30617: Src/prototypes.h, Src/zsh_system.h: rationalise
+	replacement of tgoto() prototype which could appear twice
+	inconsistently.
+
+2012-08-14  Peter Stephenson  <p.w.stephenson@ntlworld.com>
+
+	* unposted: Etc/relnote_5.0.0.txt, Etc/.distfiles: add.
+
+	* unposted: Etc/Changelog-4.3, Etc/ChangeLog-5.0,
+	Etc/.distfiles: rename
+
+2012-08-13  Peter Stephenson  <p.w.stephenson@ntlworld.com>
+
+	* unposted: ChangeLog, Etc/ChangeLog-5.0: move changes up
+	to 5.0 into subdirectory.
+
+	* Michal Halenka: 30608: Completion/Unix/Command/_ip: del rather
+	delete tunnel.
+
+2012-08-13  Peter Stephenson  <pws@csr.com>
+
+	* Jesse Weinstein: 30607: Doc/Makefile.in: fix ancient
+	dependency problem with moved Yodl files.
+
+	* Aaron Schrab: 30604: Src/Zle/zle_move.c: make repeating vi skip
+	character useful by ignoring character just matched.
+
+	* Aaron Schrab: 30603: Src/Zle/zle_move.c: repeating vi skip
+	characters commands caused bad positioning.
+
+2012-08-07  Peter Stephenson  <p.w.stephenson@ntlworld.com>
+
+	* cat_in_136: 17200: Completion/Unix/Command/.distfiles,
+	Completion/Unix/Command/_lha, Completion/Unix/Command/_nkf: new
+	completions.  nkf is a Kanji code converter.
+
+	* YAMAMOTO Takashi: 30599: Src/compat.c, Src/zsh.h: don't
+	use the replacement wcwidth if not ISO-10646 as the assumptions
+	it makes probably won't work.
+
+2012-07-27  Peter Stephenson  <p.w.stephenson@ntlworld.com>
+
+	* 30590: Doc/Makefile.in, Doc/.distfiles: work around problem
+	turning intro.ms into PDF.
+
+	* unposted: relabel as 5.0.0-dev-0.
+
+2012-07-23  Geoff Wing  <gcw@zsh.org>
+
+	* unposted: Doc/Zsh/ftp_sites.yo: Remove unavailable sites
+
+2012-07-21  Peter Stephenson  <p.w.stephenson@ntlworld.com>
+
+	* unposted: update for 5.0.0 release.
+
+*****************************************************
+* This is used by the shell to define $ZSH_PATCHLEVEL
+* $Revision: 1.5778 $
+*****************************************************
