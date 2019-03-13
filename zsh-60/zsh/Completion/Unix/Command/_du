@@ -5,7 +5,7 @@ if _pick_variant gnu=Free\ Soft unix --version /dummy/no-such-file; then
 
   _arguments -s \
     '(-a --all -s --summarize)'{-a,--all}'[write counts for all files]' \
-    '--apparent-size[print apparent sizes rather than disc usage]' \
+    '--apparent-size[print apparent sizes, rather than disk usage]' \
     '(-B --block-size -k)'{-B,--block-size=}'[specify block size]:size (bytes)' \
     '(-B --block-size -k --apparent-size -b --bytes)'{-b,--bytes}'[equivalent to --apparent-size --block-size=1]' \
     '(-c --total)'{-c,--total}'[produce a grand total]' \
